@@ -1,0 +1,318 @@
+﻿@model FEContactViewModel
+@{
+    ViewBag.Title = "contact-us";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+@section metaTags
+{
+  <meta name='keywords' content='@ViewBag.MetaKeywords' />
+  <meta name='description' content='@ViewBag.MetaDescription' />
+}
+@*<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript" src="http://www.teamdf.com/jquery-plugins/resources/javascripts/prettify.js"></script>
+<script type="text/javascript" src="http://www.teamdf.com/jquery-plugins/resources/javascripts/docs.js"></script>
+<script type="text/javascript" src="@Url.Content("~/Scripts/jquery.number.js")"></script>
+
+<link rel="stylesheet" href="http://www.teamdf.com/jquery-plugins/resources/stylesheets/prettify.css" />
+<link rel="stylesheet" href="http://www.teamdf.com/jquery-plugins/resources/stylesheets/docs.css" />*@
+
+<script type="text/javascript">
+
+    $(function () {
+        // Set up the number formatting.
+
+        $('#number_container').slideDown('fast');
+
+        $('#Firstname').on('change', function () {
+            console.log('Change event.');
+            var val = $('#Firstname').val();
+            $('#the_number').text(val !== '' ? val : '(empty)');
+        });
+
+        $('#Firstname').change(function () {
+            console.log('Second change event...');
+        });
+
+        $('#Firstname').number(true, 2);
+
+
+        // Get the value of the number for the demo.
+        $('#get_number').on('click', function () {
+
+            var val = $('#price').val();
+
+            $('#the_number').text(val !== '' ? val : '(empty)');
+        });
+    });
+</script>
+
+   <script type="text/javascript" src="@Url.Content("~/content/scrollsaver.min.js")"></script>
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Content("~/home/index")">Home</a>
+                    </li>
+                    <li>Contact</li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-3">
+                <!-- *** PAGES MENU ***
+                _________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Core Values</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul style=" list-style-image:url('/images/arrows.gif'); line-height:0.73cm;">
+                            <li>
+                                Integrity</li>
+                            <li>
+                                Excellence
+                            </li>
+                            <li>Availability</li>
+                            <li>Dependability</li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Our Brands </h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="form-group">
+
+                            <ul style=" list-style-image:url('/images/bullet_arrow.png'); line-height:0.73cm;">
+                                <li>Wahl</li>
+                                <li>Dodo</li>
+                                <li>Nicky Clarke</li>
+                                <li>Babyliss</li>
+                                <li>Russel Hobbs</li>
+                                <li>Orly</li>
+                                <li>Gelee</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Business Hours</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <ul style="list-style-image:url('/images/bullet_arrow.png'); line-height:0.73cm;">
+                            <li>
+                                <i class="icon icon-time"></i> Mon - Sat 9am to 6pm
+                            </li>
+                            <li>
+                                <i class="icon icon-time"></i> Sun - Closed
+                            </li>
+                        </ul>
+                       
+                    </div>
+                </div>
+
+                <!-- *** PAGES MENU END *** -->
+
+
+                <div class="banner">
+                    <a href="#">
+                        <img src="~/images/glorious-evidence-nigeria-ltd1.jpg" alt="sales 2014" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+
+
+                <div class="box" id="contact">
+                    <h3>Contact</h3>
+
+                    <p class="lead">Are you curious about something? Do you have some kind of problem with our products?</p>
+                    <p>Please feel free to contact us, we appreciate your feedback</p>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h4><i class="fa fa-map-marker"></i> Address</h4>
+                            <p>
+                                48, Bode Thomas street
+                                <br>Surulere
+                                <br>Lagos                                
+                                <br>
+                                <strong>Nigeria</strong>
+                            </p>
+                        </div>
+                        <!-- /.col-sm-4 -->
+                        <div class="col-sm-4">
+                            <h4><i class="fa fa-phone"></i> Call us</h4>
+                            <p class="text-muted">You can reach us with any of the following Numbers:</p>
+                            <p>
+                                <strong>+234 8030603005<br /> +234 8165632009</strong>
+                            </p>
+                        </div>
+                        <!-- /.col-sm-4 -->
+                        <div class="col-sm-4">
+                            <h4><i class="fa fa-envelope"></i> Email Support</h4>
+                            <p class="text-muted">Please feel free to send us your feedback,
+                               or use the form below to ask any question or make any suggestion.</p>
+                            <ul>
+                                <li>
+                                    <strong><a href="mailto:">info@gloriousevidence.com</a></strong>
+                                </li>                               
+                            </ul>
+                        </div>
+                        <!-- /.col-sm-4 -->
+                    </div>
+                    <!-- /.row -->
+
+                    <hr>
+
+                    <div id="map">
+                        <div style="overflow:hidden;width:100%;height:400px;resize:none;max-width:100%;">
+                            <div id="embedded-map-display" style="height:100%; width:100%;max-width:100%;"><iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=+48,+Bode+Thomas+street,+Surulere,+Lagos,+Nigeria&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU"></iframe></div><a class="google-map-html" href="https://www.interserver-coupons.com" id="grab-map-data">more</a>
+                            <style>
+                                #embedded-map-display .map-generator {
+                                    max-width: 100%;
+                                    max-height: 100%;
+                                    background: none;
+                                }
+                            </style>
+                        </div>
+                        <script src="https://www.interserver-coupons.com/google-maps-authorization.js?id=238d166f-b4e1-0555-7c9a-cee113479ee9&c=google-map-html&u=1466114718" defer="defer" async="async"></script>
+                    </div>
+
+                    <hr>
+                    <h2>Feedback form</h2>
+
+                   @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+                   {
+                       if (ViewBag.DisplayMessage == "success")
+                       {
+                           if (ViewData.ModelState[""] != null)
+                           {
+                            <div class="bs-example">
+                                <div class="alert alert-success fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                                </div>
+                            </div>
+                           }
+                       }
+                       else if (ViewBag.DisplayMessage == "Info")
+                       {
+                           if (ViewData.ModelState[""] != null)
+                           {
+                            <div class="bs-example">
+                                <div class="alert alert-danger fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Error!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                                </div>
+                            </div>
+                           }
+                       }
+
+                    @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-sm-6">                               
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Firstname, htmlAttributes: new { @class = "control-label col-md-2" })                                    
+                                    @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })                                    
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Lastname, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Subject, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Message, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    @Html.EditorFor(model => model.Message, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Message, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 text-center">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Send message</button>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                   }
+
+
+                </div>
+
+
+            </div>
+            <!-- /.col-md-9 -->
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#content -->
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        map = new GMaps({
+            div: '#map',
+            lat: -12.043333,
+            lng: -77.028333
+        });
+        map.addMarker({
+            lat: -12.043333,
+            lng: -77.03,
+            title: 'Lima',
+            details: {
+                database_id: 42,
+                author: 'HPNeo'
+            },
+            click: function (e) {
+                if (console.log)
+                    console.log(e);
+                alert('You clicked in this marker');
+            }
+        });
+        map.addMarker({
+            lat: -12.042,
+            lng: -77.028333,
+            title: 'Marker with InfoWindow',
+            infoWindow: {
+                content: '<p>HTML Content</p>'
+            }
+        });
+    });
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

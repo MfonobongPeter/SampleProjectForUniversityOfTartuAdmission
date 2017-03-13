@@ -1,0 +1,160 @@
+﻿
+@{
+    ViewBag.Title = "DeliveryMethod";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li>Checkout - Delivery method</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9" id="checkout">
+
+            <div class="box">
+                <form method="post" action="@Url.Action("DeliveryMethod","Home")">
+                    @if (ViewBag.DisplayMessage == "success")
+                    {
+                        if (ViewData.ModelState[""] != null)
+                        {
+                            <div class="bs-example">
+                                <div class="alert alert-success fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                                </div>
+                            </div>
+                        }
+                    }
+                    else if (ViewBag.DisplayMessage == "Info")
+                    {
+                        if (ViewData.ModelState[""] != null)
+                        {
+                            <div class="bs-example">
+                                <div class="alert alert-danger fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                                </div>
+                            </div>
+                        }
+                    }
+                    <h3>Checkout - Delivery Option</h3>
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="@Url.Action("BillingAddress","Home")"><i class="fa fa-map-marker"></i><br>Billing Address</a>
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                        </li>
+                    </ul>
+
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="box shipping-method">
+
+                                    <h4>Our Delivery Team</h4>                                    
+                                    <img src="~/images/fedex7.jpg" alt="courier service photo" width="200" height="150" /><br />
+                                    <div class="box-footer text-center">
+                                        <input type="radio" id="teamDelivery" name="command" value="deliveryTeam" checked="checked" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="box shipping-method">
+
+                                    <h4>Self Pick Up</h4>
+                                    <img src="~/images/office-movers.jpg" alt="delivery team photo" width="200" height="150" /><br />                                    
+                                    <div class="box-footer text-center">
+
+                                        <input type="radio" id="courierDelivery" name="command" value="selfPickUp"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*<div class="col-sm-6">
+                                <div class="box shipping-method">
+
+                                    <h4>USPS Next Day</h4>
+
+                                    <p>Get it right on next day - fastest option possible.</p>
+
+                                    <div class="box-footer text-center">
+
+                                        <input type="radio" name="delivery" value="delivery3">
+                                    </div>
+                                </div>
+                            </div>*@
+                        </div>
+                        <!-- /.row -->
+
+                    </div>
+                    <!-- /.content -->
+
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            <a href="@Url.Action("BillingAddress","Home")" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to Addresses</a>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" class="btn btn-primary">
+                                Continue to Payment Method<i class="fa fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- /.box -->
+
+
+        </div>
+        <!-- /.col-md-9 -->
+
+        <div class="col-md-3">
+            <div class="box" id="order-summary">
+                <div class="box-header">
+                    <h3>Order summary</h3>
+                </div>
+                <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Order subtotal</td>
+                                <th>₦@ViewBag.CartTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                            <tr>
+                                <td>Shipping and handling</td>
+                                <th>₦@ViewBag.ShippingAndHandling.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                            <tr>
+                                <td>VAT</td>
+                                <th>₦@ViewBag.Tax.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                            <tr class="total">
+                                <td>Total</td>
+                                <th>₦@ViewBag.OrderSummaryTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-3 -->
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->

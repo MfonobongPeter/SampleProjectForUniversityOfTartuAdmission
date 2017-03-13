@@ -1,0 +1,264 @@
+﻿@model IEnumerable<FEDisplayProductsOnHomePageViewModel>
+@{
+    ViewBag.Title = @ViewBag.Title;
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+@section metaTags
+{    
+    <meta name='keywords' content='@ViewBag.MetaKeywords' />
+    <meta name='description' content='@ViewBag.MetaDescription' />
+}
+
+<style type="text/css">
+        .item:hover {
+            -moz-box-shadow: 0 0 10px #ccc;
+            -webkit-box-shadow: 0 0 10px #ccc;
+            box-shadow: 0 0 10px #ccc;
+        }
+</style>
+<div id="content">
+    
+    <div class="container">
+        <div class="col-md-12">
+            <div id="main-slider">
+                <div class="item">
+                    <img src="~/images/Body-Massage.jpg" alt="Body Massage" class="img-responsive">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="~/images/cosmetic-beauty-and-lifestyle.jpg" alt="cosmetic beauty and lifestyle">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="~/images/hair-dressing.jpg" alt="hair dressing">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="~/images/pedicure-and-manicure.jpg" alt="pedicure and manicure">
+                </div>
+                <div class="item">
+                    <img class="img-responsive" src="~/images/salon-and-equipments.jpg" alt="salon nd equipments">
+                </div>
+            </div>
+            <!-- /#main-slider -->
+        </div>
+    </div>
+
+    <!-- *** ADVANTAGES HOMEPAGE ***
+    _________________________________________________________ -->
+    <div id="advantages">
+
+        <div class="container">
+            <div class="same-height-row">
+                <div class="col-sm-4">
+                    <div class="box same-height clickable">
+                        <div class="icon">
+                            <i class="fa fa-heart"></i>
+                        </div>
+
+                        <h3><a href="@Url.Content("~/home/contact")">We love our customers</a></h3>
+                        <p>We are known to provide best possible service ever. Feel free to send us feedback on our products and services</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="box same-height clickable">
+                        <div class="icon">
+                            <i class="fa fa-tags"></i>
+                        </div>
+
+                        <h3><a href="@Url.Content("~/home/products")">Best prices</a></h3>
+                        <p>we offer best product supplies at competitive prices</p>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="box same-height clickable">
+                        <div class="icon">
+                            <i class="fa fa-thumbs-up"></i>
+                        </div>
+
+                        <h3><a href="@Url.Content("~/policy/warrantyPolicy")">100% satisfaction guaranteed</a></h3>
+                        <p>Free returns on everything for 3 months.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.container -->
+
+    </div>
+    <!-- /#advantages -->
+    <!-- *** ADVANTAGES END *** -->
+    <!-- *** HOT PRODUCT SLIDESHOW ***
+    _________________________________________________________ -->
+    <div id="hot">
+
+        <div class="box">
+            <div class="container">
+                <div class="col-md-12">
+                    <h2>New Arrivals</h2>
+                </div>
+            </div>
+        </div>
+           
+        <div class="container">
+            
+            <div class="product-slider">
+           @foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="product">
+                        <div class="flip-container">
+                            <div class="flipper">
+                                <div class="front">
+                                    <a href="@Url.Action("productDetails", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                        <img src="@Url.Content(item.ProductSideViewThumbnail)" alt="@item.ProductName.ToLower()" class="img-responsive" /><br />
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a href="@Url.Action("productDetails", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                        <img src="@Url.Content(item.ProductFrontViewThumbnail)" alt="@item.ProductName.ToLower()" class="img-responsive" /><br />
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="@Url.Action("productDetails", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="invisible">
+                            <img src="@Url.Content(item.ProductSideViewThumbnail)" alt="@item.ProductName.ToLower()" class="img-responsive" />
+                        </a>
+                        <div class="text">
+                           <p class="price"><a href="@Url.Action("productDetails", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">@item.ProductName</a></p>                          
+                            <p class="price"> ₦@item.ProductPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</p><br />
+                            <p class="buttons">
+                                <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="btn btn-default">View detail</a>
+                                @*<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>*@
+                            </p>
+                        </div>
+                        <!-- /.text -->
+                        @if(item.ProductIsNew == true)
+                        { 
+                        <div class="ribbon new">
+                            <div class="theribbon">NEW</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+                        }
+                    </div>
+                    <!-- /.product -->
+                </div>
+               }
+            </div>
+            <!-- /.product-slider -->
+        </div>
+         
+        <!-- /.container -->
+
+
+
+    </div>
+    <!-- /#hot -->
+    <!-- *** HOT END *** -->
+    <!-- *** GET INSPIRED ***
+    _________________________________________________________ -->
+    <div class="container" data-animate="fadeInUpBig">
+        <div class="col-md-12">
+            <div class="box slideshow">
+                <h3>Quality is our Concern</h3>
+                <p class="lead">Yes we are industry leader, we set standards for others to follow.</p>
+                <div id="get-inspired" class="owl-carousel owl-theme">
+                    <div class="item">
+                        <a href="#">
+                            <img src="~/images/products-slider1.jpg" alt="glorious evidence slider" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="~/images/kids-and-toys.jpg" alt="kids and toys" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="~/images/mirror-and-make-up.jpg" alt="mirror and make up" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- *** GET INSPIRED END *** -->
+    <!-- *** BLOG HOMEPAGE ***
+    _________________________________________________________ -->
+
+    <div class="box text-center" data-animate="fadeInUp">
+        <div class="container">
+            <div class="col-md-12">
+                <h3 class="text-uppercase">Who Are We?</h3>
+
+                <p class="lead">
+                    Yes we are industry leader, we set standards for others to follow.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="col-md-12" data-animate="fadeInUp">
+
+            <div id="blog-homepage" class="row">
+                <div class="col-sm-6">
+                    <div class="post">
+                        <h4><a href="@Url.Content("~/home/about")">Our Philosophy</a></h4>
+                        @*<p class="author-category">
+                            By <a href="#">John Slim</a> in <a href="">Fashion and style</a>
+                        </p>*@
+                        <hr>
+                        <p class="intro">
+                            We aspire to offer the best for our customers and to society, not only in terms of our products and services, 
+                            but in all of our corporate activities.Our vision is driven by a desire to improve life, achieve our mission 
+                            goal by operating with the highest standards of integrity.
+                        </p>
+                        <p class="read-more">
+                            <a href="@Url.Content("~/home/about")" class="btn btn-primary">Continue reading</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="post">
+                        <h4><a href="@Url.Content("~/home/about")">Our Profile</a></h4>
+                        @*<p class="author-category">
+                            By <a href="#">John Slim</a> in <a href="">About Minimal</a>
+                        </p>*@
+                        <hr>
+                        <p class="intro">
+                            As a dynamic and customer driven company, we provide top quality products and services.
+                            Excellence with quality has been our watch word, we deliver not just on quality but also 
+                           want to expand access to our products and employ a diverse workforce that values collaboration.
+                        </p>
+                        <p class="read-more">
+                            <a href="@Url.Content("~/home/about")" class="btn btn-primary">Continue reading</a>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /#blog-homepage -->
+        </div>
+    </div>
+    <!-- /.container -->
+    <!-- *** BLOG HOMEPAGE END *** -->
+
+
+</div>
+<!-- /#content -->
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-83962844-1', 'auto');
+    ga('send', 'pageview');
+
+</script>

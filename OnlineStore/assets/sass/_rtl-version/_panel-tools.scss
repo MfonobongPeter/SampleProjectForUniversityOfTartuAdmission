@@ -1,0 +1,26 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Panel Tools
+/* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .panel-tools {
+            position: absolute;
+            right: auto;
+            left: 5px;
+        }
+
+        .panel-heading {
+            padding-right: 40px;
+            padding-left: 0;
+            box-shadow: 0 1px 0 $white inset;
+
+            & > [class^="fa-"], & > [class*=" fa-"], & > [class^="icon-"], & > [class*=" icon-"], & > [class^="clip-"], & > [class*=" clip-"] {
+                border-left: 1px solid #CDCDCD;
+                @include box-shadow(-1px 0 0 0 $white);
+                border-right: none;
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}

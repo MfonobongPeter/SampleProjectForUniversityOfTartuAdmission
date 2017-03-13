@@ -1,0 +1,84 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Table and table elements
+/* ---------------------------------------------------------------------- */
+th, td {
+    &.center {
+        text-align: center;
+    }
+}
+
+td {
+    &.center {
+        .dropdown-menu {
+            text-align: left;
+        }
+    }
+}
+
+.table {
+    thead {
+        tr {
+            color: #707070;
+            font-weight: normal;
+        }
+    }
+
+    &.table-bordered {
+        thead {
+            tr {
+                th {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}
+
+.table {
+    thead, tbody, tfoot {
+        & > tr {
+            & > th {
+                vertical-align: middle;
+            }
+
+            & > td {
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.editable-element {
+    border-bottom: 1px dashed #0088CC;
+    text-decoration: none;
+    opacity: 0.5;
+    display: inline;
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Table Export
+/* ---------------------------------------------------------------------- */
+
+.dt-buttons {
+    margin-left: 20px !important;
+}
+
+a.dt-button {
+    background-image: none !important;
+    background-color: #F5F4F9 !important;
+    border: 1px solid #D5D5D5 !important;
+}
+
+/* ---------------------------------------------------------------------- */
+/*	X-editable Table
+/* ---------------------------------------------------------------------- */
+td {
+    &.column-left {
+        width: 25%;
+    }
+
+    &.column-right {
+        width: 75%;
+    }
+}
+

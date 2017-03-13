@@ -1,0 +1,79 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Main Navigation
+ /* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .navigation-toggler {
+            margin-right: 175px;
+            margin-left: 0;
+        }
+
+        ul {
+            &.main-navigation-menu {
+                li {
+                    a {
+                        .badge {
+                            float: left;
+                            margin-right: 0;
+                            margin-left: 13px;
+                        }
+
+                        .icon-arrow {
+                            float: left;
+                            margin-right: 0;
+                            margin-left: 6px;
+                        }
+                    }
+                }
+
+                & > li {
+                    &.active {
+                        & > a {
+                            .selected {
+                                &:before {
+                                    left: -10px;
+                                    right: auto;
+                                    content: "\e19c";
+                                }
+                            }
+                        }
+                    }
+
+                    ul {
+                        &.sub-menu {
+                            & > li {
+                                & > a {
+                                    padding-left: 0 !important;
+                                    padding-right: 40px;
+
+                                    .icon-arrow {
+                                        margin-right: 0;
+                                        margin-left: 22px;
+                                    }
+                                }
+                            }
+
+                            & > ul.sub-menu {
+                                & > li {
+                                    & > a {
+                                        padding-right: 60px;
+                                        padding-left: 0px !important;
+                                    }
+
+                                    & > ul.sub-menu {
+                                        & > li {
+                                            & > a {
+                                                padding-left: 0 !important;
+                                                padding-right: 80px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Style Selector
+ /* ---------------------------------------------------------------------- */
+body.rtl #style_selector {
+    left: 0;
+    right: initial;
+    @include transition(left .3s ease .15s);
+
+    &.close-style {
+        left: -215px;
+    }
+
+    .style-toggle {
+        @include border-radius(0 5px 5px 0);
+        border-right: 1px solid rgba(23,24,26,.15);
+        border-left: none;
+    }
+
+    & > .close, & > .open {
+        right: -35px !important;
+        left: initial !important;
+    }
+}

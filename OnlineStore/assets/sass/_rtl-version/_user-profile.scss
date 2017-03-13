@@ -1,0 +1,13 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	User profile
+ /* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .user-left {
+            border-right: none;
+            padding-right: 0;
+            border-left: 1px solid #DDDDDD;
+            padding-left: 15px;
+        }
+    }
+}

@@ -1,0 +1,157 @@
+﻿@model  IEnumerable<FEShoppingCartViewModel>
+@{
+    ViewBag.Title = "ViewCart";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+<form method="post" action="@Url.Action("OrderReview","Home")">
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-12">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("Index","Home")">Home</a>
+                    </li>
+                    <li>Checkout - Order review</li>
+                </ul>
+            </div>
+
+            <div class="col-md-9" id="checkout">
+
+                <div class="box">
+
+                    <h3>Checkout - Order review</h3>
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <a href="@Url.Action("BillingAddress","Home")"><i class="fa fa-map-marker"></i><br>Billing Address</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("DeliveryMethod","Home")"><i class="fa fa-truck"></i><br>Delivery Method</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("PaymentMethod","Home")"><i class="fa fa-money"></i><br>Payment Method</a>
+                        </li>
+                        <li class="active">
+                            <a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                        </li>
+                    </ul>
+                    @if (ViewBag.DisplayMessage == "success")
+                    {
+                        if (ViewData.ModelState[""] != null)
+                        {
+                            <div class="bs-example">
+                                <div class="alert alert-success fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                                </div>
+                            </div>
+                        }
+                    }
+                    else if (ViewBag.DisplayMessage == "Info")
+                    {
+                        if (ViewData.ModelState[""] != null)
+                        {
+                            <div class="bs-example">
+                                <div class="alert alert-danger fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                                </div>
+                            </div>
+                        }
+                    }
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Product</th>
+                                    <th>Quantity</th>
+                                    <th>Unit price</th>
+                                    <th>Discount</th>
+                                    <th colspan="2">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var Item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <img src="@Item.FrontViewThumbNail" alt="@Item.ProductName">
+                                        </td>
+                                        <td>
+                                            @Item.ProductSku.ToUpper()- @Item.ProductName
+                                        </td>
+                                        <td>
+                                            @Item.ProductQuantity
+                                        </td>
+                                        <td> ₦@Item.ProductPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</td>
+                                        <td> ₦@ViewBag.Discount</td>
+                                        <td> ₦@Item.ProductTotalPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</td>
+                                        <td></td>
+                                    </tr>
+                                }
+                                </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th colspan="5">Total</th>
+                                    <th colspan="2">₦@ViewBag.CartTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                </tr>
+                            </tfoot>
+
+
+                        </table>
+
+                    </div>
+                    <!-- /.table-responsive -->
+
+                    <div class="box-footer">
+                        <div class="pull-left">
+                            <a href="@Url.Action("PaymentMethod","Home")" class="btn btn-default"><i class="fa fa-chevron-left"></i> Back to Payment Method</a>
+                        </div>
+                        <div class="pull-right">
+                            <button type="submit" value="Proceedtocheckout" class="btn btn-primary" name="command"><i class="fa fa-chevron-right"></i>Place Order</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col-md-9 -->
+
+            <div class="col-md-3">
+                <div class="box" id="order-summary">
+                    <div class="box-header">
+                        <h3>Order summary</h3>
+                    </div>
+                    <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td>Order subtotal</td>
+                                    <th>₦@ViewBag.CartTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                </tr>
+                                <tr>
+                                    <td>Shipping and handling</td>
+                                    <th>₦@ViewBag.ShippingAndHandling.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                </tr>
+                                <tr>
+                                    <td>VAT</td>
+                                    <th>₦@ViewBag.Tax.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                </tr>
+                                <tr class="total">
+                                    <td>Total</td>
+                                    <th>₦@ViewBag.OrderSummaryTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.col-md-3 -->
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#content -->
+</form>

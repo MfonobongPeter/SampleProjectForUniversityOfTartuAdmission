@@ -1,0 +1,26 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Activities
+/* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .activities {
+            .time {
+                right: auto;
+                left: 10px;
+            }
+
+            li {
+                a {
+                    padding: 10px 10px 10px 100px !important;
+                }
+
+                .activity {
+                    img {
+                        margin-right: 0;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

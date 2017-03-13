@@ -1,0 +1,148 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Flot Chart
+ /* ---------------------------------------------------------------------- */
+.flot-container {
+    box-sizing: border-box;
+    position: relative;
+    height: 450px;
+
+    #choices {
+        position: absolute;
+        width: 135px;
+        right: 0;
+        top: 0;
+    }
+}
+
+.flot-placeholder {
+    height: 100%;
+    font-size: 14px;
+    line-height: 1.2em;
+}
+
+.legend {
+    table {
+        border-spacing: 5px;
+    }
+}
+
+#placeholder2 {
+    margin-right: 135px;
+}
+
+.flot-small-container {
+    height: 300px;
+}
+
+.flot-mini-container {
+    height: 135px;
+}
+
+.flot-medium-container {
+    height: 360px;
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Sparklines
+/* ---------------------------------------------------------------------- */
+.mini-stats {
+    border-left: 1px solid $light-grey;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-left: 1px solid $white;
+        border-right: 1px solid $light-grey;
+        padding-bottom: 6px;
+        text-align: center;
+
+        &:last-child {
+            border-right: 0 none;
+        }
+    }
+
+    .sparkline_bar_good, .sparkline_bar_neutral, .sparkline_bar_bad {
+        font-size: 12px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .sparkline_bar_good {
+        color: #459D30;
+    }
+
+    .sparkline_bar_neutral {
+        color: #757575;
+    }
+
+    .mini-stats .sparkline_bar_bad {
+        color: #BA1E20;
+    }
+
+    .values {
+        font-size: 12px;
+        padding: 10px 0;
+
+        strong {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+    }
+}
+
+.jqstooltip {
+    width: auto !important;
+    height: auto !important;
+    padding: 2px 6px !important;
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border: 0 !important;
+    @include border-radius(3px);
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Easy Pie Chart
+/* ---------------------------------------------------------------------- */
+.easy-pie-chart {
+    position: relative;
+    text-align: center;
+
+    .number {
+        position: relative;
+        display: inline-block;
+        width: 70px;
+        height: 70px;
+        text-align: center;
+    }
+
+    canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+
+.percent {
+    display: inline-block;
+    line-height: 70px;
+    z-index: 2;
+
+    &:after {
+        content: '%';
+        margin-left: 0.1em;
+        font-size: .8em;
+    }
+}
+
+.label-chart {
+    color: #333333;
+    font-size: 16px;
+    font-weight: 300;
+    display: inline;
+    line-height: 1;
+    padding: 0.2em 0.6em 0.3em;
+    text-align: center;
+    vertical-align: baseline;
+    white-space: nowrap;
+}

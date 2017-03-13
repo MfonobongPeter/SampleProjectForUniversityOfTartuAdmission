@@ -1,0 +1,654 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow,noarchive">
+    <meta name="googlebot" content="index,follow,snippet,noarchive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <meta name="author" content="Mfon James | www.gloriousevidence.com">
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <title>
+       @ViewBag.Title
+    </title>
+
+    @RenderSection("metaTags", required:false)
+   
+    @Styles.Render("~/Content/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
+    <!-- styles -->
+    <link href="@Url.Content("~/css/font-awesome.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/css/bootstrap.min.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/css/animate.min.css")" type="text/css" rel="stylesheet">
+    <link href="@Url.Content("~/css/owl.carousel.css")" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("~/css/owl.theme.css")" rel="stylesheet" type="text/css">
+
+    <!-- theme stylesheet -->
+    <link href="@Url.Content("~/css/style.default.css")" rel="stylesheet" id="theme-stylesheet" type="text/css">
+
+    <!-- your stylesheet with modifications -->
+    <link href="@Url.Content("~/css/custom.css")" rel="stylesheet" type="text/css">
+
+    <script src="@Url.Content("~/js/respond.min.js")" type="text/javascript"></script>
+    @RenderSection("Scripts", required: false)
+    
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+    <!-- *** TOPBAR ***
+    _________________________________________________________ -->
+    <div id="top" style="background-color:#4fbfa8;">
+        <div class="container">
+            <div class="col-md-6 offer" data-animate="fadeInDown">
+                <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake" style="background-color:#4fbfa8; border-color:#4fbfa8;">Call us:+234 8030603005</a>  <a href="#"> - Mail:  info@gloriousevidence.com</a>
+            </div>
+            <a class="col-md-6" data-animate="fadeInDown"></a>
+                <ul class="menu">
+                    @if (Session["firstName"] != null)
+                    {
+                        <li>
+                            <a> Welcome @Session["firstName"].ToString()</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Dashboard","Home")"> My Account</a>
+                        </li>                        
+                    }
+                    <li>
+                        <a href="@Url.Action("Register","Home")" target="_self">Register</a>
+                    </li>
+                    @if (Session["firstName"] != null)
+                    {
+                        <li>
+                            <a href="@Url.Action("Logout","Home")">Logout</a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            @*<a href="#" data-toggle="modal" data-target="#login-modal">Login</a>*@
+                            <a href="@Url.Action("cLogin","Home")"> Login</a>
+                        </li>
+                    }                   
+                   
+                    @*<li>
+                        <a href="@Url.Action("Contact","Home")" target="_self">Contact</a>
+                    </li>*@
+                 
+                </ul>
+            </div>
+        </div>
+        @*<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="Login">Customer login</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="email-modal" placeholder="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="password-modal" placeholder="password">
+                            </div>
+
+                            <p class="text-center">
+                                <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                            </p>
+
+                        </form>
+
+                        <p class="text-center text-muted">Not registered yet?</p>
+                        <p class="text-center text-muted"><a href="#"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to special discounts and much more!</p>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+        @*@Html.Partial("_CustomerLogin")*@
+       
+        @*@if (true)
+        {
+            Html.RenderPartial("_CustomerLogin");
+            
+        }*@
+       
+    @*</div>*@
+
+    <!-- *** TOP BAR END *** -->
+    <!-- *** NAVBAR ***
+    _________________________________________________________ -->
+
+    <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a class="navbar-brand home" href="@Url.Content("~/home/index")" data-animate-hover="bounce">
+                    <img src="~/images/logo.png" alt="Glorious Edvidence" class="hidden-xs">
+                    <img src="~/images/logo-small.png" alt="Glorious Edvidence" class="visible-xs"><span class="sr-only">Glorious - go to homepage</span>
+                </a>
+                <div class="navbar-buttons">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-align-justify"></i>
+                    </button>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                    @*<a class="btn btn-default navbar-toggle" href="#">
+                      <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">0 items in cart</span>
+                    </a>*@  
+                    @{
+                        //var CartItems = (ShoppingCart)Session["cart"];
+                        if ((ShoppingCart)Session["cart"] != null)
+                        {
+                            var CartItems = (ShoppingCart)Session["cart"];
+                            @*<div class="navbar-collapse collapse right" id="basket-overview">
+                                <a href="@Url.Action("ViewCart","Home")" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">@CartItems.ProductQuantity.ToString() item(s) in cart</span></a>
+                            </div>*@
+                         <a class="btn btn-default navbar-toggle" href="@Url.Action("ViewCart","Home")">
+                          <i class="fa fa-shopping-cart"></i><span style="vertical-align:super; font-size:x-small; color:red;">@CartItems.ProductQuantity.ToString()</span>
+</a> 
+                        <!--/.nav-collapse -->
+                        }
+                        else
+                        {
+                            @*<div class="navbar-collapse collapse right" id="basket-overview">
+                                <a href="@Url.Action("ViewCart","Home")" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">0 item in cart</span></a>
+                            </div>*@
+                        <!--/.nav-collapse -->
+                        <a class="btn btn-default navbar-toggle" href="@Url.Action("ViewCart","Home")">
+                          <i class="fa fa-shopping-cart"></i> 
+                        </a> 
+                        }
+                    }                      
+                </div>
+            </div>
+            <!--/.navbar-header -->
+
+            <div class="navbar-collapse collapse" id="navigation">
+                <ul class="nav navbar-nav navbar-left">
+                    <li class="@(ViewBag.Current == "Scheduler" ? "active" : "") ">
+                        <a href="@Url.Action("Index","Home")" target="_self">Home</a>
+
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("About","Home")" target="_self">About</a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Contact","Home")" target="_self">Contact</a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Products","Home")" target="_self">Products</a>
+                    </li>
+                    <li class="dropdown yamm-fw">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Category <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <h5>BARBING/HAIR DRESSING SALON</h5>                                                
+                                                @{
+                                                    try
+                                                    {
+                                                        var db = new OnlineStoreEntities();
+                                                        var subCat = (from s in db.SubCategories
+                                                                      join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                      where (c.CategoryName == "BARBING/HAIR DRESSING SALON")
+                                                                      select new
+                                                                          {
+                                                                              s.SubCategoryName,
+                                                                              s.SubCategoryID
+                                                                          }
+                                                                      ).ToList();
+                                                        <ul>
+                                                            @if (subCat != null)
+                                                            {
+                                                                foreach (var i in subCat)
+                                                                {
+                                                                    <li>
+                                                                        <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                                    </li>
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    }
+                                                    catch (Exception)
+                                                    {
+
+                                                    }
+                                                }
+                                            
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>SPA EQUIPMENTS</h5>
+                                           @{
+                                               try
+                                               {
+                                                   var db = new OnlineStoreEntities();
+                                                   var subCat = (from s in db.SubCategories
+                                                                 join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                 where (c.CategoryName == "SPA EQUIPMENTS")
+                                                                 select new
+                                                                     {
+                                                                         s.SubCategoryName,
+                                                                         s.SubCategoryID
+                                                                     }
+                                                                 ).ToList();
+                                                <ul>
+                                                    @if (subCat != null)
+                                                    {
+                                                        foreach (var i in subCat)
+                                                        {
+                                                            <li>
+                                                                <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                            </li>
+                                                        }
+                                                    }
+                                                </ul>
+                                               }
+                                               catch (Exception)
+                                               {
+
+                                               }
+                                        }
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>FACIAL EQUIPMENTS</h5>
+                                            @{
+                                                try
+                                                {
+                                                    var db = new OnlineStoreEntities();
+                                                    var subCat = (from s in db.SubCategories
+                                                                  join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                  where (c.CategoryName == "FACIAL EQUIPMENTS")
+                                                                  select new
+                                                                      {
+                                                                          s.SubCategoryName,
+                                                                          s.SubCategoryID
+                                                                      }
+                                                                  ).ToList();
+                                                    <ul>
+                                                        @if (subCat != null)
+                                                        {
+                                                            foreach (var i in subCat)
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                }
+                                                catch (Exception)
+                                                {
+
+                                                }
+                                            }
+                                            <h5>WAXING PRODUCTS</h5>
+                                            @{
+                                                try
+                                                {
+                                                    var db = new OnlineStoreEntities();
+                                                    var subCat = (from s in db.SubCategories
+                                                                  join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                  where (c.CategoryName == "WAXING PRODUCTS")
+                                                                  select new
+                                                                      {
+                                                                          s.SubCategoryName,
+                                                                          s.SubCategoryID
+                                                                      }
+                                                                  ).ToList();
+                                                    <ul>
+                                                        @if (subCat != null)
+                                                        {
+                                                            foreach (var i in subCat)
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                }
+                                                catch (Exception)
+                                                {
+
+                                                }
+                                            }
+                                            <h5>Make Up</h5>
+                                            @{
+                                                try
+                                                {
+                                                    var db = new OnlineStoreEntities();
+                                                    var subCat = (from s in db.SubCategories
+                                                                  join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                  where (c.CategoryName == "Make Up")
+                                                                  select new
+                                                                      {
+                                                                          s.SubCategoryName,
+                                                                          s.SubCategoryID
+                                                                      }
+                                                                  ).ToList();
+                                                    <ul>
+                                                        @if (subCat != null)
+                                                        {
+                                                            foreach (var i in subCat)
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                }
+                                                catch (Exception)
+                                                {
+
+                                                }
+                                            }
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <h5>HAIR CARE</h5>
+                                            @{
+                                                try
+                                                {
+                                                    var db = new OnlineStoreEntities();
+                                                    var subCat = (from s in db.SubCategories
+                                                                  join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                  where (c.CategoryName == "HAIR CARE")
+                                                                  select new
+                                                                      {
+                                                                          s.SubCategoryName,
+                                                                          s.SubCategoryID
+                                                                      }
+                                                                  ).ToList();
+                                                    <ul>
+                                                        @if (subCat != null)
+                                                        {
+                                                            foreach (var i in subCat)
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                }
+                                                catch (Exception)
+                                                {
+
+                                                }
+                                            }
+                                            <h5>PEDICURE AND MANICURE</h5>
+                                            @{
+                                                try
+                                                {
+                                                    var db = new OnlineStoreEntities();
+                                                    var subCat = (from s in db.SubCategories
+                                                                  join c in db.Categories on s.CategoryID equals c.CategoryID
+                                                                  where (c.CategoryName == "PEDICURE AND MANICURE")
+                                                                  select new
+                                                                      {
+                                                                          s.SubCategoryName,
+                                                                          s.SubCategoryID
+                                                                      }
+                                                                  ).ToList();
+                                                    <ul>
+                                                        @if (subCat != null)
+                                                        {
+                                                            foreach (var i in subCat)
+                                                            {
+                                                                <li>
+                                                                    <a href="@Url.Action("SubCategory", new { id = @i.SubCategoryID, name = SeoFriendly.URLFriendly(@i.SubCategoryName) })">@i.SubCategoryName</a>
+                                                                </li>
+                                                            }
+                                                        }
+                                                    </ul>
+                                                }
+                                                catch (Exception)
+                                                {
+
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <!--/.nav-collapse -->
+
+            <div class="navbar-buttons">
+                @{
+                    var newCart = (ShoppingCart)Session["cart"];
+                    if (newCart != null)
+                    {
+                        <div class="navbar-collapse collapse right" id="basket-overview">
+                            <a href="@Url.Action("ViewCart","Home")" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">@newCart.ProductQuantity.ToString() item(s) in cart</span></a>
+                        </div>
+                        <!--/.nav-collapse -->
+                    }
+                    else
+                    {
+                        <div class="navbar-collapse collapse right" id="basket-overview">
+                            <a href="@Url.Action("ViewCart","Home")" class="btn btn-primary navbar-btn"><i class="fa fa-shopping-cart"></i><span class="hidden-sm">0 item in cart</span></a>
+                        </div>
+                        <!--/.nav-collapse -->
+                    }
+                }
+                <div class="navbar-collapse collapse right" id="search-not-mobile">
+                    <button type="button" class="btn navbar-btn btn-primary" data-toggle="collapse" data-target="#search">
+                        <span class="sr-only">Toggle search</span>
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <div class="collapse clearfix" id="search">
+
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+
+                        </span>
+                    </div>
+                </form>
+
+            </div>
+            <!--/.nav-collapse -->
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#navbar -->
+    <!-- *** NAVBAR END *** -->
+
+    <div id="all">
+        @RenderBody()
+        <!-- *** FOOTER ***
+        _________________________________________________________ -->
+        <div id="footer" data-animate="fadeInUp">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <h4>Payment Method</h4>
+                        <p>
+                            Make a secure online payment using Verve, Naira Debit Card, 
+                            Credit Card (safely secured by Mastercard and verified by visa), 
+                            or you may Pay Cash on Delivery.
+                        </p>
+                        <div class="social-icons">
+
+                            <img src="~/Images/vogue.png" alt="Payment Platform" width="230" height="150" />
+                        </div>
+
+                        <hr>                      
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <h4>Top categories</h4>                     
+                        <ul>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 2, name = SeoFriendly.URLFriendly("SPA EQUIPMENTS") })">SPA Equipments</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 1, name = SeoFriendly.URLFriendly("BARBING/HAIR DRESSING SALON") })">Barbing/Hair Dressing Equipments</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 4, name = SeoFriendly.URLFriendly("FACIAL EQUIPMENTS") })">Facial Equipments</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 5, name = SeoFriendly.URLFriendly("WAXING PRODUCTS") })">Waxing Products</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 3, name = SeoFriendly.URLFriendly("Make Up") })">Make Up</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 6, name = SeoFriendly.URLFriendly("HAIR CARE") })">Hair Care</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Category", new { id = 7, name = SeoFriendly.URLFriendly("PEDICURE AND MANICURE") })">Pedicure And Manicure</a>
+                            </li>
+                        </ul>                       
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <h4>Contact us</h4>
+                        <p>
+                            <i class="fa fa-map-marker"></i><strong>Address:</strong> 48, Bode Thomas street                       
+                            <br>Surulere
+                            <br>Lagos                                                   
+                            <br>
+                            <strong>Nigeria</strong><br />
+                            <i class="fa fa-phone"></i><strong>Phone:</strong> +234 8030603005, +234 8165632009<br />
+                            <i class="fa fa-envelope"></i><strong>Email:</strong>
+                            <a href="mailto:info@gloriousevidence.com">
+                                info@gloriousevidence.com
+                            </a>
+                        </p>
+
+                        <a href="@Url.Content("~/home/contact")">Go to contact page</a>
+
+                        <hr class="hidden-md hidden-lg">
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+
+
+                    <div class="col-md-3 col-sm-6">
+
+                        <h4>Get the news</h4>
+
+                        <p class="text-muted">Enter your email address below to our subscribe to monthly product Newletter</p>
+
+                        <form>
+                            <div class="input-group">
+
+                                <input type="text" class="form-control">
+
+                                <span class="input-group-btn">
+
+                                    <button class="btn btn-default" type="button">Subscribe!</button>
+
+                                </span>
+
+                            </div>
+                            <!-- /input-group -->
+                        </form>
+
+                        <hr>
+
+                        <h4>Stay in touch</h4>
+
+                        <p class="social">
+                            <a href="https://www.facebook.com/glorious.evidence" class="facebook external" data-animate-hover="shake" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="twitter external" data-animate-hover="shake" target="_blank"><i class="fa fa-twitter"></i></a>
+                            @*<a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>*@
+                            <div class="fb-follow" data-href="https://www.facebook.com/glorious.evidence" data-width="5px" data-height="5px" data-layout="standard" data-size="small" data-show-faces="false"></div>
+                        </p>
+
+
+                    </div>
+                    <!-- /.col-md-3 -->
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#footer -->
+        <!-- *** FOOTER END *** -->
+        <!-- *** COPYRIGHT ***
+        _________________________________________________________ -->
+        <div id="copyright" style="background-color:#4fbfa8;">
+            <div class="container">
+                <div class="col-md-6">
+                    <p class="pull-left"> &copy; @DateTime.Now.Year Glorious Evidence Nigeria Ltd | All Rights Reserved.</p>
+
+                </div>
+                <div class="col-md-6">
+                    <p class="pull-right">
+                        <a href="@Url.Action("AdminLogin","Users")" target="_blank">
+                            Admin Login
+                        </a>
+                    </p>
+                    <p class="pull-right">
+                        <a href="http://mail.gloriousevidence.com/squirrelmail/src/login.php" target="_blank">
+                            Webmail
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- *** COPYRIGHT END *** -->
+    </div>
+
+    <!-- /#all -->
+    <!-- *** SCRIPTS TO INCLUDE ***
+    _________________________________________________________ -->
+    <script src="@Url.Content("~/js/jquery-1.11.0.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/bootstrap.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/waypoints.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/modernizr.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/bootstrap-hover-dropdown.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/owl.carousel.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/js/front.js")" type="text/javascript"></script>
+
+</body>
+</html>

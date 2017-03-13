@@ -1,0 +1,100 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Generic Classes
+/* ---------------------------------------------------------------------- */
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-display {
+    display: none;
+}
+
+.example {
+    margin: 15px 0;
+    padding: 14px 19px;
+}
+
+.widget {
+    -moz-box-sizing: content-box;
+    color: #333;
+    margin-bottom: 30px;
+    padding: 10px 12px;
+    position: relative;
+}
+
+.space5 {
+    display: block;
+    margin-bottom: 5px !important;
+    clear: both;
+}
+
+.space7 {
+    margin-bottom: 7px !important;
+    clear: both;
+}
+
+.space10 {
+    margin-bottom: 10px !important;
+    clear: both;
+}
+
+.space12 {
+    margin-bottom: 12px !important;
+    clear: both;
+}
+
+.space15 {
+    margin-bottom: 15px !important;
+    clear: both;
+}
+
+.space20 {
+    margin-bottom: 20px !important;
+    clear: both;
+}
+
+.teal {
+    color: $teal;
+}
+
+a.teal:hover {
+    color: #4d8189;
+}
+
+.orange {
+    color: #E6674A;
+}
+
+a.orange:hover {
+    color: #E35434;
+}
+
+.bricky {
+    color: $bricky;
+}
+
+a.bricky:hover {
+    color: #B33426;
+}
+
+.circle-img {
+    @include border-radius(100%);
+}
+
+.center {
+    text-align: center;
+}
+
+.go-top {
+    cursor: pointer;
+    display: block;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-right: 0;
+    margin-top: -2px;
+    text-decoration: none;
+    line-height: 30px;
+    text-align: center;
+}

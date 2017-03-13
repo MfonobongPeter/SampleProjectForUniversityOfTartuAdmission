@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "About-us";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+@section metaTags
+{
+    <meta name='keywords' content='@ViewBag.MetaKeywords' />
+    <meta name='description' content='@ViewBag.MetaDescription' />
+}
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Content("~/home/index")">Home</a>
+                </li>
+                <li>About</li>
+            </ul>
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** PAGES MENU ***
+        _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Core Values</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul style=" list-style-image:url('/images/arrows.gif'); line-height:0.73cm;">
+                        <li>
+                            Integrity</li>
+                        <li>
+                            Excellence
+                        </li>                        
+                        <li>Availability</li>                        
+                        <li>Dependability</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Our Brands </h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group">
+
+                        <ul style="list-style-image:url('/images/bullet_arrow.png'); line-height:0.73cm;">
+                            <li>Wahl
+                            </li>
+                            <li>Dodo</li>
+                            <li>Nicky Clarke</li>
+                            <li>Babyliss</li>
+                            <li>Russel Hobbs</li>
+                            <li>Orly</li>
+                            <li>Gelee</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Business Hours</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul style="list-style-image:url('/images/bullet_arrow.png'); line-height:0.73cm;">
+                        <li>
+                            <i class="icon icon-time"></i> Mon - Sat: 9am to 6pm
+                        </li>
+                        <li>
+                            <i class="icon icon-time"></i> Sun -> Closed
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+
+            <!-- *** PAGES MENU END *** -->
+
+
+            <div class="banner">
+                <a href="#">
+                    <img src="~/images/glorious-evidence-nigeria-ltd1.jpg" alt="sales 2014" class="img-responsive">
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+
+            <div class="box" id="text-page">
+                <h3>Welcome To Glorious Evidence</h3>
+                <p>
+                    Glorious Evidence Limited is duly incorporated in Nigeria and is 100% indigenous company with foreign business partners.
+                    As a dynamic and customer driven company, we provide top quality products and services.
+                    Excellence with quality has been our watch word, we believe that if given the opportunity we will deliver not just on quality but also on time.                                        
+                </p>
+
+                <h4>Mission Statement</h4>
+                @*@ViewBag.seo*@
+                <blockquote>
+                    <p>
+                        Our Mission is to engage in the business of importation, manufacture, assembly, marketing and distribution of all kind of saloon equipments, 
+                        spa, furniture, appliances, accessories and cosmetics, and generally to establish the business of saloon and barbing operation,
+                         to sell, buy, and act as suppliers, manufacturers’ representatives, commission agents and general merchants of all kinds and descriptions.
+                    </p>
+                </blockquote>
+                
+                <h4>Vission Statement</h4>              
+                <blockquote>
+                    <p>
+                        Our vision is to enhance consistent growth through quality service delivering and to engage in the business of wholesalers, retailers,
+                         importers, exporters, manufacturers’ representatives, 
+                        general merchants and suppliers of all kinds of spa, saloon and barbing equipments, furniture, appliances, accessories and cosmetics equipments.
+                    </p>
+                </blockquote>
+                <hr>
+                <h4>Management Team</h4>
+                <div class="row">
+                    <div style="padding:10px 15px 10px 15px; line-height:0.5cm;">                    
+                        Our management team has an average of 20 years of domestic and international experience in product supply and services
+                        and a strong history of business, academic and personal accomplishments.
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-center">
+                            <img src="~/images/team-3.jpg" class="img-rounded img-responsive" alt="">
+                        </p>
+                        <p class="text-center"><strong>Prof. Jerry G. Adekunle</strong></p>  
+                        <p class="text-center">Chairman</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-center">
+                            <img src="~/images/team-1.jpg" class="img-rounded img-responsive" alt="">
+                        </p>
+                       <p class="text-center"><strong>Mr. Celestine E. Obianuka </strong></p>
+                        <p class="text-center">MD/CEO</p>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-center">
+                            <img src="~/images/team-2.jpg" class="img-rounded img-responsive" alt="">
+                        </p>
+                        <p class="text-center"><strong>Mrs. Chioma Nduka</strong></p>
+                        <p class="text-center">Secretary</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <!-- /.col-md-9 -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83962844-1', 'auto');
+  ga('send', 'pageview');
+
+</script>

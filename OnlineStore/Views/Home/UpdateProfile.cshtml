@@ -1,0 +1,251 @@
+﻿@model FEUpdateProfileViewModel
+@{
+    ViewBag.Title = "UpdateProfile";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+
+<style type="text/css">
+    input:required:focus {
+        border: 1px solid red;
+        outline: none;
+    }
+
+    input:required:hover {
+        opacity: 4;
+    }
+
+    select:required:focus {
+        border: 1px solid red;
+        outline: none;
+    }
+
+    select:required:hover {
+        opacity: 4;
+    }
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#Country").change(function () {
+            if ($(this).find(':selected').text() == "Nigeria") {
+                $("#showStateLga").show();
+                $("#showStateLgaText").hide();
+            } else {
+                $("#showStateLga").hide();
+                $("#showStateLgaText").show();
+            }
+        });
+    });
+</script>
+
+
+<script type="text/jscript">
+    $(document).ready(function () {
+        $('#State').change(function () {
+            $.getJSON('/Home/LgaList/' + $('#State').val(), function (data) {
+                var items = '<option>---Select LGA---</option>';
+                $.each(data, function (i, Lga) {
+                    items += "<option value='" + Lga.Value + "'>" + Lga.Text + "</option>";
+                });
+                $('#lga').html(items);
+            });
+        });
+    });
+</script>
+
+<div id="content">
+    <div class="container">
+        <div class="col-md-12">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("index","Home")">Home</a>
+                </li>
+                <li>Update Profile</li>
+            </ul>
+
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** CUSTOMER MENU ***
+            _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Customer section</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active">
+                            <a href="@Url.Action("Dashboard", "Home")"><i class="fa fa-list"></i> My orders</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/home/ViewWishList")"><i class="fa fa-heart"></i> My wishlist</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/home/ChangePassword")"><i class="fa fa-lock"></i> Change Password</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/home/UpdateProfile")"><i class="fa fa-user"></i> Update Profile</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("logout","Home")"><i class="fa fa-sign-out"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /.col-md-3 -->
+            <!-- *** CUSTOMER MENU END *** -->
+        </div>
+
+        <div class="col-md-9">
+            <div class="box">
+
+                <h3>Update Personal details</h3>
+
+                <form action="@Url.Action("UpdateProfile", "Home")" method="post">
+                    @if (ViewBag.DisplayMessage == "success")
+                    {
+                        if (ViewData.ModelState[""] != null)
+                        {
+                            <div class="bs-example">
+                                <div class="alert alert-success fade in">
+                                    <a href="@Url.Action("Index", "Home")" class="close" data-dismiss="alert">×</a>
+                                    <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                                </div>
+                            </div>
+                        }
+                    }
+                    else if (ViewBag.DisplayMessage == "Info")
+                    {
+                        if (ViewData.ModelState[""] != null)
+                        {
+                            <div class="bs-example">
+                                <div class="alert alert-danger fade in">
+                                    <a href="#" class="close" data-dismiss="alert">×</a>
+                                    <strong>Error!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="firstname">Firstname</label>
+                                @Html.EditorFor(model => model.Firstname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Firstname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="lastname">Lastname</label>
+                                @Html.EditorFor(model => model.Lastname, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Lastname, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="billingAddress">Billing Address</label>
+                                @Html.EditorFor(model => model.BillingAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.BillingAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="street">Contact Address</label>
+                                @Html.EditorFor(model => model.ContactAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ContactAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="street">Office Address</label>
+                                @Html.EditorFor(model => model.OfficeAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.OfficeAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="phone">Telephone</label>
+                                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+
+                    <div class="row">
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.GenderID, htmlAttributes: new { @class = "col-sm-6" })
+                                @Html.DropDownList("gender", ViewBag.GenderID as SelectList, "---Select---", new { id = "gender", @class = "form-control", @Required = "required" })
+                                @Html.ValidationMessageFor(model => model.GenderID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3">
+                            <div class="form-group">
+                               @Html.LabelFor(model => model.CountryID, htmlAttributes: new { @class = "col-sm-6" })
+                               @Html.DropDownList("Country", ViewBag.CountryID as SelectList, "---Select---", new { id = "Country", @class = "form-control", @Required = "required" })
+                               @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div id="showStateLga" style="display:block">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.UserState, htmlAttributes: new { @class = "col-sm-6" })
+                                    @Html.DropDownList("State", ViewBag.StateId as SelectList, "---Select---", new { id = "State", @class = "form-control", @Required = "required" })
+                                    @Html.ValidationMessageFor(model => model.UserState, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.UserCity, htmlAttributes: new { @class = "col-sm-6" })
+                                        @*<select class="form-control" id="lga" name="lga" required>
+                                            <option value="">---Select---</option>
+                                        </select>*@
+                                        @Html.DropDownList("lga", ViewBag.CityID as SelectList, "---Select---", new { id = "lga", @class = "form-control", @Required = "required" })
+                                        @Html.ValidationMessageFor(model => model.UserCity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div id="showStateLgaText" style="display:none">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="txtState">State</label>
+                                    <input type="text" class="form-control" id="txtState" name="txtState" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    <label for="txtCity">City</label>
+                                    <input type="text" class="form-control" id="txtCity" name="txtCity" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Changes</button>
+                        </div>
+                    </div>
+                </form>
+
+                <hr>
+                <br />
+
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

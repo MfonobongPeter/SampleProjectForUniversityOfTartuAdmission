@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        Index.init();
+    });
+</script>
+
+
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="col-sm-4">
+        <div class="core-box">
+            <div class="heading">
+                <i class="clip-user-4 circle-icon circle-green"></i>
+                <h2>Manage Users</h2>
+            </div>
+            <div class="content">
+                This allows you to centrally manage your users across the application, create user accounts and set role, In the user list, you can view and manage all users in your
+                Each user will be able to set up a dashboard that suits their priorities and needs.
+            </div>
+            <a class="view-more" href="#">
+                View More <i class="clip-arrow-right-2"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="core-box">
+            <div class="heading">
+                <i class="clip-clip circle-icon circle-teal"></i>
+                <h2>Manage Orders</h2>
+            </div>
+            <div class="content">
+                Here you can view list of recent orders, print order invoice, view order status, view and set delivery status.
+            </div>
+            <a class="view-more" href="#">
+                View More <i class="clip-arrow-right-2"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="core-box">
+            <div class="heading">
+                <i class="clip-database circle-icon circle-bricky"></i>
+                <h2>Manage Products</h2>
+            </div>
+            <div class="content">
+                This allows you to centrally manage your products across the application, you can upload products, view product list, edit and delete product.
+            </div>
+            <a class="view-more" href="#">
+                View More <i class="clip-arrow-right-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- end: PAGE CONTENT-->

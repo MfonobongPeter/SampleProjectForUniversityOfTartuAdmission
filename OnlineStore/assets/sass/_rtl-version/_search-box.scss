@@ -1,0 +1,23 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Search Box
+/* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .search-box {
+            float: left;
+        }
+
+        .sidebar-search {
+            right: auto;
+            left: 10px;
+            padding: 0 5px 0 30px;
+
+            .form-group {
+                button {
+                    right: auto;
+                    left: 4px;
+                }
+            }
+        }
+    }
+}

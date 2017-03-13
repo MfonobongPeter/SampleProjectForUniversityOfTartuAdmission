@@ -1,0 +1,12 @@
+C:\Users\USER\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\bin\OnlineStore.dll.config
+C:\Users\USER\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\bin\OnlineStore.dll
+C:\Users\USER\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\bin\OnlineStore.pdb
+C:\Users\USER\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\obj\Debug\OnlineStore.dll
+C:\Users\USER\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\obj\Debug\OnlineStore.pdb
+C:\Users\USER\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\obj\Debug\OnlineStore.csprojResolveAssemblyReference.cache
+C:\Users\Mfon\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\bin\OnlineStore.dll.config
+C:\Users\Mfon\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\bin\OnlineStore.dll
+C:\Users\Mfon\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\bin\OnlineStore.pdb
+C:\Users\Mfon\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\obj\Debug\OnlineStore.dll
+C:\Users\Mfon\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\obj\Debug\OnlineStore.pdb
+C:\Users\Mfon\Documents\Visual Studio 2013\Projects\OnlineStore\OnlineStore\obj\Debug\OnlineStore.csprojResolveAssemblyReference.cache

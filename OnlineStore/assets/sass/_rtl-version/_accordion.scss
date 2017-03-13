@@ -1,0 +1,21 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Accordion
+/* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .accordion-custom {
+            .panel-heading {
+                padding: 0;
+            }
+        }
+
+        .accordion-teal {
+            .panel-heading {
+                .accordion-toggle {
+                    border-right: 2px solid #569099;
+                    border-left: none;
+                }
+            }
+        }
+    }
+}

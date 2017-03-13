@@ -1,0 +1,224 @@
+﻿@model OnlineStore.ShowSignUpViewModel
+@{
+    ViewBag.Title = "Delete";
+    try
+    {
+        var role = Convert.ToInt16(Session["userrole"].ToString());
+        if (role == 1)
+        {
+            Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+        }       
+        else if (role == 3)
+        {
+            Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+        }
+    }
+    catch (Exception)
+    {
+
+    }
+
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+    });
+</script>
+
+<div class="row">
+    <div class="col-sm-2">
+        <a href="@Url.Action("Show", "Users")" class="demo btn btn-blue">
+            <i class="fa fa-arrow-left">
+            </i> | Back to list
+        </a>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        Are you sure you want to delete this?
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <form role="form" class="form-horizontal" method="POST">
+            @if (ViewBag.DisplayMessage == "success")
+            {
+                if (ViewData.ModelState[""] != null)
+                {
+                    <div class="bs-example">
+                        <div class="alert alert-success fade in">
+                            <a href="#" class="close" data-dismiss="alert">×</a>
+                            <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                        </div>
+                    </div>
+                }
+            }
+            else if (ViewBag.DisplayMessage == "Info")
+            {
+                if (ViewData.ModelState[""] != null)
+                {
+                    <div class="bs-example">
+                        <div class="alert alert-danger fade in">
+                            <a href="#" class="close" data-dismiss="alert">×</a>
+                            <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                        </div>
+                    </div>
+                }
+            }
+
+            @Html.AntiForgeryToken()
+            <div>
+
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UserID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UserID)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Gender)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.FirstName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.FirstName)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.LastName)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Address1)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Address1)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Country)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Country)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.State)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.State)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.City)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.City)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Email)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Phone)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Phone)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingCity)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingCity)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingState)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingState)
+                        <hr />
+                    </dd>                   
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingCountry)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingCountry)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.BillingAddress)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.BillingAddress)
+                        <hr />
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CreatedOn)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CreatedOn)
+                        <hr />
+                    </dd>
+                </dl>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Delete" class="demo btn btn-red" onclick="return confirm('Are you sure you want to delete this record?');" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,159 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Style Selector
+/* ---------------------------------------------------------------------- */
+#style_selector {
+    background: none repeat scroll 0 0 $white;
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: 215px;
+    z-index: 999;
+    @include transition(right .3s ease .15s);
+
+    &.close-style {
+        right: -215px;
+    }
+
+    .clear_style {
+        margin-right: 20px;
+    }
+
+    .style-toggle {
+        background: $white;
+        cursor: pointer;
+        height: 44px;
+        width: 35px;
+        border: 1px solid rgba(23, 24, 26, 0.15);
+        border-right: none;
+        @include border-radius(5px 0 0 5px);
+        line-height: 44px;
+        text-align: center;
+        color: #007AFF;
+        font-size: 14px;
+    }
+
+    & > .open, & > .close {
+        background-position: left top;
+        left: -35px;
+        position: absolute;
+        top: 44px;
+        width: 35px;
+        opacity: 1;
+    }
+
+    & > .close {
+        opacity: 0.9;
+    }
+
+    .images {
+        border-bottom: 1px solid rgba(23, 24, 26, 0.15);
+        padding-bottom: 10px;
+        text-align: center;
+        position: relative;
+
+        img {
+            height: 24px;
+            margin-bottom: 7px;
+            margin-right: 7px;
+            width: 25px;
+            z-index: 1000;
+
+            &.active {
+                border: 0 solid #CCCCCC;
+                opacity: 0.5;
+            }
+        }
+
+        .form-group {
+            width: 50px;
+            text-align: center;
+            color: #AAA9A9;
+            font-size: 10px;
+            margin-bottom: 0;
+            display: inline-block;
+        }
+
+        input {
+            display: none;
+        }
+
+        .add-on {
+            background-color: #EEEEEE;
+            border: 1px solid #CCCCCC;
+            display: inline-block;
+            font-weight: normal;
+            line-height: 20px;
+            min-width: 20px;
+            padding: 5px;
+            text-align: center;
+            @include text-shadow(0 1px 0 $white);
+            width: auto;
+            margin-left: 2px;
+
+            i {
+                cursor: pointer;
+                display: block;
+                height: 20px;
+                width: 20px;
+            }
+        }
+    }
+}
+
+#style_selector_container {
+    border: 1px solid rgba(23, 24, 26, 0.15);
+    @include border-bottom-left-radius(2px);
+    @include border-top-left-radius(2px);
+    @include box-shadow(0 2px 9px 2px rgba(0, 0, 0, 0.14));
+    display: none;
+
+    img {
+        @include border-radius(100%);
+    }
+}
+
+.style-main-title {
+    background: #D9D9D9;
+    border-bottom: 1px solid rgba(23, 24, 26, 0.15);
+    color: $black;
+    font-size: 15px;
+    height: 44px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.box-title {
+    font-size: 12px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    color: #AAA9A9 !important;
+}
+
+.input-box {
+    border-bottom: 1px solid rgba(23, 24, 26, 0.15);
+    padding: 0 10px 10px 10px;
+    text-align: center;
+
+    input[type="text"] {
+        background: none repeat scroll 0 0 #F7F7F7;
+        border: 1px solid rgba(23, 24, 26, 0.15);
+        color: $black;
+        font-size: 11px;
+        margin-left: 10px;
+        padding: 3px;
+        width: 60px;
+    }
+
+    select {
+        background: none repeat scroll 0 0 #F7F7F7;
+        border: 1px solid rgba(23, 24, 26, 0.15);
+        color: $black;
+        margin-left: 5px;
+        width: 120px;
+    }
+
+    .radio-inline {
+        margin: 0 10px !important;
+    }
+}

@@ -1,0 +1,141 @@
+﻿@model IEnumerable<FEOrderViewModel>
+    @{
+        ViewBag.Title = "Dashboard";
+        Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+    }
+
+    <div id="content">
+        <div class="container">
+
+            <div class="col-md-12">
+
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="@Url.Action("index", "Home")">Home</a>
+                    </li>
+                    <li>My orders</li>
+                </ul>
+
+            </div>
+
+            <div class="col-md-3">
+                <!-- *** CUSTOMER MENU ***
+                _________________________________________________________ -->
+                <div class="panel panel-default sidebar-menu">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Customer section</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="active">
+                                <a href="@Url.Action("Dashboard", "Home")"><i class="fa fa-list"></i> My orders</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Content("~/home/ViewWishList")"><i class="fa fa-heart"></i> My wishlist</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Content("~/home/ChangePassword")"><i class="fa fa-lock"></i> Change Password</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Content("~/home/UpdateProfile")"><i class="fa fa-user"></i> Update Profile</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- /.col-md-3 -->
+                <!-- *** CUSTOMER MENU END *** -->
+            </div>
+
+            <div class="col-md-9" id="customer-orders">
+                <div class="box">
+                    <h3>My orders</h3>
+
+                    <p class="lead">Your orders on one place.</p>
+                    <p class="text-muted">If you have any questions, please feel free to <a href="@Url.Content("~/home/contact")" target="_blank">contact us</a></p>
+
+                    <hr>
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>#TransID</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    @*<th>Discount</th>*@
+                                    <th>Status</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                               @foreach (var item in Model)
+                               {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TransID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Date)
+                                    </td>
+                                                                    
+                                    <td>
+                                        ₦@Html.DisplayFor(modelItem => item.TotalAmount)
+                                    </td>
+                                    <td >
+                                        @if (item.Status == "Pending")
+                                        {
+                                            <span class="label label-info">Being prepared</span>
+                                             @*@Html.DisplayFor(modelItem => item.Status)*@
+                                        }
+                                        else if (item.Status == "Cancelled")
+                                        {
+                                            <span class="label label-danger">Cancelled</span>
+                                        }
+                                        else if (item.Status == "On Hold")
+                                        {
+                                            <span class="label label-warning">On hold</span>
+                                        }
+                                        else if (item.Status == "Received")
+                                        {
+                                            <span class="label label-success">Received</span>
+                                        }
+                                        else if (item.Status == "Shipped")
+                                        {
+                                            <span class="label label-success">Shipped</span>
+                                        }
+                                       
+                                    </td>   
+                                    
+                                    <td colspan ="2">
+                                        <a href="@Url.Action("ViewOrderDetails", "Home", new { id = item.OrderID, name = item.UrlTransID })" class=" btn btn-primary btn-sm">View</a>
+                                        @*<a href="@Url.Action("Delete", "OrderDetails", new { id = item.OrderDetailID })" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="View List"><i class="fa fa-trash"></i></a>*@
+                                    </td>
+                                </tr>
+                               }
+                            @*<tfoot>
+                                <tr>
+                                    <th colspan="5">Total</th>
+                                    <th colspan="2">₦@ViewBag.CartTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                </tr>
+                            </tfoot>*@
+                                </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.container -->
+    </div>
+    <!-- /#content -->

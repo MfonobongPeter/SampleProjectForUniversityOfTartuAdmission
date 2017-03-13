@@ -1,0 +1,167 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Pricing Tables
+/* ---------------------------------------------------------------------- */
+#pricing_table_example1 {
+    .pricing-table {
+        background: none repeat scroll 0 0 $white;
+        border: 1px solid $light-grey;
+        color: $dark-grey;
+        float: left;
+        font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+        padding: 20px;
+        position: relative;
+        text-shadow: 0 1px rgba(255, 255, 255, 0.8);
+        text-align: center;
+
+        &:nth-child(1) {
+            border-radius: 5px 0 0 5px;
+
+            h3 {
+                @include border-radius(5px 0 0 0);
+            }
+        }
+
+        &:nth-child(4) {
+            border-radius: 0 5px 5px 0;
+
+            h3 {
+                @include border-radius(0 5px 0 0);
+            }
+        }
+
+        h3 {
+            background-color: #EEEEEE;
+            @include background-image(linear-gradient($white, #EEEEEE));
+            font-size: 20px;
+            font-weight: normal;
+            margin: -20px -20px 50px;
+            padding: 20px;
+
+            span {
+                background: none repeat scroll 0 0 $white;
+                border: 5px solid $white;
+                @include border-radius(100px);
+                @include box-shadow(0 5px 20px $light-grey inset, 0 3px 0 #999999 inset);
+                color: #777777;
+                display: block;
+                font: bold 35px/100px Georgia, Serif;
+                height: 100px;
+                margin: 10px auto -65px;
+                width: 100px;
+                line-height: 85px;
+            }
+        }
+
+        ul {
+            list-style: none outside none;
+            margin: 20px 0 0;
+            padding: 0;
+        }
+
+        li {
+            border-top: 1px solid $light-grey;
+            padding: 10px 0;
+        }
+
+        .signup {
+            background-color: #72CE3F;
+            @include background-image(linear-gradient(#72CE3F, #62BC30));
+            @include border-radius(3px);
+            @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 0 rgba(0, 0, 0, 0.7));
+            color: $white;
+            display: inline-block;
+            font: bold 14px Arial, Helvetica;
+            margin: 20px 0 0;
+            padding: 8px 20px;
+            position: relative;
+            text-decoration: none;
+            @include text-shadow(0 1px 0 rgba(0, 0, 0, 0.3));
+            text-transform: uppercase;
+
+            &:hover {
+                background-color: #62BC30;
+                @include background-image(linear-gradient(#62BC30, #72CE3F));
+            }
+
+            &:active, &:focus {
+                background: none repeat scroll 0 0 #62BC30;
+                @include box-shadow(0 0 3px rgba(0, 0, 0, 0.7) inset);
+                top: 2px;
+            }
+        }
+    }
+
+    .featured {
+        @include border-radius(5px);
+        border-width: 1px;
+        @include box-shadow(20px 0 10px -10px rgba(0, 0, 0, 0.15), -20px 0 10px -10px rgba(0, 0, 0, 0.15));
+        z-index: 2;
+
+        h3 {
+            background-color: $light-grey;
+            @include background-image(linear-gradient(#EEEEEE, $light-grey));
+            border-radius: 5px 5px 0 0;
+        }
+    }
+}
+
+#pricing_table_example2 {
+    .featured {
+        z-index: 2;
+    }
+
+    .top {
+        background: none repeat scroll 0 0 #2F2E35;
+        @include border-radius(10px 10px 0 0);
+        height: 50px;
+
+        h2 {
+            color: $white;
+            font: 300 30px/50px Helvetica, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+    }
+
+    .pricing-table {
+        background: none repeat scroll 0 0 $white;
+        @include border-radius(10px);
+        @include box-shadow(2px 2px 9px rgba(0, 0, 0, 0.3));
+        position: relative;
+        text-align: center;
+        padding: 0 0 20px 0;
+
+        ul {
+            font: 300 18px/2 Helvetica, Verdana, sans-serif;
+            list-style-type: none;
+            margin: 20px 20px 0 20px;
+            padding: 0;
+
+            strong {
+                font-weight: bold;
+            }
+        }
+
+        hr {
+            background-color: #BCBEC0;
+            border: 0 none;
+            color: #BCBEC0;
+            height: 1px;
+            margin: 20px 0 0 0;
+        }
+
+        h1 {
+            font: bold 88px/1 Helvetica, Verdana, sans-serif;
+            margin: 20px 0 0;
+
+            sup {
+                font-size: 45px;
+            }
+        }
+
+        p {
+            color: #BCBEC0;
+            font: 500 14px/1 Helvetica, Verdana, sans-serif;
+        }
+    }
+}

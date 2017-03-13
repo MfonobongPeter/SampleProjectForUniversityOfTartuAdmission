@@ -1,0 +1,295 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Pagination
+/* ---------------------------------------------------------------------- */
+
+@mixin pagination-purple-style {
+    li {
+        &.active {
+            a {
+                background: $purple !important;
+                border: none !important;
+                color: #FFFFFF !important;
+                cursor: default !important;
+                opacity: 1;
+            }
+        }
+
+        &:first-child {
+            a {
+                border: none !important;
+            }
+        }
+
+        &.disabled {
+            [class^="fa-"], [class*=" fa-"] {
+                opacity: 0.5;
+            }
+
+            a {
+                color: #AAAAAA !important;
+
+                &:hover {
+                    background: #F5F4F9;
+                    cursor: default !important;
+                }
+            }
+        }
+
+        a {
+            background: #F5F4F9;
+            border: none !important;
+            color: $dark-grey;
+            display: inline-block;
+            margin-right: 1px;
+
+            &:hover {
+                background: #ECEAF3;
+                color: #222222;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@mixin pagination-teal-style {
+    li {
+        &.active {
+            a {
+                background: $teal !important;
+                border: none !important;
+                color: #FFFFFF !important;
+                cursor: default !important;
+                opacity: 1;
+            }
+        }
+
+        &:first-child {
+            a {
+                border: none !important;
+            }
+        }
+
+        &.disabled {
+            [class^="fa-"], [class*=" fa-"] {
+                opacity: 0.5;
+            }
+
+            a {
+                color: #AAAAAA !important;
+
+                &:hover {
+                    background: #F3F8F8;
+                    cursor: default !important;
+                }
+            }
+        }
+
+        a {
+            background: #F3F8F8;
+            border: none !important;
+            color: $dark-grey;
+            display: inline-block;
+            margin-right: 1px;
+
+            &:hover {
+                background: #D8E4E7;
+                color: #222222;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@mixin pagination-green-style {
+    li {
+        &.active {
+            a {
+                background: $green !important;
+                border: none !important;
+                color: #FFFFFF !important;
+                cursor: default !important;
+                opacity: 1;
+            }
+        }
+
+        &:first-child {
+            a {
+                border: none !important;
+            }
+        }
+
+        &.disabled {
+            [class^="fa-"], [class*=" fa-"] {
+                opacity: 0.5;
+            }
+
+            a {
+                color: #AAAAAA !important;
+
+                &:hover {
+                    background: #EFFBEC;
+                    cursor: default !important;
+                }
+            }
+        }
+
+        a {
+            background: #EFFBEC;
+            border: none !important;
+            color: $dark-grey;
+            display: inline-block;
+            margin-right: 1px;
+
+            &:hover {
+                background: #CEF3C5;
+                color: #222222;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@mixin pagination-bricky-style {
+    li {
+        &.active {
+            a {
+                background: $bricky !important;
+                border: none !important;
+                color: #FFFFFF !important;
+                cursor: default !important;
+                opacity: 1;
+            }
+        }
+
+        &:first-child {
+            a {
+                border: none !important;
+            }
+        }
+
+        &.disabled {
+            [class^="fa-"], [class*=" fa-"] {
+                opacity: 0.5;
+            }
+
+            a {
+                color: #AAAAAA !important;
+
+                &:hover {
+                    background: #FDF8F7;
+                    cursor: default !important;
+                }
+            }
+        }
+
+        a {
+            background: #FDF8F7;
+            border: none !important;
+            color: $dark-grey;
+            display: inline-block;
+            margin-right: 1px;
+
+            &:hover {
+                background: #FBEEEC;
+                color: #222222;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.pagination {
+    li {
+        a {
+            cursor: pointer;
+        }
+    }
+
+    &.squared {
+        border-radius: 0 !important;
+
+        li:first-child {
+            a, & > span {
+                @include border-bottom-left-radius(0px !important);
+                border-left-width: 1px;
+                @include border-top-left-radius(0px !important);
+            }
+        }
+
+        li:last-child {
+            & > a, & > span {
+                @include border-bottom-right-radius(0px !important);
+                @include border-top-right-radius(0px !important);
+            }
+        }
+    }
+
+    &.pagination-purple {
+
+        [class^="fa-"], [class*=" fa-"] {
+            color: $purple;
+        }
+
+        @include pagination-purple-style;
+    }
+
+    &.pagination-teal {
+
+        [class^="fa-"], [class*=" fa-"] {
+            color: #4D8189;
+        }
+
+        @include pagination-purple-style;
+    }
+
+    &.pagination-green {
+
+        [class^="fa-"], [class*=" fa-"] {
+            color: #327B00;
+        }
+
+        @include pagination-green-style;
+    }
+
+    &.pagination-bricky {
+
+        [class^="fa-"], [class*=" fa-"] {
+            color: $bricky;
+        }
+
+        @include pagination-bricky-style;
+    }
+}
+
+.pagination-purple {
+
+    [class^="fa-"], [class*=" fa-"] {
+        color: $purple;
+    }
+
+    .pagination {
+        @include pagination-purple-style;
+    }
+}
+
+.pagination-teal {
+
+    [class^="fa-"], [class*=" fa-"] {
+        color: #4D8189;
+    }
+
+    .pagination {
+        @include pagination-teal-style;
+    }
+}
+
+.pagination-green {
+
+    [class^="fa-"], [class*=" fa-"] {
+        color: #327B00;
+    }
+
+    .pagination {
+        @include pagination-green-style;
+    }
+}

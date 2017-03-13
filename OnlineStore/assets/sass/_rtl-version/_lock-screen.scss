@@ -1,0 +1,18 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Lock Screen
+ /* ---------------------------------------------------------------------- */
+body {
+    &.lock-screen {
+        color: #7F7F7F;
+        background-image: url("../images/bg.png");
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    &.rtl {
+        &.lock-screen {
+            .user-info {
+                float: left;
+            }
+        }
+    }
+}

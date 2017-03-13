@@ -1,0 +1,21 @@
+{
+  "name": "rainyday.js",
+  "version": "0.1.2",
+  "main": "./dist/rainyday.min.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maroslaw/rainyday.js.git"
+  },
+  "dependencies": {},
+  "homepage": "https://github.com/maroslaw/rainyday.js",
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.2",
+    "commit": "cab30f5ec4305197d5436dbf26bd38eee13ea3ab"
+  },
+  "_source": "git://github.com/maroslaw/rainyday.js.git",
+  "_target": "^0.1.2",
+  "_originalSource": "rainyday.js",
+  "_direct": true
+}

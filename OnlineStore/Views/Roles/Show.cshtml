@@ -1,0 +1,79 @@
+﻿@model IEnumerable<OnlineStore.Role>
+
+@{
+    ViewBag.Title = "Index";
+    try
+    {
+        var role = Convert.ToInt16(Session["userrole"].ToString());
+        if (role == 1)
+        {
+            Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+        }        
+        else if (role == 3)
+        {
+            Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+        }
+    }
+    catch (Exception)
+    {
+
+    }
+ }
+
+<p>
+    <a href="@Url.Action("Add", "Roles")" class="demo btn btn-blue">
+        <i class="fa fa-plus"></i> | Add New
+    </a>
+</p>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i> Role List
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover" id="sample-table-1">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoleName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RoleDesc)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RoleDesc)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("edit", "roles", new { id = item.RoleiD })" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>
+                            @*<a href="@Url.Action("details", "roles", new { id = item.RoleiD })" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="View List"><i class="fa fa-eye"></i></a>*@
+                            @*<a href="@Url.Action("delete", "roles", new { id = item.RoleiD })" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    <script>
+            jQuery(document).ready(function() {
+                Main.init();
+            });
+    </script>
+
+
+

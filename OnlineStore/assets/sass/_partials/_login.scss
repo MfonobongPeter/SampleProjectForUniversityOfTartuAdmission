@@ -1,0 +1,99 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Login
+/* ---------------------------------------------------------------------- */
+body {
+    &.login {
+        color: #7F7F7F;
+
+        &.example1 {
+            background-image: url("../images/bg.png");
+            background-color: rgba(0, 0, 0, 0);
+        }
+
+        &.example2 {
+            background-image: url("../images/bg_2.png");
+            background-color: rgba(255, 255, 255, 0);
+        }
+
+        .main-login {
+            margin-top: 60px;
+        }
+
+        .logo {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .box-login, .box-forgot, .box-register {
+            background: $white;
+            border-radius: 5px;
+            box-shadow: -30px 30px 50px rgba(0, 0, 0, 0.32);
+            overflow: hidden;
+            padding: 15px;
+            display: none;
+        }
+
+        .form {
+            fieldset {
+                border: none;
+                margin: 0;
+                padding: 10px 0 0;
+            }
+        }
+
+        a {
+            &.forgot {
+                color: #909090;
+                font-size: 12px;
+                position: absolute;
+                right: 10px;
+                @include text-shadow(1px 1px 1px $white);
+                top: 9px;
+            }
+        }
+
+        input {
+            &.password {
+                padding-right: 130px;
+            }
+        }
+
+        label {
+            color: #7F7F7F;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .copyright {
+            font-size: 11px;
+            margin: 0 auto;
+            padding: 10px 10px 0;
+            text-align: center;
+        }
+
+        .form-actions {
+            &:before, &:after {
+                content: "";
+                display: table;
+                line-height: 0;
+            }
+
+            &:after {
+                clear: both;
+            }
+        }
+
+        .form-actions {
+            margin-top: 15px;
+            padding-top: 10px;
+            display: block;
+        }
+
+        .new-account {
+            border-top: 1px dotted #EEEEEE;
+            margin-top: 15px;
+            padding-top: 10px;
+            display: block;
+        }
+    }
+}

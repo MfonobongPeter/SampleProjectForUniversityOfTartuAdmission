@@ -1,0 +1,133 @@
+﻿@{
+    ViewBag.Title = "SecurityQuestion";
+    Layout = "~/Views/Shared/LoginRegisterLayoutPage.cshtml";
+ }
+
+<style type="text/css">
+    :required {
+        background: red;
+        border: 1px solid red;
+        outline: none;
+    }
+
+    input:required:focus {
+        border: 1px solid red;
+        outline: none;
+    }
+
+    input:required:hover {
+        opacity: 1;
+    }
+</style>
+
+<body class="login example2">
+
+    <div class="main-login col-sm-4 col-sm-offset-4">
+        <div class="logo">
+            @*CLIP<i class="clip-clip"></i>ONE*@
+            <img src="~/Images/Logo.png" alt="glorious evidence logo" />
+        </div>
+        <!-- start: LOGIN BOX -->
+        <div class="box-login">
+            <h3>Security Question</h3>
+            <p>
+                Please supply your security answer to proceed.
+            </p>
+            @using (Html.BeginForm())
+            {
+                if (ViewBag.DisplayMessage == "success")
+                {
+                    if (ViewData.ModelState[""] != null)
+                    {
+                        <div class="bs-example">
+                            <div class="alert alert-success fade in">
+                                <a href="#" class="close" data-dismiss="alert">×</a>
+                                <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                            </div>
+                        </div>
+                    }
+                }
+                else if (ViewBag.DisplayMessage == "Info")
+                {
+                    if (ViewData.ModelState[""] != null)
+                    {
+                        <div class="bs-example">
+                            <div class="alert alert-danger fade in">
+                                <a href="#" class="close" data-dismiss="alert">×</a>
+                                <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                            </div>
+                        </div>
+                    }
+                }
+                <div class="errorHandler alert alert-danger no-display">
+                    <i class="fa fa-remove-sign"></i> You have some form errors. Please check below.
+                </div>
+                <fieldset>
+                    <div class="form-group">
+                        <span class="input-icon">
+                            <label id="dspSQ" style="color:green; font-weight:bold;">@Session["SQ"].ToString()</label>
+                        </span>
+                    </div>
+                    @*<div class="form-group">
+                        <span class="input-icon">
+                            <input type="text" class="form-control" name="securityAnswer" placeholder="security Answer" required = "required">                           
+                        </span>
+                    </div>*@
+
+                    <div class="form-group form-actions">
+                        <span class="input-icon">
+                            <input type="password" class="form-control password" name="securityAnswer" placeholder="securityAnswer" required="required">
+                            <i class="fa fa-lock"></i>
+                            <a class="forgot" href="@Url.Action("forgetSecurityAnswer", "SecurityQuestions")">
+                                I forgot my security answer
+                            </a>
+                        </span>
+                    </div>
+
+                    <div class="form-actions">
+
+                        <button type="submit" class="btn btn-bricky pull-right">
+                            Submit <i class="fa fa-arrow-circle-right"></i>
+                        </button>
+                    </div>
+                    <div class="new-account">
+                        @*Don't have an account yet?
+                            <a href="#" class="register">
+                                Create an account
+                            </a>*@
+                    </div>
+                </fieldset>
+            }
+        </div>
+        <!-- end: LOGIN BOX -->
+        <!-- start: COPYRIGHT -->
+        <div class="copyright">
+            Glorious Evidence Ltd &copy; @DateTime.Now.Year | All Rights Reserved.
+        </div>
+        <!-- end: COPYRIGHT -->
+    </div>
+</body>
+
+<!-- start: MAIN JAVASCRIPTS -->
+<!--[if lt IE 9]>
+        <script src="@Url.Content("~/bower_components/respond/dest/respond.min.js")"></script>
+        <script src="@Url.Content("~/bower_components/Flot/excanvas.min.js")"></script>
+        <script src="@Url.Content("~/bower_components/jquery-1.x/dist/jquery.min.js")"></script>
+        <![endif]-->
+<!--[if gte IE 9]><!-->
+<!-- build:script resurces.jQuery --><!-- /build -->
+<!--<![endif]-->
+<!-- build:script bundle --><!-- /build -->
+<!-- build:script main --><!-- /build -->
+<!-- end: MAIN JAVASCRIPTS -->
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="@Url.Content("~/bower_components/jquery-validation/dist/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/assets/js/min/login.min.js")"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        Login.init();
+    });
+</script>

@@ -1,0 +1,193 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Up To Medium Devices
+/* ---------------------------------------------------------------------- */
+@media (max-width: 979px) {
+    /*** general body settings ***/
+
+    body {
+        margin: 0px !important;
+    }
+
+    .main-navigation {
+        z-index: 1000;
+    }
+
+    /*** Main content ***/
+
+    .main-content {
+        min-height: 760px;
+    }
+}
+/* ---------------------------------------------------------------------- */
+/*	Up To Medium Devices
+/* ---------------------------------------------------------------------- */
+@media (min-width: 768px) {
+    .main-navigation {
+        position: absolute;
+        width: 225px;
+    }
+
+    .navbar-collapse {
+        &.in {
+            overflow-y: visible;
+        }
+    }
+
+    .main-content {
+        margin-left: 225px;
+    }
+
+    .page-full-width {
+        .main-content {
+            margin-left: 0 !important;
+        }
+    }
+
+    .main-content {
+        & > .container {
+            min-height: 760px;
+        }
+    }
+
+    ul {
+        &.main-navigation-menu {
+            & > li {
+                &.active {
+                    & > a {
+                        .selected {
+                            &:before {
+                                display: block;
+                                height: 41px;
+                                position: absolute;
+                                right: -10px;
+                                top: -1px;
+                                width: 11px;
+                                content: "\e16c";
+                                font-family: $fontClip;
+                                line-height: 41px;
+                                font-size: 24px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*** Set style for small navigation menu ***/
+
+    .navigation-small {
+        .main-content {
+            margin-left: 35px !important;
+        }
+
+        .main-navigation {
+            width: 35px !important;
+            z-index: 1000;
+        }
+
+        &.sidebar-fixed {
+            .wrap-menu {
+                width: 35px;
+            }
+        }
+
+        ul {
+            &.main-navigation-menu {
+                & > li {
+                    & > a {
+                        padding-left: 7px;
+
+                        & > .title {
+                            display: none;
+                        }
+
+                        .icon-arrow {
+                            display: none;
+                        }
+                    }
+
+                    &:hover {
+                        width: 225px;
+                        position: relative;
+
+                        .selected {
+                            display: none;
+                        }
+
+                        .title {
+                            display: inline;
+                        }
+
+                        & > a {
+                            &:after {
+                                content: "";
+                                bottom: -1px;
+                                position: absolute;
+                                left: 35px;
+                                top: -1px;
+                                width: 14px;
+                                background: url(../images/menu-white-arrow.png) left center no-repeat;
+                            }
+
+                            .title {
+                                padding-left: 30px;
+                            }
+                        }
+
+                        & > ul {
+                            &.sub-menu {
+                                width: 189px;
+                                position: absolute;
+                                z-index: 1000;
+                                left: 36px;
+                                margin-top: 0;
+                                top: 100%;
+                                display: block !important;
+                            }
+                        }
+                    }
+
+                    & > ul {
+                        &.sub-menu {
+                            display: none !important;
+                            padding-bottom: 10px !important;
+
+                            & > li {
+                                & > a {
+                                    padding-left: 24px !important;
+                                }
+
+                                & > ul {
+                                    &.sub-menu {
+                                        & > li {
+                                            & > a {
+                                                padding-left: 40px !important;
+                                            }
+
+                                            & > ul {
+                                                &.sub-menu {
+                                                    & > li {
+                                                        & > a {
+                                                            padding-left: 60px !important;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .navigation-toggler {
+            margin-right: 3px !important;
+            margin-left: 3px !important;
+        }
+    }
+
+}

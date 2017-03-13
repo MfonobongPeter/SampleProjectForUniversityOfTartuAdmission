@@ -1,0 +1,30 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	From Medium Devices Up To Larger Devices
+/* ---------------------------------------------------------------------- */
+@media (min-width: 980px) and (max-width: 1199px) {
+    .layout-boxed {
+        & > .navbar, .main-container, & > .footer {
+            max-width: 940px !important;
+        }
+
+        & > .navbar, & > .footer {
+            left: 50% !important;
+            margin-left: -470px !important;
+        }
+    }
+}
+/* ---------------------------------------------------------------------- */
+/*	Only larger Devices
+/* ---------------------------------------------------------------------- */
+@media (min-width: 1200px) {
+    .layout-boxed {
+        & > .navbar, & .main-container, & > .footer {
+            max-width: 1000px !important;
+        }
+
+        & > .navbar, & > .footer {
+            left: 50% !important;
+            margin-left: -500px !important;
+        }
+    }
+}

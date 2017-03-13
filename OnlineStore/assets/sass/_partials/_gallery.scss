@@ -1,0 +1,122 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Gallery
+/* ---------------------------------------------------------------------- */
+.gallery-img {
+    margin-bottom: 20px;
+}
+
+#cboxLoadedContent {
+    background: $white !important;
+}
+
+.wrap-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    & > .chkbox {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background: $white;
+        text-align: center;
+        display: none;
+        cursor: pointer;
+        border: 1px solid $light-grey;
+
+        &:hover {
+            border-color: rgba(82, 168, 236, 0.8);
+            @include box-shadow(0 0 12px rgba(82, 168, 236, 0.6));
+            outline: 0 none;
+        }
+    }
+
+    &.selected, &:hover {
+        & > .chkbox {
+            display: block;
+        }
+    }
+
+    &.selected {
+        & > .chkbox {
+            &:before {
+                content: "\e0df";
+                font-family: $fontClip;
+                height: 14px;
+                left: 1px;
+                position: absolute;
+                top: -2px;
+                width: 14px;
+            }
+        }
+    }
+
+    &:hover {
+        & > .tools {
+            left: 0;
+
+            &.tools-bottom {
+                bottom: 0;
+                top: auto;
+            }
+
+            &.tools-top {
+                bottom: auto;
+                top: 0;
+            }
+
+            &.tools-right {
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+
+    & > .tools {
+        background-color: rgba(0, 0, 0, 0.55);
+        bottom: 0;
+        left: -30px;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        @include transition(all 0.2s ease 0s);
+        vertical-align: middle;
+        width: 24px;
+
+        a {
+            &:hover, &:focus {
+                text-decoration: none;
+            }
+        }
+
+        &.tools-bottom {
+            bottom: -30px;
+            height: 28px;
+            left: 0;
+            right: 0;
+            top: auto;
+            width: auto;
+        }
+    }
+
+    & > .tools > a, & > *:first-child .inner a {
+        color: $white;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 4px;
+
+        &:hover {
+            color: #C9E2EA;
+            text-decoration: none;
+        }
+    }
+
+    .tools.tools-bottom, .tools.tools-top {
+        & > a {
+            display: inline-block;
+        }
+    }
+}

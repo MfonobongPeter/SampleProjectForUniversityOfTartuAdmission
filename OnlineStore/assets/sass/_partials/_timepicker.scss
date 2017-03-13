@@ -1,0 +1,21 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Timepicker
+/* ---------------------------------------------------------------------- */
+.bootstrap-timepicker-widget {
+    table {
+        td {
+            input {
+                width: 32px !important;
+            }
+        }
+    }
+}
+
+.bootstrap-timepicker {
+    .add-on {
+        i {
+            height: auto !important;
+            width: auto !important;
+        }
+    }
+}

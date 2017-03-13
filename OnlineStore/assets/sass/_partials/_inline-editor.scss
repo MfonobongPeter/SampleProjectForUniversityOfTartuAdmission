@@ -1,0 +1,116 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Inline Editor
+/* ---------------------------------------------------------------------- */
+
+
+#inline-container {
+    border: 1px solid #CCCCCC;
+    margin: 30px auto 0;
+    padding: 10px;
+
+    [contenteditable="true"] {
+        padding: 10px;
+    }
+
+    hr {
+        background-color: #05B2D2;
+        height: 5px;
+        color: #05B2D2;
+        border: 0;
+    }
+}
+
+
+#inline-header {
+    overflow: hidden;
+    padding: 0 0 30px;
+    position: relative;
+}
+
+#inline-headerLeft {
+    padding-top: 10px;
+}
+
+#inline-headerLeft {
+    h2, h3 {
+        font-weight: normal;
+        margin: 0;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: $fontArialBlack;
+        font-size: 52px;
+        line-height: 1.1em;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        color: #666666;
+        font-size: 24px;
+        line-height: 1.1em;
+        margin: 0.2em 0 0;
+    }
+}
+
+#inline-headerRight {
+    p {
+        margin: 0;
+        text-align: justify;
+
+        & + p {
+            margin-top: 20px;
+        }
+    }
+
+    div {
+        color: #666666;
+        font-size: 16px;
+    }
+}
+
+
+#inline-columns {
+    color: $dark-grey;
+    overflow: hidden;
+    padding-top: 20px;
+
+    blockquote {
+        font-family: $fontTimesNewRoman;
+        font-size: 2em;
+        font-style: italic;
+        margin: 30px 40px;
+        position: relative;
+        border: none;
+
+        &:before {
+            color: #666666;
+            content: "“";
+            font-size: 60px;
+            left: -40px;
+            line-height: 60px;
+            position: absolute;
+            text-align: center;
+            width: 35px;
+            clear: both;
+            display: block;
+            font-family: $fontTimesNewRoman;
+            font-weight: bold;
+            position: absolute;
+            text-align: center;
+        }
+    }
+}
+
+
+#inline-tagLine {
+    border-top: 5px solid #05B2D2;
+    padding-top: 20px;
+}
+
+#inline-taglist {
+    display: inline-block;
+    font-weight: bold;
+    margin: 0 0 0 20px;
+}

@@ -1,0 +1,109 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Buttons
+/* ---------------------------------------------------------------------- */
+
+body {
+    &.rtl {
+        .btn-icon {
+            .badge {
+                left: -5px;
+                right: auto;
+            }
+        }
+
+        .input-group {
+            .form-control {
+                &:last-child {
+                    @include border-bottom-left-radius(4px);
+                    @include border-top-left-radius(4px);
+                    @include border-bottom-right-radius(0);
+                    @include border-top-right-radius(0);
+                }
+            }
+        }
+
+        .input-group-addon {
+            &:last-child {
+                @include border-bottom-left-radius(4px);
+                @include border-top-left-radius(4px);
+                @include border-bottom-right-radius(0);
+                @include border-top-right-radius(0);
+            }
+        }
+
+        .input-group-btn {
+            &:last-child {
+                & > .btn {
+                    @include border-bottom-left-radius(4px);
+                    @include border-top-left-radius(4px);
+                    @include border-bottom-right-radius(0);
+                    @include border-top-right-radius(0);
+                }
+
+                & > .dropdown-toggle {
+                    @include border-bottom-left-radius(4px);
+                    @include border-top-left-radius(4px);
+                    @include border-bottom-right-radius(0);
+                    @include border-top-right-radius(0);
+                }
+            }
+
+            &:first-child {
+                & > .btn:not(:first-child) {
+                    @include border-bottom-left-radius(4px);
+                    @include border-top-left-radius(4px);
+                    @include border-bottom-right-radius(0);
+                    @include border-top-right-radius(0);
+                }
+            }
+        }
+
+        .btn-group {
+            & > .btn {
+                float: right;
+
+                &:last-child:not(:first-child) {
+                    @include border-bottom-left-radius(4px);
+                    @include border-top-left-radius(4px);
+                    @include border-bottom-right-radius(0px);
+                    @include border-top-right-radius(0px);
+
+
+                    :not(.dropdown-toggle) {
+                        @include border-bottom-left-radius(4px);
+                        @include border-top-left-radius(4px);
+                        @include border-bottom-right-radius(0px);
+                        @include border-top-right-radius(0px);
+                    }
+                }
+
+                &:first-child:not(:last-child) {
+                    :not(.dropdown-toggle) {
+                        @include border-bottom-left-radius(0px);
+                        @include border-top-left-radius(0px);
+                        @include border-bottom-right-radius(4px);
+                        @include border-top-right-radius(4px);
+                    }
+                }
+            }
+
+            & > .dropdown-toggle:not(:first-child) {
+                @include border-bottom-left-radius(4px);
+                @include border-top-left-radius(4px);
+                @include border-bottom-right-radius(0px);
+                @include border-top-right-radius(0px);
+            }
+
+            .btn + .btn, .btn + .btn-group, .btn-group + .btn, .btn-group + .btn-group {
+                margin-left: 0;
+                margin-right: -1px;
+            }
+        }
+
+        .btn-group-justified {
+            .btn {
+                float: none;
+            }
+        }
+    }
+}

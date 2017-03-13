@@ -1,0 +1,46 @@
+﻿/*	Google fonts */
+$fontOpenSans: 'Open+Sans', sans-serif;
+$fontRaleway: 'Raleway', sans-serif;
+
+/*	Fonts */
+$fontFontAwesome: FontAwesome;
+$fontClip: "clip-font";
+$fontArialBlack: "Arial Black", arial-black;
+$fontTimesNewRoman: "Times New Roman", Times, Georgia, serif;
+$fontArial: Arial;
+
+/*	Colors */
+$white: #ffffff;
+$black: #000;
+$light-grey: #DDDDDD;
+$dark-grey: #333333;
+
+$teal: #569099;
+$bricky: #C83A2A;
+$green: #3D9400;
+$purple: #57517B;
+$blue: #364F6A;
+$yellow: #FFA722;
+
+/* THEME: light */
+$light-base: $white;
+$light-text: #555555;
+$light-badge: #007AFF;
+
+/* THEME: dark */
+$dark-base: #4F4F4F;
+$dark-text: #D9D9D9;
+$dark-badge: #D9534F;
+
+/* THEME: black and white */
+$blackandwhite-base: #232323;
+$blackandwhite-badge: $black;
+
+/* THEME: green */
+$green-base: #415A1E;
+$green-text: #E8F2D9;
+$green-badge: #E6674A;
+
+/* THEME: navy */
+$navy-base: #34485e;
+$navy-badge: #D9534F;

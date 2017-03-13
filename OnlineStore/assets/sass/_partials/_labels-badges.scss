@@ -1,0 +1,63 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Labels and Badges
+ /* ---------------------------------------------------------------------- */
+.badge-success {
+    background-color: #5CB85C;
+
+    &[href] {
+        &:hover, &:focus {
+            background-color: #449D44;
+        }
+    }
+}
+
+.badge-warning {
+    background-color: #F0AD4E;
+
+    &[href] {
+        &:hover, &:focus {
+            background-color: #EC971F;
+        }
+    }
+}
+
+.badge-info {
+    background-color: #5BC0DE;
+
+    &[href] {
+        &:hover, &:focus {
+            background-color: #31B0D5;
+        }
+    }
+}
+
+.badge-danger {
+    background-color: #D9534F;
+
+    &[href] {
+        &:hover, &:focus {
+            background-color: #C9302C;
+        }
+    }
+}
+
+.badge-new {
+    background-color: #007AFF;
+    @include border-radius(12px !important);
+    font-size: 11px !important;
+    font-weight: 300;
+    height: 18px;
+    padding: 3px 6px;
+    text-align: center;
+    @include text-shadow(none !important);
+    vertical-align: middle;
+}
+
+.label {
+    font-size: 85% !important;
+    padding: 0.4em 0.6em !important;
+}
+
+.label-inverse, .badge-inverse {
+    background-color: #555555;
+}

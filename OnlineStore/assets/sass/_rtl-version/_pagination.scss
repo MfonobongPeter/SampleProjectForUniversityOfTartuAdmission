@@ -1,0 +1,30 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Pagination
+/* ---------------------------------------------------------------------- */
+
+
+body.rtl .pagination > li:last-child > a, body.rtl .pagination > li:last-child > span {
+    border-bottom-right-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+body.rtl .pagination > li:first-child > a, body.rtl .pagination > li:first-child > span {
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    border-bottom-left-radius: 0px;
+    border-top-left-radius: 0px;
+}
+
+body {
+    &.rtl {
+        .pagination {
+            li {
+                a {
+                    float: right;
+                }
+            }
+        }
+    }
+}

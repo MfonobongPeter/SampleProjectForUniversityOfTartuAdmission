@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineStoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Products" Relationship="Self.Category_Product_fk" FromRole="Category" ToRole="Product" />
+    <NavigationProperty Name="SubCategories" Relationship="Self.Category_SubCategory_fk" FromRole="Category" ToRole="SubCategory" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.Country_Users_fk" FromRole="Country" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderID" />
+    </Key>
+    <Property Name="GenderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GenderName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.Gender_Users_fk" FromRole="Gender" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Lga">
+    <Key>
+      <PropertyRef Name="LgaID" />
+    </Key>
+    <Property Name="LgaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateID" Type="Int32" Nullable="false" />
+    <Property Name="LgaName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="State" Relationship="Self.State_Lga_fk" FromRole="Lga" ToRole="State" />
+  </EntityType>
+  <EntityType Name="NewsLetterSubscription">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="Int64" Nullable="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OrderDeliveryStatu">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailID" />
+    </Key>
+    <Property Name="OrderDetailID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int64" Nullable="false" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProductSKU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ProductQuantity" Type="Int32" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Order" Relationship="Self.Order_OrderDetail_fk" FromRole="OrderDetail" ToRole="Orders" />
+    <NavigationProperty Name="Product" Relationship="Self.Product_OrderDetail_fk" FromRole="OrderDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="ProductModelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderUnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OrderAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GrandTotalAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="OrderQuantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderDeliveryOption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderPaymentOption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderTransactionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderTransactionStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDeliveryStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OrderType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.Order_OrderDetail_fk" FromRole="Orders" ToRole="OrderDetail" />
+    <NavigationProperty Name="Product" Relationship="Self.Product_Orders_fk" FromRole="Orders" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="PaymentGatewayTransaction">
+    <Key>
+      <PropertyRef Name="TransactionID" />
+    </Key>
+    <Property Name="TransactionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Total" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Method" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MerchantID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MerchantRef" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Memo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Referrer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalCreditedToMerchant" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ExtraChargesByMerchant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProcessDuration" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="TotalPaidByBuyer" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="FundMaturity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ChargesPaidByMerchant" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="SubCategoryID" Type="Int32" Nullable="false" />
+    <Property Name="ProductSKU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ProductQuantity" Type="Int32" />
+    <Property Name="ProductUnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductshortDesc" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="ProductLongDesc" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ProductFrontView" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductSideView" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductFrontViewThumbnail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductSideViewThumbnail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductWeight" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProductCreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="ProductDiscount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProductAvailability" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductColour" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ProductIsNew" Type="Boolean" />
+    <NavigationProperty Name="Category" Relationship="Self.Category_Product_fk" FromRole="Product" ToRole="Category" />
+    <NavigationProperty Name="OrderDetails" Relationship="Self.Product_OrderDetail_fk" FromRole="Product" ToRole="OrderDetail" />
+    <NavigationProperty Name="Orders" Relationship="Self.Product_Orders_fk" FromRole="Product" ToRole="Orders" />
+    <NavigationProperty Name="ShoppingCarts" Relationship="Self.Product_ShoppingCart_fk" FromRole="Product" ToRole="ShoppingCart" />
+    <NavigationProperty Name="WishLists" Relationship="Self.Product_WishList_fk" FromRole="Product" ToRole="WishList" />
+    <NavigationProperty Name="SubCategory" Relationship="Self.SubCategory_Product_fk" FromRole="Product" ToRole="SubCategory" />
+    <Property Name="ShippingFee" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleiD" />
+    </Key>
+    <Property Name="RoleiD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RoleDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UsersInRoles" Relationship="Self.Roles_UsersInRoles_fk" FromRole="Roles" ToRole="UsersInRoles" />
+  </EntityType>
+  <EntityType Name="SecurityQuestion">
+    <Key>
+      <PropertyRef Name="SecurityQuestionID" />
+    </Key>
+    <Property Name="SecurityQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Users" Relationship="Self.SecurityQuestions_Users_fk" FromRole="SecurityQuestions" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="ShippingAndHandling">
+    <Key>
+      <PropertyRef Name="RowID" />
+    </Key>
+    <Property Name="RowID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ShippingAndHandlingCharges" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Vat" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="ShoppingCart">
+    <Key>
+      <PropertyRef Name="ShoppingCartRowID" />
+    </Key>
+    <Property Name="ShoppingCartRowID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="CartSessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductSku" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FrontViewThumbNail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductQuantity" Type="Int32" Nullable="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProductTotalPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeliveryOption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PaymentOption" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.Product_ShoppingCart_fk" FromRole="ShoppingCart" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Lgas" Relationship="Self.State_Lga_fk" FromRole="State" ToRole="Lga" />
+    <Property Name="ShippingFee" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="SubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryID" />
+    </Key>
+    <Property Name="SubCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Category" Relationship="Self.Category_SubCategory_fk" FromRole="SubCategory" ToRole="Category" />
+    <NavigationProperty Name="Products" Relationship="Self.SubCategory_Product_fk" FromRole="SubCategory" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="GenderID" Type="Int32" Nullable="false" />
+    <Property Name="SecurityQuestionID" Type="Int32" Nullable="false" />
+    <Property Name="UserFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress1" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserConfirmPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SecurityAnswer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingCountry" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserBillingPhone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="UserRole" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ActivationID" Type="Guid" />
+    <Property Name="IsActivated" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Country" Relationship="Self.Country_Users_fk" FromRole="Users" ToRole="Country" />
+    <NavigationProperty Name="Gender" Relationship="Self.Gender_Users_fk" FromRole="Users" ToRole="Gender" />
+    <NavigationProperty Name="SecurityQuestion" Relationship="Self.SecurityQuestions_Users_fk" FromRole="Users" ToRole="SecurityQuestions" />
+    <NavigationProperty Name="UsersInRoles" Relationship="Self.User_UsersInRole_fk" FromRole="Users" ToRole="UsersInRoles" />
+  </EntityType>
+  <EntityType Name="UsersInRole">
+    <Key>
+      <PropertyRef Name="UsersInRoleID" />
+    </Key>
+    <Property Name="UsersInRoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleID" Type="Int32" Nullable="false" />
+    <Property Name="UserID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.Roles_UsersInRoles_fk" FromRole="UsersInRoles" ToRole="Roles" />
+    <NavigationProperty Name="User" Relationship="Self.User_UsersInRole_fk" FromRole="UsersInRoles" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="WishList">
+    <Key>
+      <PropertyRef Name="WishListRowID" />
+    </Key>
+    <Property Name="WishListRowID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductID" Type="Int64" Nullable="false" />
+    <Property Name="WishListSessionID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductTotalPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductModelNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ProductQuantity" Type="Int32" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ProductSideViewThumb" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ProductFrontViewThumb" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Product" Relationship="Self.Product_WishList_fk" FromRole="WishList" ToRole="Product" />
+  </EntityType>
+  <Association Name="Category_Product_fk">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Category_SubCategory_fk">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="SubCategory">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Country_Users_fk">
+    <End Role="Country" Type="Self.Country" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CountryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gender_Users_fk">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="GenderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="State_Lga_fk">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="Lga" Type="Self.Lga" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="Lga">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Order_OrderDetail_fk">
+    <End Role="Orders" Type="Self.Order" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_OrderDetail_fk">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_Orders_fk">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_ShoppingCart_fk">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ShoppingCart" Type="Self.ShoppingCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ShoppingCart">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Product_WishList_fk">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="WishList">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SubCategory_Product_fk">
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Roles_UsersInRoles_fk">
+    <End Role="Roles" Type="Self.Role" Multiplicity="1" />
+    <End Role="UsersInRoles" Type="Self.UsersInRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RoleiD" />
+      </Principal>
+      <Dependent Role="UsersInRoles">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SecurityQuestions_Users_fk">
+    <End Role="SecurityQuestions" Type="Self.SecurityQuestion" Multiplicity="1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SecurityQuestions">
+        <PropertyRef Name="SecurityQuestionID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="SecurityQuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="User_UsersInRole_fk">
+    <End Role="Users" Type="Self.User" Multiplicity="1" />
+    <End Role="UsersInRoles" Type="Self.UsersInRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="UsersInRoles">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineStoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Genders" EntityType="Self.Gender" />
+    <EntitySet Name="Lgas" EntityType="Self.Lga" />
+    <EntitySet Name="NewsLetterSubscriptions" EntityType="Self.NewsLetterSubscription" />
+    <EntitySet Name="OrderDeliveryStatus" EntityType="Self.OrderDeliveryStatu" />
+    <EntitySet Name="OrderDetails" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="PaymentGatewayTransactions" EntityType="Self.PaymentGatewayTransaction" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="SecurityQuestions" EntityType="Self.SecurityQuestion" />
+    <EntitySet Name="ShippingAndHandlings" EntityType="Self.ShippingAndHandling" />
+    <EntitySet Name="ShoppingCarts" EntityType="Self.ShoppingCart" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="SubCategories" EntityType="Self.SubCategory" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UsersInRoles" EntityType="Self.UsersInRole" />
+    <EntitySet Name="WishLists" EntityType="Self.WishList" />
+    <AssociationSet Name="Category_Product_fk" Association="Self.Category_Product_fk">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="Category_SubCategory_fk" Association="Self.Category_SubCategory_fk">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="SubCategory" EntitySet="SubCategories" />
+    </AssociationSet>
+    <AssociationSet Name="Country_Users_fk" Association="Self.Country_Users_fk">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="Gender_Users_fk" Association="Self.Gender_Users_fk">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="State_Lga_fk" Association="Self.State_Lga_fk">
+      <End Role="State" EntitySet="States" />
+      <End Role="Lga" EntitySet="Lgas" />
+    </AssociationSet>
+    <AssociationSet Name="Order_OrderDetail_fk" Association="Self.Order_OrderDetail_fk">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="Product_OrderDetail_fk" Association="Self.Product_OrderDetail_fk">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderDetail" EntitySet="OrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="Product_Orders_fk" Association="Self.Product_Orders_fk">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="Product_ShoppingCart_fk" Association="Self.Product_ShoppingCart_fk">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ShoppingCart" EntitySet="ShoppingCarts" />
+    </AssociationSet>
+    <AssociationSet Name="Product_WishList_fk" Association="Self.Product_WishList_fk">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="WishList" EntitySet="WishLists" />
+    </AssociationSet>
+    <AssociationSet Name="SubCategory_Product_fk" Association="Self.SubCategory_Product_fk">
+      <End Role="SubCategory" EntitySet="SubCategories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="Roles_UsersInRoles_fk" Association="Self.Roles_UsersInRoles_fk">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="SecurityQuestions_Users_fk" Association="Self.SecurityQuestions_Users_fk">
+      <End Role="SecurityQuestions" EntitySet="SecurityQuestions" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="User_UsersInRole_fk" Association="Self.User_UsersInRole_fk">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersInRoles" EntitySet="UsersInRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,271 @@
+﻿/* ---------------------------------------------------------------------- */
+/*  Navbar and navbar elements
+/* ---------------------------------------------------------------------- */
+.navbar {
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 42px;
+    @include border-radius(0);
+    border-right: none;
+    border-left: none;
+    border-top: none;
+    background: none;
+    border-color: $white;
+
+    & > .container .navbar-brand {
+        padding: 14px 10px 12px;
+        margin-left: 0;
+        font-family: $fontRaleway;
+        font-size: 25px;
+        min-width: 210px;
+
+        i {
+            font-size: 20px;
+        }
+    }
+}
+
+.logo {
+    padding: 14px 10px 12px;
+    margin-left: 0;
+    font-family: $fontRaleway;
+    font-size: 25px;
+    min-width: 210px;
+
+    i {
+        font-size: 20px;
+    }
+}
+
+.header-default {
+    .navbar {
+        position: relative !important;
+    }
+}
+
+
+.navbar-tools {
+    & > ul {
+        list-style: none;
+
+        & > li {
+            float: left;
+
+            &.dropdown {
+                margin-left: 2px;
+                margin-right: 2px;
+
+                .dropdown-toggle {
+                    .badge {
+                        @include border-radius(12px 12px 12px 12px !important);
+                        font-size: 11px !important;
+                        font-weight: 300;
+                        padding: 3px 6px;
+                        position: absolute;
+                        right: 24px;
+                        text-align: center;
+                        @include text-shadow(none !important);
+                        top: 8px;
+                    }
+                }
+            }
+
+            & > a {
+                padding: 15px 15px 9px;
+                font-size: 16px;
+                line-height: 26px;
+            }
+        }
+    }
+
+    li {
+        &.view-all a {
+            padding: 8px 8px 6px !important;
+        }
+    }
+
+    .dropdown-menu {
+        background: none repeat scroll 0 0 white;
+        border: 1px solid #C7CBD5;
+        @include border-radius(0 0 4px 4px);
+        @include box-shadow(none);
+        list-style: none outside none;
+        margin: 0;
+        max-width: 300px;
+        min-width: 166px;
+        padding: 0;
+        position: absolute;
+        text-shadow: none;
+        top: 100%;
+        z-index: 1000;
+
+        & > li {
+            & > a {
+                &:hover, &:focus {
+                    background-color: #F4F6F9 !important;
+                    background-image: none;
+                    filter: none;
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+        }
+
+        li {
+            .dropdown-menu-title {
+                display: block;
+                font-weight: bold;
+                margin: -1px;
+                padding: 5px 10px;
+            }
+
+            p, a {
+                color: $dark-grey;
+                font-size: 12px;
+                font-weight: 300;
+                margin: 0;
+                padding: 8px 8px 6px;
+                border-bottom: 1px solid rgba(100, 100, 100, 0.22);
+                white-space: normal !important;
+                display: block;
+            }
+
+            p {
+                font-weight: bold;
+            }
+
+            a {
+                .author {
+                    color: #0362FD;
+                    display: block;
+                }
+
+                .preview {
+                    display: block;
+                }
+
+                .time {
+                    font-size: 12px;
+                    font-style: italic;
+                    font-weight: 600;
+                    display: block;
+                    float: right;
+                }
+            }
+
+            &:last-child {
+                a {
+                    border-bottom: none !important;
+                    @include border-radius(0 0 6px 6px);
+                }
+            }
+
+            &.view-all {
+                a {
+                    i {
+                        float: right;
+                        margin-top: 4px;
+                    }
+                }
+            }
+        }
+
+        &.notifications {
+            li > a > .label {
+                margin-right: 2px;
+                padding: 2px 4px;
+                text-align: center !important;
+            }
+        }
+    }
+
+    .dropdown-submenu {
+        &:hover, &:focus {
+            & > a {
+                background-color: #F4F6F9 !important;
+                background-image: none;
+                filter: none;
+                color: #000;
+                text-decoration: none;
+            }
+        }
+    }
+
+    .drop-down-wrapper {
+        height: 250px;
+        width: 270px;
+        overflow: hidden;
+        position: relative;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            a {
+                &:hover, &:focus {
+                    background-color: #F4F6F9 !important;
+                    background-image: none;
+                    filter: none;
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+
+            p, a {
+                color: $dark-grey;
+                font-size: 12px;
+                font-weight: 300;
+                margin: 0;
+                padding: 8px 8px 6px;
+                border-bottom: 1px solid rgba(100, 100, 100, 0.22);
+                white-space: normal !important;
+                display: block;
+            }
+        }
+
+        & > li {
+            &:last-child {
+                a {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    .thread-image {
+        margin-right: 8px;
+        float: left;
+        height: 50px;
+        width: 50px;
+    }
+}
+
+ul.notifications, ul.todo, ul.posts {
+    li {
+        min-width: 260px;
+    }
+}
+
+li.dropdown.current-user {
+    .dropdown-toggle {
+        padding: 10px 4px 7px 9px;
+    }
+
+    .dropdown-menu li a {
+        border-bottom: none !important;
+    }
+}
+
+.navbar-toggle {
+    border: none;
+    border-radius: 0;
+    margin-top: 5px;
+    margin-bottom: 4px;
+
+    span {
+        font-size: 16px;
+    }
+}

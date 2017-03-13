@@ -1,0 +1,192 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+}
+<script>
+    jQuery(document).ready(function () {
+        Main.init();
+        Index.init();
+    });
+</script>
+<!-- start: PAGE CONTENT -->
+<div class="row">
+    <div class="col-sm-4">
+        <div class="core-box">
+            <div class="heading">
+                <i class="clip-user-4 circle-icon circle-green"></i>
+                <h2>Manage Users</h2>
+            </div>
+            <div class="content">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+            <a class="view-more" href="#">
+                View More <i class="clip-arrow-right-2"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="core-box">
+            <div class="heading">
+                <i class="clip-clip circle-icon circle-teal"></i>
+                <h2>Manage Orders</h2>
+            </div>
+            <div class="content">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+            <a class="view-more" href="#">
+                View More <i class="clip-arrow-right-2"></i>
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="core-box">
+            <div class="heading">
+                <i class="clip-database circle-icon circle-bricky"></i>
+                <h2>Manage Data</h2>
+            </div>
+            <div class="content">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+            <a class="view-more" href="#">
+                View More <i class="clip-arrow-right-2"></i>
+            </a>
+        </div>
+    </div>
+</div>
+@*<div class="row">
+        <div class="col-sm-7">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <i class="clip-stats"></i> Site Visits
+                    <div class="panel-tools">
+                        <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                        </a>
+                        <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <a class="btn btn-xs btn-link panel-refresh" href="#">
+                            <i class="fa fa-refresh"></i>
+                        </a>
+                        <a class="btn btn-xs btn-link panel-close" href="#">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <div class="flot-medium-container">
+                        <div id="placeholder-h1" class="flot-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="clip-pie"></i> Acquisition
+                            <div class="panel-tools">
+                                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                                </a>
+                                <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-refresh" href="#">
+                                    <i class="fa fa-refresh"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-close" href="#">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="flot-mini-container">
+                                <div id="placeholder-h2" class="flot-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="clip-bars"></i> Pageviews real-time
+                            <div class="panel-tools">
+                                <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+                                </a>
+                                <a class="btn btn-xs btn-link panel-config" href="#panel-config" data-toggle="modal">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-refresh" href="#">
+                                    <i class="fa fa-refresh"></i>
+                                </a>
+                                <a class="btn btn-xs btn-link panel-close" href="#">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="flot-mini-container">
+                                <div id="placeholder-h3" class="flot-placeholder"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="row space12">
+                <ul class="mini-stats col-sm-12">
+                    <li class="col-sm-4">
+                        <div class="sparkline_bar_good">
+                            <span>3,5,9,8,13,11,14</span>+10%
+                        </div>
+                        <div class="values">
+                            <strong>18304</strong> Visits
+                        </div>
+                    </li>
+                    <li class="col-sm-4">
+                        <div class="sparkline_bar_neutral">
+                            <span>20,15,18,14,10,12,15,20</span>0%
+                        </div>
+                        <div class="values">
+                            <strong>3833</strong> Unique Visitors
+                        </div>
+                    </li>
+                    <li class="col-sm-4">
+                        <div class="sparkline_bar_bad">
+                            <span>4,6,10,8,12,21,11</span>+50%
+                        </div>
+                        <div class="values">
+                            <strong>18304</strong> Pageviews
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="row space12">
+                <div class="col-sm-6">
+                    <div class="easy-pie-chart">
+                        <span class="bounce number" data-percent="44"> <span class="percent">44</span> </span>
+                        <div class="label-chart">
+                            Bounce Rate
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="easy-pie-chart">
+                        <span class="cpu number" data-percent="82"> <span class="percent">82</span> </span>
+                        <div class="label-chart">
+                            New Visits
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+<!-- end: PAGE CONTENT-->

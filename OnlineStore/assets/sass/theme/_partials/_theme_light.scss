@@ -1,0 +1,302 @@
+﻿body,
+.main-container,
+.footer,
+.main-navigation,
+ul.main-navigation-menu > li > ul.sub-menu,
+.navigation-small ul.main-navigation-menu > li > ul.sub-menu {
+    background-color: darken($light-base, 4%);
+}
+
+.layout-boxed {
+    header, .main-container, .footer {
+        border-left-color: darken($light-base, 15%);
+        border-right-color: darken($light-base, 15%);
+    }
+}
+
+.navbar-inverse {
+    background: rgba($light-base, 0.9);
+    border-color: darken($light-base, 15%);
+}
+
+.navbar-inverse {
+    .navbar-brand, .navbar-brand:hover, .nav > li > a {
+        color: darken($light-base, 60);
+    }
+
+    .navbar-brand {
+        &:hover {
+            i {
+                color: $light-badge;
+            }
+        }
+
+        i {
+            color: $light-badge;
+        }
+    }
+
+    .nav {
+        & > li {
+            &.current-user {
+                & > a {
+                    color: lighten($light-text, 6) !important;
+
+                    i {
+                        display: inline-block;
+                        text-align: center;
+                        width: 1.25em;
+                        color: $light-badge !important;
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            & > a {
+                color: lighten($light-text, 26);
+            }
+
+            &:hover, &:active {
+                & > a {
+                    color: $light-text;
+                    background: darken($light-base, 4);
+                }
+            }
+
+            &.dropdown {
+                &.open, &.active, &.open.active {
+                    & > .dropdown-toggle {
+                        background: darken($light-base, 15);
+                        color: $light-text;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn-navbar {
+        background-color: darken($light-base, 15);
+        @include background(linear-gradient(top, #34485e 0%, #283b52 100%));
+    }
+
+    .navbar-toggle {
+        &:hover, &:focus {
+            background-color: darken($light-base, 15);
+            @include box-shadow(0px 0px 15px $light-text);
+        }
+    }
+}
+
+.navbar-tools {
+    .dropdown-menu {
+        li {
+            .dropdown-menu-title {
+                background: darken($light-base, 15);
+                color: $light-text;
+            }
+        }
+    }
+}
+
+.nav {
+    & > li {
+        &.dropdown {
+            .dropdown-toggle {
+                .badge {
+                    background-color: $light-badge;
+                    color: $light-base;
+                    border: none;
+                }
+            }
+        }
+    }
+}
+
+.navbar-toggle {
+    background-color: $light-base;
+
+    span {
+        color: lighten(#555555, 26);
+    }
+}
+
+
+ul.main-navigation-menu {
+    & > li {
+        a {
+            border-bottom: none;
+            border-top-color: darken($light-base, 15%);
+            color: $light-text;
+
+            & > i {
+                color: $light-badge;
+                font-weight: normal;
+            }
+        }
+
+        &.active {
+            & > a {
+                background: $light-badge !important;
+                border-top: none !important;
+                color: $light-base;
+
+                .selected {
+                    &:before {
+                        color: $light-badge !important;
+                    }
+                }
+
+                i {
+                    color: $light-base;
+                    font-weight: normal;
+                }
+            }
+        }
+
+        &.open {
+            background-color: darken($light-base, 10%);
+        }
+
+        & > a {
+            &:hover {
+                background-color: darken($light-base, 10%);
+            }
+        }
+
+        &:hover {
+            & > a {
+                background-color: darken($light-base, 10%);
+            }
+        }
+
+        & > ul {
+            &.sub-menu {
+                & > li {
+                    &.open, &.active {
+                        & > a {
+                            color: darken($light-base, 100) !important;
+                            background: darken($light-base, 10%) !important;
+                        }
+                    }
+
+                    a {
+                        &:hover {
+                            color: darken($light-base, 100) !important;
+                            background: darken($light-base, 10%) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navigation-toggler, .go-top {
+    background-color: darken($light-base, 10%) !important;
+    color: rgba($light-text, 0.3);
+}
+
+.navigation-toggler:hover i:first-child, .go-top:hover {
+    color: $light-text;
+}
+
+.navigation-toggler {
+    &:hover {
+        i {
+            &:last-child {
+                color: rgba($light-text, 0.3);
+            }
+        }
+    }
+}
+
+.navigation-small {
+    .navigation-toggler {
+        &:hover {
+            i {
+                &:first-child {
+                    color: rgba($light-text, 0.3);
+                }
+
+                &:last-child {
+                    color: $light-text;
+                }
+            }
+        }
+    }
+}
+
+.breadcrumb {
+    i {
+        color: rgba($light-badge, 0.4);
+    }
+
+    a {
+        color: $light-badge;
+    }
+}
+
+
+.footer-fixed {
+    .footer {
+        background: rgba($light-base, 0.9) !important;
+        border-top-color: darken($light-base, 10%);
+    }
+}
+
+.footer-inner {
+    color: $light-text;
+}
+
+.main-content {
+    .container {
+        border-left: 1px solid darken($light-base, 15%);
+        border-bottom: 1px solid darken($light-base, 15%);
+    }
+}
+
+body {
+    &.rtl {
+        .main-content {
+            .container {
+                border-left: none;
+                border-right: 1px solid darken($light-base, 15%);
+            }
+        }
+    }
+}
+
+/* ie8 fixes */
+.ie8 {
+    .navbar-inverse {
+        background: $light-base;
+    }
+
+    .footer-fixed {
+        .footer {
+            background: $light-base;
+        }
+    }
+}
+/* -------- */
+
+@media (max-width: 767px) {
+    .navbar-inverse {
+        background: none !important;
+    }
+
+    .navbar-tools {
+        background: rgba($light-base, 0.9);
+        border-top-color: darken($light-base, 15%);
+    }
+    /* ie8 fixes */
+    .ie8 {
+        .navbar-tools {
+            background: $light-base;
+        }
+    }
+    /**/
+    .navbar-header {
+        background-color: $light-base;
+    }
+}

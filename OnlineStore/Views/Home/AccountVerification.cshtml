@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "AccountVerification";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <div class="row" id="error-page">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="box">
+                        @*<h2 style="color:green;">Transaction Successful!</h2>*@
+                        @if (ViewBag.DisplayMessage == "success")
+                        {
+                            if (ViewData.ModelState[""] != null)
+                            {
+                                <div class="bs-example">
+                                    <div class="alert alert-success fade in">
+                                        <a href="#" class="close" data-dismiss="alert">×</a>
+                                        <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                                    </div>
+                                </div>
+                            }
+                        }
+                        else if (ViewBag.DisplayMessage == "Info")
+                        {
+                            if (ViewData.ModelState[""] != null)
+                            {
+                                <div class="bs-example">
+                                    <div class="alert alert-danger fade in">
+                                        <a href="#" class="close" data-dismiss="alert">×</a>
+                                        <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                                    </div>
+                                </div>
+                            }
+                        }
+                        @*<h4 class="text-muted">Your account has been successfully activated</h4>*@
+
+                        <p class="text-center">To continue kindly log in <strong>to your account</strong> or <strong>click the button</strong> below</p>
+
+                        <p class="buttons">
+                            <a href="@Url.Content("~/home/index")" class="btn btn-primary"><i class="fa fa-home"></i> Go to Homepage</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-9 -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->

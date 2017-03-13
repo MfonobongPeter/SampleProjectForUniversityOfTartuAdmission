@@ -1,0 +1,59 @@
+﻿/* ---------------------------------------------------------------------- */
+/*  Navbar and navbar elements
+/* ---------------------------------------------------------------------- */
+
+body {
+    &.rtl {
+        .navbar-tools {
+
+            & > ul {
+                & > li {
+                    &.dropdown {
+                        .dropdown-toggle {
+                            .badge {
+                                left: 24px;
+                                right: auto;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .thread-image {
+                margin-left: 8px;
+                margin-right: 0;
+                float: right;
+            }
+
+            .dropdown-menu {
+                right: auto;
+                left: 0;
+
+                li {
+
+                    &.view-all {
+                        a {
+                            i {
+                                float: left;
+                            }
+                        }
+                    }
+
+                    a {
+                        .time {
+                            float: left;
+                        }
+                    }
+                }
+            }
+
+            & > ul {
+                float: left !important;
+
+                & > li {
+                    float: right !important;
+                }
+            }
+        }
+    }
+}

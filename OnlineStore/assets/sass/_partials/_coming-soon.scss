@@ -1,0 +1,77 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Coming Soon
+ /* ---------------------------------------------------------------------- */
+.coming-soon {
+    text-align: center;
+    background-color: $white !important;
+
+    #disclaimer {
+        display: block;
+
+        p {
+            color: #909091;
+            font-size: 0.875em;
+            font-style: italic;
+
+            span {
+                color: #2A9CCC;
+                font-size: 1.2em;
+            }
+        }
+    }
+}
+
+.timer-area {
+    background-image: url("../images/bg.png");
+    background-color: rgba(0, 0, 0, 0);
+    margin-bottom: 4em;
+    padding-top: 2em;
+    color: #1F2225;
+    font: 1em/1.5em "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+
+    h1 {
+        color: $white;
+    }
+}
+
+
+
+ul#countdown {
+    margin: 0;
+    padding: 0;
+
+    li {
+        display: inline-block;
+        background: transparent url('../images/timer-piece.png') no-repeat left top;
+        width: 104px;
+        margin-bottom: 4em;
+        text-align: center;
+
+        span {
+            font-size: 3em;
+            font-weight: bold;
+            color: #1f2225;
+            height: 108px;
+            line-height: 108px;
+            position: relative;
+
+            &:before {
+                content: '';
+                width: 100%;
+                height: 1px;
+                border-top: 1px solid white;
+                position: absolute;
+                top: 25px;
+            }
+        }
+
+        p {
+            &.timeRefDays, &.timeRefHours, &.timeRefMinutes, &.timeRefSeconds {
+                margin-top: 1em;
+                color: #909091;
+                text-transform: uppercase;
+                font-size: .875em;
+            }
+        }
+    }
+}

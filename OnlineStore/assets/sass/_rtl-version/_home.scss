@@ -1,0 +1,38 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Home elements
+ /* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+
+        .mini-stats {
+            li {
+                border-left: 1px solid $light-grey;
+                border-right: 1px solid $white;
+
+                &:last-child {
+                    border-left: none;
+                }
+            }
+        }
+
+        .core-box {
+
+            .view-more {
+                float: left;
+            }
+
+            .heading {
+                h2 {
+                    padding-left: 0;
+                    padding-right: 65px;
+                }
+            }
+
+            .core-box {
+                .circle-icon {
+                    float: right;
+                }
+            }
+        }
+    }
+}

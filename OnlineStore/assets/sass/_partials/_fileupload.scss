@@ -1,0 +1,28 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	FileUpload
+/* ---------------------------------------------------------------------- */
+.fileupload {
+    .uneditable-input {
+        white-space: nowrap;
+    }
+}
+
+.fileupload-new {
+    .input-group {
+        .btn-file {
+            @include border-radius(0 3px 3px 0 !important);
+        }
+    }
+}
+
+/* ---------------------------------------------------------------------- */
+/*	Dropzone File Upload
+/* ---------------------------------------------------------------------- */
+
+.dz-default {
+    &.dz-message {
+        font-size: 21px !important;
+        font-family: $fontRaleway !important;
+
+    }
+}

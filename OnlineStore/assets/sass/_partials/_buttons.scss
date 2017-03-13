@@ -1,0 +1,473 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Buttons
+/* ---------------------------------------------------------------------- */
+
+@mixin class-btn-disable {
+    &.disabled {
+        &:hover, &:focus, &:active, &.active {
+            @content;
+        }
+    }
+
+    &[disabled] {
+        &:hover, &:focus, &:active, &.active {
+            @content;
+        }
+    }
+}
+
+@mixin btn-teal-disable {
+    background-color: $teal;
+    border-color: $teal;
+    color: $white;
+}
+
+@mixin btn-beige-disable {
+    background-color: #c4c488;
+    border-color: #bbbb77;
+    color: $white;
+}
+
+@mixin btn-dark-beige-disable {
+    background-color: #afaa6d;
+    border-color: #afaa6d;
+    color: $white;
+}
+
+@mixin btn-orange-disable {
+    background-color: #e6674a;
+    border-color: #e6674a;
+    color: $white;
+}
+
+@mixin btn-purple-disable {
+    background-color: $purple;
+    border-color: #333;
+    color: $white;
+}
+
+@mixin btn-dark-grey-disable {
+    background-color: #333;
+    border-color: #333;
+    color: $white;
+}
+
+@mixin btn-med-grey-disable {
+    background-color: #666;
+    border-color: #666;
+    color: $white;
+}
+
+@mixin btn-light-grey-disable {
+    background-color: #999;
+    border-color: #999;
+    color: $white;
+}
+
+@mixin btn-bricky-disable {
+    background-color: $bricky;
+    border-color: $bricky;
+    color: $white;
+}
+
+@mixin btn-green-disable {
+    background-color: $green;
+    border-color: $green;
+    color: $white;
+}
+
+@mixin btn-blue-disable {
+    background-color: $blue;
+    border-color: $blue;
+    color: $white;
+}
+
+@mixin btn-yellow-disable {
+    background-color: #FFB848;
+    border-color: #FFB848;
+    color: $white;
+}
+
+@mixin btn-red-disable {
+    background-color: #E02222;
+    border-color: #E02222;
+    color: $white;
+}
+
+.btn {
+    font-family: $fontOpenSans;
+    @include transition(all 0.3s ease 0s);
+}
+
+.btn-teal {
+    background-color: $teal;
+    border-color: #4d8189;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #4d8189;
+        border-color: #447178;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-teal-disable;
+    }
+}
+
+.btn-beige {
+    background-color: #cc9;
+    border-color: #c4c488;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #c4c488;
+        border-color: #bbbb77;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-beige-disable;
+    }
+}
+
+.btn-dark-beige {
+    background-color: #afaa6d;
+    border-color: #a6a05d;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #a6a05d;
+        border-color: #979152;
+        color: #ffffff;
+    }
+
+    @include class-btn-disable {
+        @include btn-dark-beige-disable;
+    }
+}
+
+.btn-orange {
+    background-color: #e6674a;
+    border-color: #e35434;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #e35434;
+        border-color: #de421f;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-orange-disable;
+    }
+}
+
+.btn-purple {
+    background-color: $purple;
+    border-color: #413d5c;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #4c476c;
+        border-color: #413d5c;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-purple-disable;
+    }
+}
+
+.btn-dark-grey {
+    background-color: #333;
+    border-color: #333;
+    color: #ffffff;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #262626;
+        border-color: #1a1a1a;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-dark-grey-disable;
+    }
+}
+
+.btn-med-grey {
+    background-color: #666;
+    border-color: #595959;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #595959;
+        border-color: #4d4d4d;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-med-grey-disable;
+    }
+}
+
+.btn-light-grey {
+    background-color: #999;
+    border-color: #8c8c8c;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #8c8c8c;
+        border-color: #808080;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-light-grey-disable;
+    }
+}
+
+.btn-bricky {
+    background-color: $bricky;
+    border-color: #b33426;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #b33426;
+        border-color: #9e2e21;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-bricky-disable;
+    }
+}
+
+.btn-green {
+    background-color: $green;
+    border-color: #327b00;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #327b00;
+        border-color: #286100;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-green-disable;
+    }
+}
+
+.btn-blue {
+    background-color: $blue;
+    border-color: #2d4259;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #2d4259;
+        border-color: #253648;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-blue-disable;
+    }
+}
+
+.btn-yellow {
+    background-color: #FFB848;
+    border-color: #ffae2f;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #ffae2f;
+        border-color: #ffa415;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-yellow-disable;
+    }
+}
+
+.btn-red {
+    background-color: #E02222;
+    border-color: #cc1d1d;
+    color: $white;
+
+    &:hover, &:focus, &:active, &.active {
+        background-color: #cc1d1d;
+        border-color: #b61919;
+        color: $white;
+    }
+
+    @include class-btn-disable {
+        @include btn-red-disable;
+    }
+}
+
+fieldset[disabled] {
+    .btn-teal {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-teal-disable;
+        }
+    }
+
+    .btn-beige {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-beige-disable;
+        }
+    }
+
+    .btn-dark-beige {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-dark-beige-disable;
+        }
+    }
+
+    .btn-orange {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-orange-disable;
+        }
+    }
+
+    .btn-purple {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-purple-disable;
+        }
+    }
+
+    .btn-dark-grey {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-dark-grey-disable;
+        }
+    }
+
+    .btn-med-grey {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-med-grey-disable;
+        }
+    }
+
+    .btn-light-grey {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-light-grey-disable;
+        }
+    }
+
+    .btn-bricky {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-bricky-disable;
+        }
+    }
+
+    .btn-green {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-bricky-disable;
+        }
+    }
+
+    .btn-blue {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-blue-disable;
+        }
+    }
+
+    .btn-yellow {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-yellow-disable;
+        }
+    }
+
+    .btn-red {
+        &:hover, &:focus, &:active, &.active {
+            @include btn-red-disable;
+        }
+    }
+}
+
+.btn-teal, .btn-beige, .btn-dark-beige, .btn-orange, .btn-purple, .btn-dark-grey, .btn-med-grey, .btn-light-grey, .btn-bricky, .btn-green, .btn-blue, .btn-yellow, .btn-red {
+    .caret {
+        border-top-color: $white;
+    }
+}
+
+.dropup {
+    .btn-teal, .btn-beige, .btn-dark-beige, .btn-orange, .btn-purple, .btn-dark-grey, .btn-med-grey, .btn-light-grey, .btn-bricky, .btn-green, .btn-blue, .btn-yellow, .btn-red {
+        .caret {
+            border-bottom: 4px solid $white;
+        }
+    }
+}
+
+.btn-squared {
+    @include border-radius(0 !important);
+}
+
+.btn-icon {
+    background-color: #EFEFEF;
+    background-image: -moz-linear-gradient(center top, #FAFAFA, #EFEFEF);
+    border: 1px solid $light-grey;
+    @include border-radius(2px);
+    @include box-shadow(0 1px 0 rgba(255, 255, 255, 0.8));
+    cursor: pointer;
+    height: 80px;
+    display: block;
+    font-size: 14px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding: 5px 0 0;
+    position: relative;
+    text-align: center;
+    @include transition(all 0.3s ease 0s);
+    color: $dark-grey;
+
+    &:hover {
+        border-color: #A5A5A5;
+        @include box-shadow(0 0 3px rgba(0, 0, 0, 0.25));
+        color: #444444;
+        text-decoration: none;
+        @include text-shadow(0 1px 0 $white);
+    }
+
+    .badge {
+        @include border-radius(12px !important);
+        border-style: solid;
+        border-width: 0;
+        box-shadow: none;
+        color: $white !important;
+        font-family: $fontOpenSans;
+        font-size: 11px !important;
+        font-weight: 300;
+        padding: 3px 7px;
+        position: absolute;
+        right: -5px;
+        text-shadow: none;
+        top: -5px;
+    }
+
+    [class^="fa-"], [class*=" fa-"], [class^="clip-"], [class*=" clip-"] {
+        clear: both;
+        display: block;
+    }
+}
+
+.buttons-widget {
+
+    .btn, .make-switch {
+        margin-bottom: 5px;
+    }
+
+    .btn-group-vertical {
+        .btn {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.btn-social {
+    width: auto !important;
+    float: left;
+    margin: 5px !important;
+}

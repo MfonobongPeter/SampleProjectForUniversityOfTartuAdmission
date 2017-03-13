@@ -1,0 +1,277 @@
+﻿@model FECombineViewModel
+@{
+    ViewBag.Title = @ViewBag.Title;
+  Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";     
+}
+@section metaTags
+{
+    <meta name='keywords' content='@ViewBag.MetaKeywords' />
+    <meta name='description' content='@ViewBag.MetaDescription' />
+}
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li>
+                    ProductDetails
+                </li>
+                
+            </ul>
+
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** MENUS AND FILTERS ***
+            _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 1, name = SeoFriendly.URLFriendly("BARBING/HAIR DRESSING SALON") })">BARBING/HAIR DRESSING SALON</a>
+                            
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 2, name = SeoFriendly.URLFriendly("SPA EQUIPMENTS") })">SPA EQUIPMENTS</a>
+                           
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 4, name = SeoFriendly.URLFriendly("FACIAL EQUIPMENTS") })">FACIAL EQUIPMENTS</a>
+                           
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 5, name = SeoFriendly.URLFriendly("WAXING PRODUCTS") })">WAXING PRODUCTS</a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 3, name = SeoFriendly.URLFriendly("Make Up") })">Make Up</a>
+                            
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 6, name = SeoFriendly.URLFriendly("HAIR CARE") })">HAIR CARE</a>
+                           
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 7, name = SeoFriendly.URLFriendly("PEDICURE AND MANICURE") })">PEDICURE AND MANICURE</a>
+                            
+                        </li>
+                    </ul>
+                </div>
+            </div>           
+        </div>
+        <div class="col-md-9">
+
+            <div class="row" id="productMain">
+           <form role="form" class="form-horizontal" method="POST">
+            @if (ViewBag.DisplayMessage == "success")
+            {
+                if (ViewData.ModelState[""] != null)
+                {
+                    <div class="bs-example">
+                        <div class="alert alert-success fade in">
+                            <a href="#" class="close" data-dismiss="alert">×</a>
+                            <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                        </div>
+                    </div>
+                }
+            }
+            else if (ViewBag.DisplayMessage == "Info")
+            {
+                if (ViewData.ModelState[""] != null)
+                {
+                    <div class="bs-example">
+                        <div class="alert alert-danger fade in">
+                            <a href="#" class="close" data-dismiss="alert">×</a>
+                            <strong>Error!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                        </div>
+                    </div>
+                }
+            }
+            @*@Html.AntiForgeryToken()*@
+                <div class="col-sm-6">
+                    <div id="mainImage">
+                        <img src="@Url.Content(Model.Details.ProductSideView)" alt="" class="img-responsive">
+                    </div>
+
+                    @*<div class="ribbon sale">
+                        <div class="theribbon">SALE</div>
+                        <div class="ribbon-background"></div>
+                    </div>*@
+                    <!-- /.ribbon -->
+                    @if (Model.Details.ProductIsNew == true)
+                    {
+                        <div class="ribbon new">
+                            <div class="theribbon">NEW</div>
+                            <div class="ribbon-background"></div>
+                        </div>
+            <!-- /.ribbon -->
+                    }
+                </div>
+                <div class="col-sm-6">
+                    <div class="box">
+                        <h3 class="text-center">@Model.Details.ProductName</h3>
+                        <p class="goToDescription">
+                            <a href="#details" class="scroll-to">Scroll down to product details, Availibilty and quantity</a>
+                        </p>
+                        <p class="price">Price: ₦@Model.Details.ProductPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</p>
+
+                        <p class="text-center buttons">
+                            @*<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                            <a href="#" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>*@
+                            
+                            <button type="submit" value="Addtocart" class="btn btn-primary" name="command"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                            <button type="submit" value="Addtowishlist" class="btn btn-default" name="command"><i class="fa fa-heart"></i> Add to wishlist</button>
+                           
+                        </p>
+
+
+                    </div>
+
+                    <div class="row" id="thumbs">
+                        <div class="col-xs-4">
+                            <a href="@Model.Details.ProductSideView" class="thumb">
+                                <img src="@Model.Details.ProductSideViewThumb" alt="@Model.Details.ProductName.ToLower()" class="img-responsive">
+                            </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <a href="@Model.Details.ProductFrontView" class="thumb">
+                                <img src="@Model.Details.ProductFrontViewThumb" alt="@Model.Details.ProductName.ToLower()" class="img-responsive">
+                            </a>
+                        </div>
+                        @*<div class="col-xs-4">
+                            <a href="~/img/detailbig3.jpg" class="thumb">
+                                <img src="~/img/detailsquare3.jpg" alt="" class="img-responsive">
+                            </a>
+                        </div>*@
+                    </div>
+                </div>
+              </form>
+            </div>
+
+
+            <div class="box" id="details">
+                <p>
+                    <h4>Description</h4>
+                <p>@Model.Details.ProductDesc</p>
+                <h4>Other Details</h4>
+                <ul style="line-height:1cm;">
+                    <li><b>   Model No.:</b> @Model.Details.ProductSKU</li>
+                    <li><b>    Quantity:</b> @Model.Details.ProductQuantity</li>
+                    @*<li><b>      Weight:</b> @Model.Details.ProductWeight Kg</li>*@
+                    <li><b>    Location:</b> @Model.Details.ProductLocation</li>
+                    <li><b>      Colour:</b> @Model.Details.ProductColour</li>
+                    <li><b>Availability:</b> @Model.Details.ProductAvailability</li>
+                </ul>
+                @*<h4>Size & Fit</h4>
+                <ul>
+                    <li>Regular fit</li>
+                    <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+                </ul>*@
+
+                <blockquote>
+                    <p>
+                        <em>@Model.Details.ProductLongDesc</em>
+                    </p>
+                </blockquote>
+
+                <hr>
+                <div class="social">
+                    <h4>Show it to your friends</h4>
+                    <p>
+                        @*<a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>*@
+                        <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                        <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                        <div class="fb-share-button" data-href="https://www.facebook.com/glorious.evidence" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.facebook.com%2Fglorious.evidence&amp;src=sdkpreparse">Share</a></div>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row same-height-row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="box same-height">
+                        <h3>You may also like these products</h3>
+                    </div>
+                </div>
+
+                @foreach (var item in Model.List)
+                {
+                    <div class="col-md-3 col-sm-6">
+                        <div class="product same-height">
+                            <div class="flip-container">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                            <img src="@Url.Content(item.ProductFrontViewThumb)" alt="@item.ProductName.ToLower()" class="img-responsive">
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                            <img src="@Url.Content(item.ProductSideViewThumb)" alt="@item.ProductName.ToLower()" class="img-responsive">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="invisible">
+                                <img src="@Url.Content(item.ProductSideViewThumb)" alt="@item.ProductName.ToLower()" class="img-responsive">
+                            </a>
+                            <div class="text">
+                                <h3>@item.ProductName</h3>
+                                <p class="price"> @item.ProductSKU</p>
+                                <p class="price">₦@item.ProductPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</p>
+                                <p class="buttons">
+                                    <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="btn btn-default">View detail</a>
+                                    @*<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>*@
+                                </p>
+                            </div>
+                        </div>
+                        <!-- /.product -->
+                        @if (Model.Details.ProductIsNew == true)
+                        {
+                            <div class="ribbon new">
+                                <div class="theribbon">NEW</div>
+                                <div class="ribbon-background"></div>
+                            </div>
+            <!-- /.ribbon -->
+                        }
+                    </div>
+                }
+
+            </div>
+        </div>
+        <!-- /.col-md-9 -->
+    </div>
+</div>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-83962844-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+
+
+
+
+
+
+            
+

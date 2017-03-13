@@ -1,0 +1,1127 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Tabs
+/* ---------------------------------------------------------------------- */
+.tabbable {
+    margin-bottom: 15px;
+}
+
+.nav-tabs {
+    border-color: $light-grey;
+    margin-bottom: 0;
+    margin-left: 0;
+    position: relative;
+    top: 1px;
+
+    & > li {
+        &:first-child {
+            & > a {
+                margin-left: 0;
+            }
+        }
+
+        & > a {
+            background-color: #F9F9F9;
+            border-color: $light-grey;
+            @include border-radius(0 !important);
+            color: #999999;
+            line-height: 16px;
+            margin-right: -1px;
+            position: relative;
+
+            &:hover {
+                background-color: $white;
+                border-color: $light-grey;
+                color: #4C8FBD;
+            }
+
+            &:focus {
+                background-color: #F9F9F9;
+                border-color: $light-grey;
+                @include border-radius(0 !important);
+                color: #999999;
+                line-height: 16px;
+                margin-right: -1px;
+                position: relative;
+            }
+        }
+
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                background-color: $white;
+                border-color: $light-grey $light-grey transparent;
+                border-top: 2px solid $light-grey;
+                color: $dark-grey;
+                line-height: 16px;
+                margin-top: -1px;
+                z-index: 12;
+            }
+        }
+    }
+}
+
+.tab-content {
+    border: 1px solid $light-grey;
+    padding: 16px 12px;
+    position: relative;
+}
+
+.tabs-below {
+    & > .nav-tabs {
+        border-bottom-width: 0;
+        border-color: $light-grey;
+        margin-bottom: 0;
+        margin-top: -1px;
+        top: auto;
+
+        & > li {
+            &.active {
+                & > a, & > a:hover, & > a:focus {
+                    border-bottom: 2px solid $light-grey;
+                    border-color: transparent $light-grey $light-grey;
+                    border-top-width: 1px;
+                    margin-top: 0;
+                }
+            }
+        }
+
+        & > a, & > a:hover, & > a:focus {
+            border-color: $light-grey;
+        }
+    }
+}
+
+.tabs-left, .tabs-right {
+    .nav-tabs {
+        & > li {
+            & > a {
+                min-width: 60px;
+            }
+        }
+    }
+
+    .tab-content {
+        overflow: auto;
+    }
+}
+
+.tabs-left {
+    & > .nav-tabs {
+        border-color: $light-grey;
+        float: left;
+        margin-bottom: 0;
+        top: auto;
+
+        & > li {
+            float: none;
+
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey;
+                    border-right: none;
+                    border-left: 2px solid $light-grey;
+                    border-top-width: 1px;
+                    margin: 0 -1px;
+                }
+            }
+
+            & > a, & > a:focus, & > a:hover {
+                border-color: $light-grey;
+                margin: 0 -1px 0 0;
+            }
+        }
+    }
+}
+
+
+.tabs-right {
+    & > .nav-tabs {
+        border-color: $light-grey;
+        float: right;
+        margin-bottom: 0;
+        top: auto;
+
+        & li {
+
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey;
+                    border-left: none;
+                    border-right: 2px solid $light-grey;
+                    border-top-width: 1px;
+                    margin: 0 -2px 0 -1px;
+                }
+            }
+
+            & > a, & > a:focus, & > a:hover {
+                border-color: $light-grey;
+                margin: 0 -1px;
+            }
+        }
+    }
+}
+
+.nav-tabs {
+    & > li {
+        &.active {
+            & > a {
+                & > {
+                    .badge, [class*="fa-"] {
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .dropdown-toggle {
+                background-color: #4F99C6;
+                border-color: #4F99C6;
+                color: $white;
+
+                & > [class*="fa-"] {
+                    color: inherit !important; //$white !important;
+                    opacity: 1;
+                }
+            }
+        }
+
+
+        & > a {
+            & > {
+                [class*="fa-"] {
+                    opacity: 0.75;
+                }
+
+                .badge {
+                    line-height: 8px;
+                    opacity: 0.7;
+                }
+            }
+        }
+    }
+
+    li {
+        [class*=" fa-"], [class^="fa-"] {
+            display: inline-block;
+            text-align: center;
+            width: 1.25em;
+        }
+    }
+}
+
+/*teal*/
+
+.tab-teal {
+    & > li {
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                border-color: $light-grey;
+                border-top: 2px solid $teal;
+            }
+        }
+
+        & > a {
+            &:hover {
+                color: $teal;
+            }
+        }
+
+        &.dropdown {
+            &.open {
+                &.active {
+                    & > a {
+                        &:hover, & a:focus {
+                            background-color: $teal;
+                            border-color: $teal;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.open {
+            .dropdown-toggle {
+                background-color: $teal;
+                border-color: $teal;
+                color: $white;
+            }
+        }
+    }
+
+    .dropdown-menu, .active {
+        & > li {
+            & > a {
+                &:hover, &:focus {
+                    background-color: $teal;
+                }
+            }
+        }
+    }
+}
+
+.tabs-left {
+    & > .tab-teal {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey;
+                    border-right: none;
+                    border-left: 2px solid $teal;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below {
+    & > .tab-teal {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey;
+                    border-top: none;
+                    border-bottom: 2px solid $teal;
+                }
+            }
+        }
+    }
+
+    .tab-padding {
+        &.tab-teal {
+            & > li {
+                &.active {
+                    & > a {
+                        border-color: transparent #7DB4D8 #7DB4D8;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-tabs {
+        &.tab-teal {
+            padding-bottom: 6px;
+            border-bottom-color: $light-grey;
+            border-top: 0 none;
+        }
+    }
+}
+
+.tabs-right {
+    & > .tab-teal {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey;
+                    border-left: none;
+                    border-right: 2px solid $teal;
+                }
+            }
+        }
+    }
+}
+
+
+.tab-padding {
+    &.tab-teal {
+        border-bottom-color: $teal;
+        background-color: #F3F8F8;
+
+        & > li {
+            & > a, & > a:focus, & > a:hover {
+                border-color: rgba(0, 0, 0, 0);
+                color: $white;
+            }
+
+            & > a, & > a:focus {
+                background-color: #7DAFB7;
+            }
+
+            &:not(.active) {
+                & > a {
+                    &:hover {
+                        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) transparent;
+                        opacity: 0.85;
+                    }
+
+                    & > [class*="fa-"] {
+                        &:first-child {
+                            color: $white !important;
+                        }
+                    }
+
+                    .badge {
+                        background-color: $white !important;
+                        color: rgba(0, 0, 0, 0.4) !important;
+                    }
+                }
+            }
+
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    background-color: $white;
+                    box-shadow: none;
+                    color: #4F80A0;
+                    border-color: $teal $light-grey transparent;
+                }
+            }
+        }
+    }
+}
+
+/*bricky*/
+
+.tab-bricky {
+    & > li {
+
+        > a {
+            &:hover {
+                color: $bricky;
+            }
+        }
+
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                border-color: $bricky $light-grey transparent !important;
+                border-top: 2px solid $bricky !important;
+                background-color: transparent !important;
+                color: $dark-grey !important;
+            }
+        }
+
+        &.dropdown {
+            &.open {
+                &.active {
+                    & > a {
+                        &:hover, &:focus {
+                            background-color: $bricky;
+                            border-color: $bricky;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.open {
+            .dropdown-toggle {
+                background-color: $bricky !important;
+                border-color: $bricky !important;
+                color: $white !important;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        & > li {
+            & > a {
+                &:hover, &:focus {
+                    background-color: $bricky;
+                }
+            }
+        }
+    }
+
+    .active {
+        & > a, & > a:hover, & > a:focus {
+            background-color: $bricky;
+        }
+    }
+}
+
+.tabs-left {
+    & > .tab-bricky {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey transparent $light-grey $bricky;
+                    border-left: 2px solid $bricky;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below {
+    & > .tab-bricky {
+        & > li {
+            &.active {
+                & > a, & > a:hover, & > a:focus {
+                    border-bottom: 2px solid $bricky;
+                    border-color: transparent $light-grey $bricky;
+                }
+            }
+        }
+    }
+}
+
+.tabs-righ {
+    & > .tab-bricky {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey $bricky $light-grey transparent;
+                    border-right: 2px solid $bricky;
+                }
+            }
+        }
+    }
+}
+
+.tab-padding {
+    &.tab-bricky {
+        border-bottom-color: $bricky;
+        background-color: #FBEEEC;
+
+        & > li {
+            & > a, & > a:focus, & > a:hover {
+                border-color: rgba(0, 0, 0, 0);
+                color: $white;
+            }
+
+            & > a, & > a:focus {
+                background-color: #DC6456;
+            }
+
+            &:not(.active) {
+                & > a {
+                    &:hover {
+                        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) transparent;
+                        opacity: 0.85;
+                    }
+
+                    & > [class*="fa-"]:first-child {
+                        color: $white !important;
+                    }
+
+                    & > .badge {
+                        background-color: $white !important;
+                        color: rgba(0, 0, 0, 0.4) !important;
+                    }
+                }
+            }
+
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    background-color: $white;
+                    border-color: $bricky $light-grey transparent;
+                    @include box-shadow(none);
+                    color: $dark-grey;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below {
+    .tab-padding {
+        &.tab-bricky {
+            & > li {
+                &.active {
+                    & > a {
+                        border-color: transparent $bricky $light-grey;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-tabs {
+        &.tab-bricky {
+            padding-bottom: 6px;
+            border-bottom-color: $light-grey;
+            border-top: 0 none;
+        }
+    }
+}
+
+/*green*/
+.tab-green {
+    & > li {
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                border-color: $green $light-grey transparent;
+                border-top: 2px solid $green;
+            }
+        }
+
+        & > a {
+            &:hover {
+                color: $green;
+            }
+        }
+
+        &.dropdown {
+            &.open {
+                &.active {
+                    & > a {
+                        &:hover, &:focus {
+                            background-color: $green;
+                            border-color: $green;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.open {
+            .dropdown-toggle {
+                background-color: $green;
+                border-color: $green;
+                color: $white;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        & > li {
+            & > a {
+                &:hover, &:focus {
+                    background-color: $green;
+                }
+            }
+        }
+    }
+
+    .active {
+        & > a, & > a:hover, & > a:focus {
+            background-color: $green;
+        }
+    }
+}
+
+.tabs-left {
+    & > .tab-green {
+        & > li {
+            &.active {
+                & > a, & a:focus, & > a:hover {
+                    border-color: $light-grey transparent $light-grey $green;
+                    border-left: 2px solid $green;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below {
+    & > .tab-green {
+        & > li {
+            &.active {
+                & > a, & > a:hover, & > a:focus {
+                    border-bottom: 2px solid $green;
+                    border-color: transparent $light-grey $green;
+                }
+            }
+        }
+    }
+}
+
+.tabs-right {
+    & > .tab-green {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey $green $light-grey transparent;
+                    border-right: 2px solid $green;
+                }
+            }
+        }
+    }
+}
+
+.tab-padding {
+    &.tab-green {
+        & > li {
+            & > a, & > a:focus, & > a:hover {
+                border-color: rgba(0, 0, 0, 0);
+                color: $white;
+            }
+
+            & > a, & > a:focus {
+                background-color: #71B145;
+            }
+
+            &:not(.active) {
+                & > a {
+                    &:hover {
+                        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) transparent;
+                        opacity: 0.85;
+                    }
+
+                    & > [class*="fa-"] {
+                        &:first-child {
+                            color: $white !important;
+                        }
+                    }
+
+                    .badge {
+                        background-color: $white !important;
+                        color: rgba(0, 0, 0, 0.4) !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*purple*/
+.tab-purple {
+    & > li {
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                border-color: $purple $light-grey transparent;
+                border-top: 2px solid $purple;
+            }
+        }
+
+        & > a {
+            &:hover {
+                color: $purple;
+            }
+        }
+
+        &.dropdown {
+            &.open {
+                &.active {
+                    & > a {
+                        &:hover, &:focus {
+                            background-color: $purple;
+                            border-color: $purple;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.open {
+            .dropdown-toggle {
+                background-color: $purple;
+                border-color: $purple;
+                color: $white;
+            }
+        }
+
+        .dropdown-menu {
+            & > li {
+                & > a {
+                    &:hover, &:focus {
+                        background-color: $purple;
+                    }
+                }
+            }
+        }
+
+        .active {
+            & > a, & > a:hover, & > a:focus {
+                background-color: $purple;
+            }
+        }
+    }
+}
+
+.tabs-left {
+    & > .tab-purple {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey transparent $light-grey $purple;
+                    border-left: 2px solid $purple;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below {
+    & > .tab-purple {
+        & > li {
+            &.active {
+                & > a, & > a:hover, & > a:focus {
+                    border-bottom: 2px solid $purple;
+                    border-color: transparent $light-grey $purple;
+                }
+            }
+        }
+    }
+
+    .tab-padding {
+        &.tab-purple {
+            & > li {
+                &.active {
+                    & > a {
+                        border-color: transparent $purple $light-grey;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-tabs {
+        &.tab-purple {
+            padding-bottom: 6px;
+            border-bottom-color: $light-grey;
+            border-top: 0 none;
+        }
+    }
+}
+
+.tabs-right {
+    & > .tab-purple {
+        & > li {
+            &.active {
+                & > a, > a:focus, > a:hover {
+                    border-color: $light-grey $purple $light-grey transparent;
+                    border-right: 2px solid $purple;
+                }
+            }
+        }
+    }
+}
+
+.tab-padding {
+    &.tab-purple {
+        border-bottom-color: $purple;
+        background-color: #F5F4F9;
+
+        & > li {
+            & > a, & > a:focus, & > a:hover {
+                border-color: rgba(0, 0, 0, 0);
+                color: $white;
+            }
+
+            & > a, & > a:focus {
+                background-color: #84809F;
+            }
+
+            &:not(.active) {
+                & > a {
+                    &:hover {
+                        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) transparent;
+                        opacity: 0.85;
+                    }
+
+                    & > [class*="fa-"] {
+                        &:first-child {
+                            color: $white !important;
+                        }
+                    }
+
+                    .badge {
+                        background-color: $white !important;
+                        color: rgba(0, 0, 0, 0.4) !important;
+                    }
+                }
+            }
+
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    background-color: $white;
+                    box-shadow: none;
+                    color: $dark-grey;
+                    border-color: $purple $light-grey transparent;
+                }
+            }
+        }
+    }
+}
+
+
+/*blue*/
+
+.tab-blue {
+    & > li {
+        &.active {
+            & > a, & > a:hover, & > a:focus {
+                border-color: $blue $light-grey transparent;
+                border-top: 2px solid $blue;
+            }
+        }
+
+        & > a {
+            &:hover {
+                color: $blue;
+            }
+        }
+
+        &.dropdown {
+            &.open {
+                &.active {
+                    & > a {
+                        &:hover, &:focus {
+                            background-color: $blue;
+                            border-color: $blue;
+                            color: $white;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.open {
+            .dropdown-toggle {
+                background-color: $blue;
+                border-color: $blue;
+                color: $white;
+            }
+        }
+    }
+
+    .dropdown-menu, .active {
+        & > li {
+            & > a {
+                &:hover, &:focus {
+                    background-color: $blue;
+                }
+            }
+        }
+    }
+}
+
+.tabs-left {
+    & > .tab-blue {
+        & > li {
+            &.active {
+                & > a, & > a:focus, & > a:hover {
+                    border-color: $light-grey transparent $light-grey $blue;
+                    border-left: 2px solid $blue;
+                }
+            }
+        }
+    }
+}
+
+.tabs-below {
+    &.nav-tabs {
+        &.tab-blue {
+            padding-bottom: 6px;
+            border-bottom-color: $light-grey;
+            border-top: 0 none;
+        }
+    }
+
+    .tab-padding {
+        & > li {
+            &.active {
+                & > a {
+                    border-color: transparent $blue $light-grey;
+                }
+            }
+        }
+    }
+
+    & > .tab-blue {
+        & > li {
+            &.active {
+                & > a, & > a:hover, > a:focus {
+                    border-bottom: 2px solid $blue;
+                    border-color: transparent $light-grey $blue;
+                }
+            }
+        }
+    }
+}
+
+.tabs-right {
+    & > .tab-blue {
+        & > li {
+            &.active {
+                & > a, & > a:hover, > a:focus {
+                    border-color: $light-grey $blue $light-grey transparent;
+                    border-right: 2px solid $blue;
+                }
+            }
+        }
+    }
+}
+
+.tab-padding {
+    &.tab-blue {
+        border-bottom-color: $blue;
+        background-color: #F3F5F6;
+
+        & > li {
+            & > a, & > a:hover, > a:focus {
+                border-color: rgba(0, 0, 0, 0);
+                color: $white;
+            }
+
+            & > a, & > a:focus {
+                background-color: #6C7F92;
+            }
+
+            &:not(.active) {
+                & > a {
+                    &:hover {
+                        border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) transparent;
+                        opacity: 0.85;
+                    }
+
+                    & > [class*="fa-"] {
+                        &:first-child {
+                            color: $white !important;
+                        }
+                    }
+
+                    .badge {
+                        background-color: $white !important;
+                        color: rgba(0, 0, 0, 0.4) !important;
+                    }
+                }
+            }
+
+
+            &.active {
+                & > a, & > a:hover, > a:focus {
+                    background-color: $white;
+                    box-shadow: none;
+                    color: $dark-grey;
+                    border-color: $blue $light-grey transparent;
+                }
+            }
+        }
+    }
+}
+
+.nav {
+    & > li {
+        &.active {
+            & > .dropdown-toggle {
+                cursor: pointer !important;
+            }
+        }
+
+        &.dropdown {
+            &.open {
+                &.active {
+                    & > a {
+                        &:hover, &:focus {
+                            & > [class*="fa-"] {
+                                color: $white !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nav-pills {
+    .open {
+        .dropdown-toggle {
+            & > [class*="fa-"] {
+                color: $white !important;
+            }
+        }
+    }
+}
+
+.nav-tabs {
+    & > li {
+        &:not(.active):not(.open) {
+            & > a {
+                &:not(:hover) {
+                    & > .disabled[class*="fa-"] {
+                        &:first-child {
+                            color: #909090 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.tab-space-1 {
+        & > li {
+            & > a {
+                margin-right: 1px;
+            }
+        }
+    }
+
+    &.tab-space-2 {
+        & > li {
+            & > a {
+                margin-right: 2px;
+            }
+        }
+    }
+
+    &.tab-space-3 {
+        & > li {
+            & > a {
+                margin-right: 3px;
+            }
+        }
+    }
+
+    &.tab-space-4 {
+        & > li {
+            & > a {
+                margin-right: 4px;
+            }
+        }
+    }
+
+    &.tab-padding {
+        padding: 6px 5px 0;
+        border: 1px solid $light-grey;
+    }
+}
+
+
+.panel-tabs {
+    .nav-tabs {
+        float: right;
+        margin-top: -52px;
+        border: none;
+
+        & > li {
+            & > a {
+                height: 36px;
+                border-top: none;
+                border-bottom: none;
+                background: none;
+                border-right: 1px solid #CDCDCD;
+                box-shadow: 1px 1px 0 0 $white;
+
+                &:hover {
+                    background: $white;
+                }
+            }
+
+            &:first-child {
+                & > a {
+                    box-shadow: 0 1px 0 1px $white;
+                }
+            }
+
+            &.active {
+                & > a, & > a:hover, & > a:focus {
+                    background-color: $white;
+                    background-image: none;
+                    border-color: #4C8FBD $light-grey transparent;
+                    border-top: none;
+                    @include box-shadow(none);
+                    color: $dark-grey;
+                    line-height: 16px;
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+
+    .tab-content {
+        border: none;
+        padding: 0;
+    }
+}
+
+.tabs-right {
+    & > .nav-tabs {
+        & > li {
+            float: none;
+        }
+    }
+}

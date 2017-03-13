@@ -1,0 +1,90 @@
+﻿@model OnlineStore.Country
+
+@{
+    ViewBag.Title = "Details";
+    try
+    {
+        var role = Convert.ToInt16(Session["userrole"].ToString());
+        if (role == 3)
+        {
+            Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+        }
+    }
+    catch (Exception)
+    {
+
+    }
+}
+
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+        });
+    </script>
+
+
+<div class="row">
+    <div class="col-sm-2">
+        <a href="@Url.Action("Show", "Countries")" class="demo btn btn-blue">
+            <i class="fa fa-arrow-left">
+            </i> | Back to list
+        </a>
+    </div>
+</div>
+<div class="panel">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i>
+        View category Details
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <form role="form" class="form-horizontal" method="POST">
+            @if (ViewBag.DisplayMessage == "success")
+            {
+                if (ViewData.ModelState[""] != null)
+                {
+                    <div class="bs-example">
+                        <div class="alert alert-success fade in">
+                            <a href="#" class="close" data-dismiss="alert">×</a>
+                            <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                        </div>
+                    </div>
+                }
+            }
+            else if (ViewBag.DisplayMessage == "Info")
+            {
+                if (ViewData.ModelState[""] != null)
+                {
+                    <div class="bs-example">
+                        <div class="alert alert-danger fade in">
+                            <a href="#" class="close" data-dismiss="alert">×</a>
+                            <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                        </div>
+                    </div>
+                }
+            }
+
+            @Html.AntiForgeryToken()
+            <div>
+
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CountryName)
+                        
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CountryName)
+                        <hr />
+                    </dd>
+                </dl>
+            </div>
+        </form>
+    </div>
+</div>
+

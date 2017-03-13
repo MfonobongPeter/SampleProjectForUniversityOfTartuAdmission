@@ -1,0 +1,34 @@
+﻿
+.navbar {
+    display: none;
+}
+
+.main-navigation {
+    display: none;
+}
+
+.hidden-print {
+    display: none;
+}
+
+.breadcrumb {
+    display: none;
+}
+
+.page-header {
+    display: none;
+}
+
+.footer {
+    display: none;
+}
+
+.main-container {
+    margin: 0 !important;
+    padding: 0 !important;
+
+    .container {
+        min-height: auto !important;
+        border: none !important;
+    }
+}

@@ -1,0 +1,24 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Invoice
+/* ---------------------------------------------------------------------- */
+body {
+    &.rtl {
+        .invoice {
+            .invoice-logo {
+                p {
+                    text-align: left !important;
+                }
+            }
+
+            .invoice-block {
+                text-align: left !important;
+
+                .amounts {
+                    li {
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}

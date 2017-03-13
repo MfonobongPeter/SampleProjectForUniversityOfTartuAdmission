@@ -1,0 +1,44 @@
+{
+  "name": "jquery-toast-plugin",
+  "description": "A highly customizable jquery toast plugin",
+  "main": [
+    "./dist/jquery.toast.min.js",
+    "./dist/jquery.toast.min.css"
+  ],
+  "moduleType": [],
+  "keywords": [
+    "jquery",
+    "toast-plugin",
+    "jquery-toasts",
+    "toast",
+    "notification",
+    "messages",
+    "jquery-notification"
+  ],
+  "authors": [
+    "Kamran Ahmed"
+  ],
+  "license": "MIT",
+  "homepage": "http://kamranahmed.info/toast",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "README.md"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9.0"
+  },
+  "_release": "ccb230805f",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "ccb230805fa33d9527fe084577d13423f8da794d"
+  },
+  "_source": "git://github.com/kamranahmedse/jquery-toast-plugin.git",
+  "_target": "*",
+  "_originalSource": "jquery-toast-plugin",
+  "_direct": true
+}

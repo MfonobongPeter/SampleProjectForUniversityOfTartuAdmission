@@ -1,0 +1,164 @@
+﻿
+@{
+    ViewBag.Title = "ViewOrderDetailsReport";
+    Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+}
+
+@{
+    ViewBag.Title = "View Order Details Report";
+    try
+    {
+        var role = Convert.ToInt16(Session["userrole"].ToString());
+        if (role == 1)
+        {
+            Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+        }
+        else if (role == 2)
+        {
+            Layout = "~/Views/Shared/StaffLayoutPage.cshtml";
+        }
+        else if (role == 3)
+        {
+            Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+        }
+    }
+    catch (Exception)
+    {
+
+    }
+}
+
+
+
+<p>
+    <a href="@Url.Action("ViewOrderReport", "Orders")" class="demo btn btn-blue">
+        <i class="fa fa-plus"></i> | Back to Order Report
+    </a>
+</p>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i> Order Details Report
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+
+        </div>
+    </div>
+    <div class="panel-body">
+        <div id="content">
+            <div class="container">
+                <div class="col-md-11" id="customer-order">
+                    <div class="box">                       
+                        <p class="lead">Order #@Model.OrderItems.TransIDShort was placed on <strong>@Model.OrderItems.OrderDate</strong> and is currently <strong>@Model.OrderItems.OrderDeliveryStatus</strong>.</p>                     
+                        <hr>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2">Product</th>
+                                        <th>Quantity</th>
+                                        <th>Unit price</th>
+                                        @*<th>Discount</th>*@
+                                        <th colspan="2">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var Item in Model.List)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <img src="@Item.ProductFrontViewThumb" alt="@Item.ProductName" height="50" width="50">
+                                            </td>
+                                            <td>
+                                                @Item.ProductSku.ToUpper()- @Item.ProductName
+                                            </td>
+                                            <td>
+                                                @Item.ProductQuantity
+                                            </td>
+                                            <td> ₦@Item.ProductUnitPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</td>
+                                            @*<td> ₦@ViewBag.Discount</td>*@
+                                            <td> ₦@Item.ProductTotalPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</td>
+                                            <td></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+
+                                    <tr>
+                                        <th colspan="4" class="text-right">Order subtotal</th>
+                                        <th>₦@ViewBag.CartTotals.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" class="text-right">Shipping and handling</th>
+                                        <th>₦@ViewBag.ShippingAndHandling.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4" class="text-right">Tax</th>
+                                        <th>₦@ViewBag.Tax.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                                    </tr>
+                                    <tr>
+                                        <th colspan="4"><b>Total</b></th>
+                                        <th colspan="2"><b>₦@ViewBag.OrderSummaryTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</b></th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+
+                        <div class="row addresses">
+                            <div class="col-md-6">
+                                <h4>Invoice address</h4>
+                                <p>
+                                    @Model.OrderItems.UserLastName @Model.OrderItems.UserFirstName
+                                    <br>@Model.OrderItems.UserAddress1
+                                    <br>@Model.OrderItems.UserCountry
+                                    <br>@Model.OrderItems.UserState
+                                    <br>@Model.OrderItems.UserCity
+                                    <br>@Model.OrderItems.UserPhoneNumber
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Shipping address</h4>
+                                <p>
+                                    @Model.OrderItems.UserBillingLastName @Model.OrderItems.UserBillingFirstName
+                                    <br>@Model.OrderItems.UserBillingAddress
+                                    <br>@Model.OrderItems.UserBillingCountry
+                                    <br>@Model.OrderItems.UserBillingState
+                                    <br>@Model.OrderItems.UserBillingCity
+                                    <br>@Model.OrderItems.UserBillingPhone
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Delivery Method</h4>
+                                <p>
+                                    @Model.OrderItems.OrderDeliveryMethod
+                                </p>
+                            </div>
+                            <div class="col-md-6">
+                                <h4>Payment Method</h4>
+                                <p>
+                                    @Model.OrderItems.OrderPaymentMethod
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /#content -->
+    </div>
+</div>
+<script>
+            jQuery(document).ready(function() {
+                Main.init();
+            });
+</script>
+
+
+
+

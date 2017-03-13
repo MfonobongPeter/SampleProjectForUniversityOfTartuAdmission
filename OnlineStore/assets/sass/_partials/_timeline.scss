@@ -1,0 +1,355 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Timeline
+ /* ---------------------------------------------------------------------- */
+div {
+    &.timeline {
+        font-family: $fontArial;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+
+        .columns {
+            & > li {
+                &:nth-child(2n+1) {
+                    float: left;
+                    width: 50%;
+                    clear: left;
+                }
+
+                &:nth-child(2n+2) {
+                    float: right;
+                    margin-top: 20px;
+                    width: 50%;
+                    clear: right;
+                }
+            }
+        }
+
+        div {
+            &.date_separator {
+                clear: both;
+                height: 60px;
+                position: relative;
+                text-align: center;
+
+                span {
+                    @include border-radius(5px);
+                    display: block;
+                    font-size: 14px;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-top: -16px;
+                    position: absolute;
+                    top: -200%;
+                    @include transition(all 0.3s linear 0s);
+                    width: 200px;
+                    top: 50%;
+                    left: 50%;
+                    margin-left: -100px;
+                    border: 1px solid #BBBBBB;
+                    background-color: $white;
+                    color: #666666;
+                }
+            }
+
+            &.spine {
+                @include border-radius(2px);
+                position: absolute;
+                top: 0;
+                @include transition(bottom 0.5s linear 0s);
+                width: 4px;
+                left: 50%;
+                margin-left: -2px;
+                bottom: 0;
+                background-color: #CCCCCC;
+            }
+        }
+    }
+
+    &.timeline_element {
+        @include border-radius(5px);
+        clear: both;
+        margin: 10px 0;
+        opacity: 0;
+        position: relative;
+        @include transition(all 0.2s linear 0s);
+        background-color: $white;
+        border: 1px solid #CCCCCC;
+        color: $black;
+        @include text-shadow(none);
+        @include box-shadow(0px 0px 6px rgba(0, 0, 0, 0.1));
+
+        &:hover {
+            border: 1px solid #AAAAAA;
+            @include box-shadow(0px 0px 6px rgba(0, 0, 0, 0.2));
+
+            &:after {
+                z-index: 100;
+                background-color: $white;
+                border: 1px solid #CCCCCC;
+                z-index: 100;
+            }
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            height: 0;
+            position: absolute;
+            width: 26px;
+            border-top: 1px dashed #CCCCCC;
+        }
+
+        &:after {
+            @include border-radius(100%);
+            content: "";
+            display: block;
+            height: 10px;
+            position: absolute;
+            width: 10px;
+            background-color: #BBBBBB;
+            border: 1px solid $white;
+            @include box-shadow(0px 0px 2px rgba(0, 0, 0, 0.2));
+        }
+    }
+
+    .columns {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+
+        & > li {
+            &:nth-child(2n+1) {
+                div {
+                    &.timeline_element {
+                        float: right;
+                        left: 10%;
+                        margin-right: 30px;
+                        left: 0;
+                        opacity: 1;
+
+                        &:before {
+                            right: -27px;
+                            top: 15px;
+                        }
+
+                        &:after {
+                            right: -36px;
+                            top: 10px;
+                        }
+                    }
+                }
+            }
+
+            &:nth-child(2n+2) {
+                div {
+                    &.timeline_element {
+                        float: left;
+                        margin-left: 30px;
+                        right: 10%;
+                        opacity: 1;
+                        right: 0;
+
+                        &:before {
+                            left: -27px;
+                            top: 15px;
+                        }
+
+                        &:after {
+                            left: -36px;
+                            top: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.column_center {
+        div {
+            &.timeline_element {
+                margin: 20px auto;
+                opacity: 1;
+
+                &:before {
+                    display: none;
+                }
+
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+/* ie8 fixes */
+.ie8 {
+    div {
+        &.timeline_element {
+            &:after {
+                display: none;
+            }
+
+            &:before {
+                display: none;
+            }
+        }
+    }
+}
+/**/
+
+div {
+    &.timeline_element {
+        div {
+            &.timeline_title {
+                font-size: 10px;
+                margin: 10px;
+                overflow: hidden;
+                position: relative;
+                text-transform: uppercase;
+                color: #AAAAAA;
+
+                span {
+                    &.timeline_date {
+                        float: right;
+                    }
+                }
+            }
+
+            &.title {
+                span {
+                    &.timeline_label {
+                        display: block;
+                        left: 0;
+                        overflow: hidden;
+                        position: absolute;
+                        right: 100px;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+            &.content {
+                font-size: 13px;
+                padding: 0 10px 10px;
+            }
+
+            &.readmore {
+                font-size: 12px;
+                padding: 10px;
+                text-align: right;
+            }
+        }
+    }
+
+    &.timeline {
+        div {
+            &.description_container {
+                height: 80px;
+                margin: 5px 5px 5px 90px;
+                overflow: hidden;
+            }
+        }
+    }
+
+    &.timeline_element {
+        &.teal {
+            background-color: $teal;
+            border-color: #4D8189;
+            color: $white;
+
+            &:after {
+                background-color: $teal;
+            }
+
+            &:hover {
+                &:after {
+                    background-color: $white;
+                    border: 1px solid $teal;
+                    z-index: 100;
+                }
+            }
+
+            div {
+                &.timeline_title {
+                    color: #EEEEEE;
+                }
+            }
+        }
+
+        &.green {
+            background-color: $green;
+            border-color: #327B00;
+            color: $white;
+
+            &:after {
+                background-color: $green;
+            }
+
+            &:hover {
+                &:after {
+                    background-color: $white;
+                    border: 1px solid $green;
+                    z-index: 100;
+                }
+            }
+
+            div {
+                &.timeline_title {
+                    color: #EEEEEE;
+                }
+            }
+        }
+
+        &.bricky {
+            background-color: $bricky;
+            border-color: #B33426;
+            color: $white;
+
+            &:after {
+                background-color: $bricky;
+            }
+
+            &:hover {
+                &:after {
+                    background-color: $white;
+                    border: 1px solid $bricky;
+                    z-index: 100;
+                }
+            }
+
+            div {
+                &.timeline_title {
+                    color: #EEEEEE;
+                }
+            }
+        }
+
+        &.purple {
+            background-color: $purple;
+            border-color: #413D5C;
+            color: $white;
+
+            &:after {
+                background-color: $purple;
+            }
+
+            &:hover {
+                &:after {
+                    background-color: $white;
+                    border: 1px solid $purple;
+                    z-index: 100;
+                }
+            }
+
+            div {
+                &.timeline_title {
+                    color: #EEEEEE;
+                }
+            }
+        }
+    }
+}

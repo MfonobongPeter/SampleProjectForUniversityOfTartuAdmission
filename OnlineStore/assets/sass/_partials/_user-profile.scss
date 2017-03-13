@@ -1,0 +1,56 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	User profile
+ /* ---------------------------------------------------------------------- */
+
+.user-left {
+    border-right: 1px solid $light-grey;
+    padding-right: 15px;
+
+    a {
+        &:hover, &:focus {
+            text-decoration: none;
+        }
+    }
+
+    td {
+        .edit-user-info {
+            visibility: hidden;
+        }
+    }
+
+    tr {
+        &:hover {
+            .edit-user-info {
+                visibility: visible;
+            }
+        }
+    }
+
+    .user-image {
+        position: relative;
+        display: inline-block;
+    }
+
+    .user-image-buttons {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        display: none;
+    }
+
+    &:hover {
+        .user-image-buttons {
+            display: block;
+        }
+    }
+}
+
+.user-edit-image-buttons {
+    display: inline;
+}
+
+#projects {
+    .progress {
+        margin-bottom: 0;
+    }
+}

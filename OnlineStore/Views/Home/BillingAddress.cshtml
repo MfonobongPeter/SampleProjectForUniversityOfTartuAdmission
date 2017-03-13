@@ -1,0 +1,292 @@
+﻿@model FEBillingAddressViewModel
+@{
+    ViewBag.Title = "BillingAddress";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+
+<style type="text/css">
+    input:required:focus {
+        border: 1px solid red;
+        outline: none;
+    }
+
+    input:required:hover {
+        opacity: 4;
+    }
+
+    select:required:focus {
+        border: 1px solid red;
+        outline: none;
+    }
+
+    select:required:hover {
+        opacity: 4;
+    }
+</style>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#Country").change(function () {
+            if ($(this).find(':selected').text() == "Nigeria") {
+                $("#showStateLga").show();
+                $("#showStateLgaText").hide();
+            } else {
+                $("#showStateLga").hide();
+                $("#showStateLgaText").show();
+            }
+        });
+    });
+</script>
+
+
+<script type="text/jscript">
+    $(document).ready(function () {
+        $('#State').change(function () {
+            $.getJSON('/Home/LgaList/' + $('#State').val(), function (data) {
+                var items = '<option>---Select LGA---</option>';
+                $.each(data, function (i, Lga) {
+                    items += "<option value='" + Lga.Text + "'>" + Lga.Text + "</option>";
+                });
+                $('#lga').html(items);
+            });
+        });
+    });
+</script>
+
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li>Checkout - Billing Address</li>
+            </ul>
+        </div>
+
+        <div class="col-md-9" id="checkout">
+
+            <div class="box">
+                @*<form method="post" action="@Url.Action("BillingAddress","Home")">*@
+             
+                    <h3>Checkout - Billing Details</h3>
+                    <ul class="nav nav-pills nav-justified">
+                        <li class="active">
+                            <a href="#"><i class="fa fa-map-marker"></i><br>Billing Address</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
+                        </li>
+                        <li class="disabled">
+                            <a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
+                        </li>
+                    </ul>
+
+                    <div class="content">
+                           @using (Html.BeginForm("BillingAddress", "Home", FormMethod.Post))
+                           {
+                            if (ViewBag.DisplayMessage == "success")
+                            {
+                                if (ViewData.ModelState[""] != null)
+                                {
+                                    <div class="bs-example">
+                                        <div class="alert alert-success fade in">
+                                            <a href="#" class="close" data-dismiss="alert">×</a>
+                                            <strong>success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+                            else if (ViewBag.DisplayMessage == "Info")
+                            {
+                                if (ViewData.ModelState[""] != null)
+                                {
+                                    <div class="bs-example">
+                                        <div class="alert alert-danger fade in">
+                                            <a href="#" class="close" data-dismiss="alert">×</a>
+                                            <strong>success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <i style="color:red;">Kindly enter shipping detail here by removing the default values from the form, 
+                        if you wished the item be delivered to the default details, then click on the continue button.</i><br /><br />
+                        <div class="row">
+                            
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.UserFirstName, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UserFirstName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.UserLastName, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserLastName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UserLastName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.BillingAddress, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.BillingAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.BillingAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.UserAddress1, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserAddress1, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UserAddress1, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.UserAddress2, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserAddress2, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UserAddress2, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.UserPhone, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserPhone, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.UserPhone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.LabelFor(model => model.UserEmail, htmlAttributes: new { @class = "col-sm-6" })
+                                <div class="form-group">
+                                    @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control", @ReadOnly = "true" } })
+                                    @Html.ValidationMessageFor(model => model.UserEmail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.row -->
+
+                        <div class="row">
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.GenderID, htmlAttributes: new { @class = "col-sm-6" })                                   
+                                    @Html.DropDownList("gender", ViewBag.GenderID as SelectList, "---Select---", new { id = "gender", @class = "form-control", @Required = "required" })
+                                    @Html.ValidationMessageFor(model => model.GenderID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CountryID, htmlAttributes: new { @class = "col-sm-6" })
+                                    @Html.DropDownList("Country", ViewBag.CountryID as SelectList, "---Select---", new { id = "Country", @class = "form-control", @Required = "required" })
+                                    @Html.ValidationMessageFor(model => model.CountryID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div id="showStateLga" style="display:block">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserState, htmlAttributes: new { @class = "col-sm-6" })
+                                        @Html.DropDownList("State", ViewBag.StateId as SelectList, "---Select---", new { id = "State", @class = "form-control", @Required = "required" })                                        
+                                        @Html.ValidationMessageFor(model => model.UserState, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserCity, htmlAttributes: new { @class = "col-sm-6" })
+                                        @*<select class="form-control" id="lga" name="lga" required>
+                                            <option value="">---Select---</option>
+                                        </select>*@
+                                        @Html.DropDownList("lga", ViewBag.CityID as SelectList, "---Select---", new { id = "lga", @class = "form-control", @Required = "required" })
+                                        @Html.ValidationMessageFor(model => model.UserCity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="showStateLgaText" style="display:none">
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserState, htmlAttributes: new { @class = "col-sm-6" })
+                                        <input type="text" class="form-control" id="txtState" name="txtState" required>
+                                        @Html.ValidationMessageFor(model => model.UserState, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-md-3">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.UserCity, htmlAttributes: new { @class = "col-sm-6" })
+                                        <input type="text" class="form-control" id="txtCity" name="txtCity" required>
+                                        @Html.ValidationMessageFor(model => model.UserCity, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        <!-- /.row -->
+                           
+                    </div>
+                        <div class="box-footer">
+                            <div class="pull-left">
+                                <a href="@Url.Action("ViewCart","Home")" class="btn btn-default"><i class="fa fa-chevron-left"></i>Back to basket</a>
+                            </div>
+                            <div class="pull-right">
+                                <input type="submit" class="btn btn-primary" value="Continue to Delivery Method" />
+                                <i class="fa fa-chevron-right"></i>
+
+                            </div>
+                        </div>
+                                }
+                   </div>
+                    
+            </div>
+            <!-- /.box -->
+
+
+        </div>
+        <!-- /.col-md-9 -->
+
+        <div class="col-md-3">
+            <div class="box" id="order-summary">
+                <div class="box-header">
+                    <h3>Order summary</h3>
+                </div>
+                <p class="text-muted">Shipping and additional costs are calculated based on the values you have entered.</p>
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td>Order subtotal</td>
+                                <th>₦@ViewBag.CartTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                            <tr>
+                                <td>Shipping and handling</td>
+                                <th>₦@ViewBag.ShippingAndHandling.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                            <tr>
+                                <td>VAT</td>
+                                <th>₦@ViewBag.Tax.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                            <tr class="total">
+                                <td>Total</td>
+                                <th>₦@ViewBag.OrderSummaryTotal.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-md-3 -->
+
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

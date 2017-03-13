@@ -1,0 +1,41 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Rating
+/* ---------------------------------------------------------------------- */
+.rating {
+    direction: rtl;
+    font-size: 30px;
+    unicode-bidi: bidi-override;
+
+    span {
+        &.star {
+            display: inline-block;
+            font-family: $fontFontAwesome;
+            font-style: normal;
+            font-weight: normal;
+
+            &:hover {
+                cursor: pointer;
+
+                &:before {
+                    color: #E3CF7A;
+                    content: "\f005";
+                }
+
+                & ~ span {
+                    &.star {
+                        &:before {
+                            color: #E3CF7A;
+                            content: "\f005";
+                        }
+                    }
+                }
+            }
+
+            &:before {
+                color: #999999;
+                content: "\f006";
+                padding-right: 5px;
+            }
+        }
+    }
+}

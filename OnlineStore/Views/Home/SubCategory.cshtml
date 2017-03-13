@@ -1,0 +1,163 @@
+﻿@model IEnumerable<FEDisplayProductsOnProductPageViewModel>
+@{
+    ViewBag.Title = @ViewBag.Title;
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+@section metaTags
+{
+    <meta name='keywords' content='@ViewBag.MetaKeywords' />
+    <meta name='description' content='@ViewBag.MetaDescription' />
+}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-83962844-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Products","Home")">Products</a>
+                </li>
+                <li>
+                    Sub Category
+                </li>
+               
+            </ul>
+
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** MENUS AND FILTERS ***
+            _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Categories</h3>
+                </div>
+
+                <div class="panel-body">
+                    <ul class="nav nav-pills nav-stacked category-menu">
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 1, name = SeoFriendly.URLFriendly("BARBING/HAIR DRESSING SALON") })">BARBING/HAIR DRESSING SALON</a>
+                           
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 2, name = SeoFriendly.URLFriendly("SPA EQUIPMENTS") })">SPA EQUIPMENTS</a>
+                           
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 4, name = SeoFriendly.URLFriendly("FACIAL EQUIPMENTS") })">FACIAL EQUIPMENTS</a>
+                           
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 5, name = SeoFriendly.URLFriendly("WAXING PRODUCTS") })">WAXING PRODUCTS</a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 3, name = SeoFriendly.URLFriendly("Make Up") })">Make Up</a>
+                            
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 6, name = SeoFriendly.URLFriendly("HAIR CARE") })">HAIR CARE</a>
+                           
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Category", new { id = 7, name = SeoFriendly.URLFriendly("PEDICURE AND MANICURE") })">PEDICURE AND MANICURE</a>
+                           
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9" id="wishlist">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Content("~/home/index")">Home</a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Products","Home")">Products</a>
+                </li>
+                <li>
+                    Sub Category
+                </li>
+                <li>
+                    @ViewBag.CatName
+                </li>
+            </ul>
+
+            <div class="box">
+                <h4>Sub Category list</h4>
+                <p class="text">Check out this list of some of our products. Match your designs we offer best product supplies at competitive prices.</p>
+            </div>
+
+            <div class="row products">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-4">
+
+                        <div class="product">
+                            <div class="flip-container">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                            <img src="@Url.Content(item.ProductSideViewThumbnail)" alt="@item.ProductName.ToLower()" class="img-responsive" /><br />
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                            <img src="@Url.Content(item.ProductFrontViewThumbnail)" alt="@item.ProductName.ToLower()" class="img-responsive" /><br />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<a href="detail.html" class="invisible">
+                                    <img src="~/img/product3.jpg" alt="" class="img-responsive">
+                                </a>*@
+                            <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="invisible">
+                                <img src="@Url.Content(item.ProductSideViewThumbnail)" alt="@item.ProductName.ToLower()" class=" img-responsive" /><br />
+                            </a>
+                            <div class="text">
+                                <h3><a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">@item.ProductName</a></h3>
+                                <p class="price">₦@item.ProductPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</p>
+                                <p class="buttons">
+                                    <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="btn btn-default">View detail</a>
+                                    @*<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>*@
+                                </p>
+
+                            </div>
+                            <!-- /.text -->
+                            @if (item.ProductIsNew == true)
+                            {
+                                <div class="ribbon new">
+                                    <div class="theribbon">NEW</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- /.product -->
+                    </div>
+                }
+            </div>
+            <!-- /.products -->
+
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->

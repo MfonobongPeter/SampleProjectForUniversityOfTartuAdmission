@@ -1,0 +1,123 @@
+﻿@model  IEnumerable<FEShowWishListViewModel>
+@{
+    ViewBag.Title = "ViewWishList";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+<div id="content">
+    <div class="container">
+        <div class="col-md-12">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Action("Index", "Home")">Home</a>
+                </li>
+                <li>My Wish List</li>
+            </ul>
+
+        </div>
+
+        <div class="col-md-3">
+            <!-- *** CUSTOMER MENU ***
+            _________________________________________________________ -->
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Customer section</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <ul class="nav nav-pills nav-stacked">
+                        <li class="active">
+                            <a href="@Url.Action("Dashboard", "Home")"><i class="fa fa-list"></i> My orders</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/home/ViewWishList")"><i class="fa fa-heart"></i> My wishlist</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/home/ChangePassword")"><i class="fa fa-lock"></i> Change Password</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Content("~/home/UpdateProfile")"><i class="fa fa-user"></i> Update Profile</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("logout", "Home")"><i class="fa fa-sign-out"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <!-- /.col-md-3 -->
+            <!-- *** CUSTOMER MENU END *** -->
+        </div>
+
+        <div class="col-md-9" id="wishlist">
+
+            <ul class="breadcrumb">
+                <li>
+                    <a href="@Url.Content("~/home/index")">Home</a>
+                </li>
+                <li>Wishlist</li>
+            </ul>
+
+            <div class="box">
+                <h4>My Wishlist</h4>
+                <p class="text">Order from your wishlist we offer best product supplies at competitive prices.</p>
+            </div>
+
+            <div class="row products">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-4">
+
+                        <div class="product">
+                            <div class="flip-container">
+                                <div class="flipper">
+                                    <div class="front">
+                                        <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                            <img src="@Url.Content(item.ProductSideViewThumb)" alt="" class="img-responsive" /><br />
+                                        </a>
+                                    </div>
+                                    <div class="back">
+                                        <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">
+                                            <img src="@Url.Content(item.ProductFrontViewThumb)" alt="" class="img-responsive" /><br />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            @*<a href="detail.html" class="invisible">
+                                    <img src="~/img/product3.jpg" alt="" class="img-responsive">
+                                </a>*@
+                            <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="invisible">
+                                <img src="@Url.Content(item.ProductSideViewThumb)" alt=" " class=" img-responsive" /><br />
+                            </a>
+                            <div class="text">
+                                <h3><a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })">@item.ProductName</a></h3>
+                                <p class="price">₦@item.ProductPrice.ToString("N2", System.Globalization.CultureInfo.InvariantCulture)</p>
+                                <p class="buttons">
+                                    <a href="@Url.Action("productDetails", "home", new { id = item.ProductID, name = SeoFriendly.URLFriendly(item.ProductName) })" class="btn btn-default">View detail</a>
+                                    @*<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>*@
+                                </p>
+
+                            </div>
+                            <!-- /.text -->
+                            @if (item.ProductIsNew == true)
+                            {
+                                <div class="ribbon new">
+                                    <div class="theribbon">NEW</div>
+                                    <div class="ribbon-background"></div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- /.product -->
+                    </div>
+                }
+            </div>
+            <!-- /.products -->
+
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->

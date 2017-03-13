@@ -1,0 +1,14 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	daterangepicker
+/* ---------------------------------------------------------------------- */
+.daterangepicker {
+    margin-top: 51px !important;
+}
+
+body {
+    &.header-default {
+        .daterangepicker {
+            margin-top: 1px !important;
+        }
+    }
+}

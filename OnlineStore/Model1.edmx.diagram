@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2507484db28c4b8c93ac2955a6c36b06" Name="Diagram1">
+        <EntityTypeShape EntityType="OnlineStoreModel.Category" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.Country" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.Gender" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.Lga" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.NewsLetterSubscription" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.OrderDeliveryStatu" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.OrderDetail" Width="1.5" PointX="9.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.Order" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.PaymentGatewayTransaction" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.Product" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.Role" Width="1.5" PointX="3" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.SecurityQuestion" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.ShippingAndHandling" Width="1.5" PointX="9.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.ShoppingCart" Width="1.5" PointX="7.5" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.State" Width="1.5" PointX="5.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.SubCategory" Width="1.5" PointX="3" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.User" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.UsersInRole" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="OnlineStoreModel.WishList" Width="1.5" PointX="7.5" PointY="26.125" IsExpanded="true" />
+        <AssociationConnector Association="OnlineStoreModel.Category_Product_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Category_SubCategory_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Country_Users_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Gender_Users_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.State_Lga_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Order_OrderDetail_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Product_OrderDetail_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Product_Orders_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Product_ShoppingCart_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Product_WishList_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.SubCategory_Product_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.Roles_UsersInRoles_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.SecurityQuestions_Users_fk" ManuallyRouted="false" />
+        <AssociationConnector Association="OnlineStoreModel.User_UsersInRole_fk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

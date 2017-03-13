@@ -1,0 +1,264 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Glorious Evidence Online Store</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="beauty equipment, beauty spa equipment" name="description" />
+    <meta content="Glorious Evidence" name="author" />
+    <!-- end: META -->
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jqueryui")
+    @Styles.Render("~/Content/themes/base/css")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @RenderSection("Scripts", required: false)
+    <!-- start: MAIN CSS -->
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/bootstrap/dist/css/bootstrap.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/assets/fonts/clip-font.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/iCheck/skins/all.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/sweetalert/dist/sweetalert.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/assets/css/main.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/assets/css/main-responsive.min.css")" />
+    <link type="text/css" rel="stylesheet" media="print" href="@Url.Content("~/assets/css/print.min.css")" />
+    <link type="text/css" rel="stylesheet" id="skin_color" href="@Url.Content("~/assets/css/theme/light.min.css")" />
+
+    <!-- end: MAIN CSS -->
+    @RenderSection("CSS", required: false)
+    @RenderSection("JavaScript", required: false)
+
+</head>
+<body>
+    <!-- start: HEADER -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <!-- start: TOP NAVIGATION CONTAINER -->
+        <div class="container">
+            <div class="navbar-header">
+                <!-- start: RESPONSIVE MENU TOGGLER -->
+                <button data-target=".navbar-collapse" data-toggle="collapse" class="navbar-toggle" type="button">
+                    <span class="clip-list-2"></span>
+                </button>
+                <!-- end: RESPONSIVE MENU TOGGLER -->
+                <!-- start: LOGO -->
+                <a class="navbar-brand" href="@Url.Action("dashboard","admin")">
+                    @*Glorious<i class="clip-clip"></i>Evidence*@
+                    <img src="~/Images/Logo.png" alt="logo" width="150" height="35" />
+                </a>
+                <!-- end: LOGO -->
+            </div>
+            <div class="navbar-tools">
+                <!-- start: TOP NAVIGATION MENU -->
+                <ul class="nav navbar-right">
+
+                    <!-- start: USER DROPDOWN -->
+                    <li class="dropdown current-user">
+                        <a data-toggle="dropdown" data-hover="dropdown" class="dropdown-toggle" data-close-others="true" href="#">
+                            Welcome
+                            <span class="username">@Session["firstname"]</span>
+                            <i class="clip-chevron-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink(" Logout", "AdminLogin", "Users", new object { }, new { @class = "clip-exit" })
+
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- end: USER DROPDOWN -->
+                    <!-- start: PAGE SIDEBAR TOGGLE -->
+                    <li>
+                        <a class="sb-toggle" href="#"><i class="fa fa-outdent"></i></a>
+                    </li>
+                    <!-- end: PAGE SIDEBAR TOGGLE -->
+                </ul>
+                <!-- end: TOP NAVIGATION MENU -->
+            </div>
+        </div>
+        <!-- end: TOP NAVIGATION CONTAINER -->
+    </div>
+    <!-- end: HEADER -->
+    <!-- start: MAIN CONTAINER -->
+    <div class="main-container">
+        <div class="navbar-content">
+            <!-- start: SIDEBAR -->
+            <div class="main-navigation navbar-collapse collapse">
+                <!-- start: MAIN MENU TOGGLER BUTTON -->
+                <div class="navigation-toggler">
+                    <i class="clip-chevron-left"></i>
+                    <i class="clip-chevron-right"></i>
+                </div>
+                <!-- end: MAIN MENU TOGGLER BUTTON -->
+                <!-- start: MAIN NAVIGATION MENU -->
+                <ul class="main-navigation-menu">
+                    <li class="active open">
+                        <a href="@Url.Action("dashboard","admin")">
+                            <i class="clip-home-3"></i>
+                            <span class="title"> Dashboard </span><span class="selected"></span>
+                        </a>
+                    </li>
+                  
+                    <li class="">
+                        <a href="javascript:void(0)">
+                            <i class="clip-settings"></i>
+                            <span class="title">Products</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul style="display: none;" class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("Add","Products")">
+                                    <i class="fa fa-plus"></i>   Add Products
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Show", "Products")">
+                                    <i class=" fa fa-edit">
+                                    </i>  Manage Products
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="javascript:void(0)">
+                            <i class="clip-settings"></i>
+                            <span class="title">Orders</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul style="display: none;" class="sub-menu">
+                            <li>
+                                <a href="@Url.Action("Show", "Orders")">
+                                    <i class=" fa fa-edit">
+                                    </i>  Manage Orders
+                                </a>
+                            </li>
+                            @*<li>
+                                <a href="@Url.Action("ShowDeleted", "Orders")">
+                                    <i class=" fa fa-edit">
+                                    </i>  Manage Deleted Order
+                                </a>
+                            </li>*@
+                        </ul>
+                    </li>
+
+                    <li class="">
+                        <a href="javascript:void(0)">
+                            <i class="clip-settings"></i>
+                            <span class="title">Order Details</span><i class="icon-arrow"></i>
+                            <span class="selected"></span>
+                        </a>
+                        <ul style="display: none;" class="sub-menu">
+
+                            <li>
+                                <a href="@Url.Action("Show", "OrderDetails")">
+                                    <i class=" fa fa-edit">
+                                    </i>  Manage Order Details
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript:;">
+                            <i class="fa fa-lock"></i>
+                            <span class="title"> Security </span><i class="icon-arrow"></i>
+                            <span class="arrow "></span>
+                        </a>
+                        <ul class="sub-menu">
+                            
+                            <li>
+                                <a href="@Url.Action("ChangePassword","Users")">
+                                    <i class="fa fa-edit"></i> Change Password
+                                </a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("ChangeSecurityQuestion", "SecurityQuestions")">
+                                    <i class="fa fa-edit"></i> Change Security Answer
+                                </a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <!-- end: MAIN NAVIGATION MENU -->
+            </div>
+            <!-- end: SIDEBAR -->
+        </div>
+
+        <!-- start: PAGE -->
+        <div class="main-content">
+            <!-- start: PANEL CONFIGURATION MODAL FORM -->
+            <!-- /.modal -->
+            <!-- end: SPANEL CONFIGURATION MODAL FORM -->
+            <div class="container">
+                <!-- start: PAGE HEADER -->
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <!-- start: PAGE TITLE & BREADCRUMB -->
+                        <ol class="breadcrumb"></ol>
+                        <div class="page-header">
+                            <h4>Admin Section <small>Glorious Evidence Online Store</small></h4>
+                        </div>
+                        <!-- end: PAGE TITLE & BREADCRUMB -->
+                    </div>
+                </div>
+                <!-- end: PAGE HEADER -->
+                @RenderBody()
+
+            </div>
+        </div>
+        <!-- end: PAGE -->
+    </div>
+    <!-- end: MAIN CONTAINER -->
+    <!-- start: FOOTER -->
+    <div class="footer clearfix">
+        <div class="footer-inner">
+            @*<script>
+                    document.write(new Date().getFullYear())
+                </script> &copy; Glorious Evidence.*@
+            Glorious Evidence Ltd &copy; @DateTime.Now.Year | All Rights Reserved.
+        </div>
+        <div class="footer-items">
+            <span class="go-top"><i class="clip-chevron-up"></i></span>
+        </div>
+    </div>
+    <!-- end: FOOTER -->
+    <!-- start: MAIN JAVASCRIPTS -->
+    <!--[if lt IE 9]>
+        <script src="@Url.Content("~/bower_components/respond/dest/respond.min.js")"></script>
+        <script src="@Url.Content("~/bower_components/Flot/excanvas.min.js")"></script>
+        <script src="@Url.Content("~/bower_components/jquery-1.x/dist/jquery.min.js")"></script>
+        <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script type="text/javascript" src="@Url.Content("~/bower_components/jquery/dist/jquery.min.js")"></script>
+    <!--<![endif]-->
+
+    <script type="text/javascript" src="@Url.Content("~/bower_components/jquery-ui/jquery-ui.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/blockUI/jquery.blockUI.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/iCheck/icheck.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/jquery.cookie/jquery.cookie.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/sweetalert/dist/sweetalert.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/min/main.min.js")"></script>
+
+    <script type="text/javascript" src="@Url.Content("~/bower_components/datatables/media/js/jquery.dataTables.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/bower_components/datatables/media/js/dataTables.bootstrap.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/assets/js/min/table-data.min.js")"></script>
+    <!-- end: MAIN JAVASCRIPTS -->
+</body>
+
+</html>

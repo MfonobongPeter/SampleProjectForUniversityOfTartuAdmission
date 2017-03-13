@@ -1,0 +1,50 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Tabs
+/* ---------------------------------------------------------------------- */
+
+body {
+    &.rtl {
+
+        .nav {
+            padding-right: 1px;
+        }
+
+        .nav-tabs {
+            & > li {
+                float: right;
+            }
+        }
+
+        .panel-tabs {
+            .nav-tabs {
+                float: left;
+            }
+        }
+
+        .tabs-right {
+            & > .nav-tabs {
+                & > li {
+                    float: none;
+                }
+            }
+        }
+
+        .tabs-left {
+            .nav {
+                padding-right: 0;
+            }
+
+            & > .nav-tabs {
+                & > li {
+                    float: none;
+                }
+            }
+        }
+
+        .nav-justified {
+            & > li {
+                float: none;
+            }
+        }
+    }
+}

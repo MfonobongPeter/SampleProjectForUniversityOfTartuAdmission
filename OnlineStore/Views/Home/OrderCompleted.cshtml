@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "OrderCompleted";
+    Layout = "~/Views/Shared/FrontEndLayoutPage.cshtml";
+}
+
+<div id="content">
+    <div class="container">
+
+        <div class="col-md-12">
+
+           
+            <div class="row" id="error-page">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="box">
+                        <h2 style="color:green;">Order Placed Successfully!</h2>
+                        <h5 class="text-muted">Your order has been recieved, your order item(s) will be delivered to you as soon as possible, 
+                        please kindly check your email inbox or spam folder to download your order invoice!</h5>
+
+                        <p class="text-center">To continue please click the <strong>button below</strong> or <strong>Menu</strong> above.</p>
+
+                        <p class="buttons">
+                            <a href="@Url.Content("~/home/index")" class="btn btn-primary"><i class="fa fa-home"></i> Go to Homepage</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <!-- /.col-md-9 -->
+    </div>
+    <!-- /.container -->
+</div>
+<!-- /#content -->
+

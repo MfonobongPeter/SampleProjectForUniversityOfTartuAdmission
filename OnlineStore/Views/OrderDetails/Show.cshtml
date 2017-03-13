@@ -1,0 +1,152 @@
+﻿@model IEnumerable<OnlineStore.OrderDetailsViewModel>
+
+@{
+    ViewBag.Title = "view order details";
+    try
+    {
+        var role = Convert.ToInt16(Session["userrole"].ToString());
+        if (role == 1)
+        {
+            Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+        }
+        else if (role == 2)
+        {
+            Layout = "~/Views/Shared/StaffLayoutPage.cshtml";
+        }
+        else if (role == 3)
+        {
+            Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+        }
+    }
+    catch (Exception)
+    {
+
+    }
+}
+
+
+<!-- start: CSS REQUIRED FOR THIS PAGE ONLY -->
+<link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/select2/dist/css/select2.min.css")" />
+<link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/datatables/media/css/dataTables.bootstrap.min.css")" />
+<!-- end: CSS REQUIRED FOR THIS PAGE ONLY -->
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script type="text/javascript" src="@Url.Content("~/bower_components/bootbox.js/bootbox.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/jquery-mockjax/dist/jquery.mockjax.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/select2/dist/js/select2.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/datatables/media/js/jquery.dataTables.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/datatables/media/js/dataTables.bootstrap.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/assets/js/min/table-data.min.js")"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+<script type="text/javascript">
+    jQuery(document).ready(function () {
+        Main.init();
+        TableData.init();
+    });
+</script>
+
+
+<div class="row">
+    <div class="col-sm-2">
+        <a href="@Url.Action("Show", "Orders")" class="demo btn btn-blue">
+            <i class="fa fa-arrow-left">
+            </i> View Orders
+        </a>
+    </div>
+</div>
+<form role="form" class="form-horizontal" method="POST">
+    @if (ViewBag.DisplayMessage == "success")
+    {
+        if (ViewData.ModelState[""] != null)
+        {
+            <div class="bs-example">
+                <div class="alert alert-success fade in">
+                    <a href="#" class="close" data-dismiss="alert">×</a>
+                    <strong>Success!</strong>@Html.ValidationSummary(true, "", new { @class = "text-success" })<br />
+                </div>
+            </div>
+        }
+    }
+    else if (ViewBag.DisplayMessage == "Info")
+    {
+        if (ViewData.ModelState[""] != null)
+        {
+            <div class="bs-example">
+                <div class="alert alert-danger fade in">
+                    <a href="#" class="close" data-dismiss="alert">×</a>
+                    <strong>Alert!</strong>@Html.ValidationSummary(true, "", new { @class = "text-danger" })<br />
+                </div>
+            </div>
+        }
+    }
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <i class="fa fa-external-link-square"></i> Order Details List
+            <div class="panel-tools">
+                <a class="btn btn-xs btn-link panel-collapse collapses" href="#"> </a>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="dataTables_wrapper form-inline dt-bootstrap no-footer" id="sample_1_wrapper">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table aria-describedby="sample_1_info" role="grid" class="table table-striped table-bordered table-hover table-full-width dataTable no-footer" id="sample_1">
+                            <thead>
+
+                                <tr>
+                                    
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductPrice)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductSKU)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OrderDate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Quantity)
+                                    </th>
+                                    <th>User Action</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                       
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductPrice)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductSKU)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OrderDate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Quantity)
+                                        </td>
+
+                                        <td >
+                                                <a href="@Url.Action("Details", "OrderDetails", new { id = item.OrderDetailID })" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="View List"><i class="fa fa-eye"></i></a>
+                                            @*<a href="@Url.Action("Delete", "OrderDetails", new { id = item.OrderDetailID })" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="View List"><i class="fa fa-trash"></i></a>*@
+                                            </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

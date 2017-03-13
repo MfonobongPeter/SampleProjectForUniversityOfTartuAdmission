@@ -1,0 +1,116 @@
+﻿/* ---------------------------------------------------------------------- */
+/*	Calendar
+/* ---------------------------------------------------------------------- */
+#calendar {
+    position: relative;
+}
+
+.fc-event {
+    padding: 2px;
+}
+
+.fc-day-number {
+    margin: 2px 2px 0 0;
+}
+
+.fc-header-title, .fc-toolbar {
+    h2 {
+        color: #666666;
+        font-family: $fontRaleway;
+        font-weight: 200;
+        letter-spacing: -1px;
+    }
+}
+
+.fc-today {
+    .fc-day-number {
+        font-weight: bold;
+    }
+}
+
+.fc-state-highlight {
+    background: #d9d9d9 !important;
+    font-weight: bold;
+}
+
+.fc-button {
+    color: #666666 !important;
+}
+
+.fc-state-default {
+    background-color: $white !important;
+    background-image: none !important;
+    border-color: #666666 !important;
+    @include box-shadow(none !important);
+    color: #666666;
+    @include text-shadow(none !important);
+}
+
+.fc-state-down, .fc-state-active {
+    @include box-shadow(none !important);
+    outline: 0 none;
+    background-color: #569099 !important;
+    border-color: #4D8189 !important;
+    color: $white !important;
+}
+
+.fc-header-left {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 50% !important;
+}
+
+.fc-header-right {
+    position: absolute !important;
+    top: 0;
+    right: 0;
+    width: 50% !important;
+}
+
+.fc-header-center {
+    display: block !important;
+    padding-top: 40px !important;
+}
+
+.event-category {
+    color: $white;
+    padding: 5px;
+    @include border-radius(3px);
+    margin: 5px 0;
+}
+
+.label-default, .badge-default {
+    background-color: #3A87AD !important;
+    border-color: #3A87AD !important;
+}
+
+.label-orange, .badge-orange {
+    background-color: #E6674A !important;
+    border-color: #E6674A !important;
+}
+
+.label-purple, .badge-purple {
+    background-color: $purple !important;
+    border-color: $purple !important;
+}
+
+.label-yellow, .badge-yellow {
+    background-color: #FFB848 !important;
+    border-color: #FFB848 !important;
+}
+
+.label-teal, .badge-teal {
+    background-color: $teal !important;
+    border-color: $teal !important;
+}
+
+.label-beige, .badge-beige {
+    background-color: #CCCC99 !important;
+    border-color: #CCCC99 !important;
+}
+
+.label-green, .badge-green {
+    background-color: $green !important;
+    border-color: $green !important;
+}

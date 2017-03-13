@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]><html class="ie8 no-js" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie9 no-js" lang="en"><![endif]-->
+<!--[if !IE]><!-->
+<html class="no-js">
+<!--<![endif]-->
+<head>
+    <title>Welcome to Glorious Evidence Ltd</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    <!-- start: META -->
+    <meta charset="utf-8" />
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content="IE=edge,IE=9,IE=8,chrome=1" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta content="Massage, beauty and lifestyle equipment" name="description" />
+    <meta content="Glorious Evidence" name="author" />
+    <!-- end: META -->
+    <!-- start: MAIN CSS -->
+    <link type="text/css" rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/bootstrap/dist/css/bootstrap.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/assets/fonts/clip-font.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/iCheck/skins/all.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/perfect-scrollbar/css/perfect-scrollbar.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/bower_components/sweetalert/dist/sweetalert.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/assets/css/main.min.css")" />
+    <link type="text/css" rel="stylesheet" href="@Url.Content("~/assets/css/main-responsive.min.css")" />
+    <link type="text/css" rel="stylesheet" media="print" href="@Url.Content("~/assets/css/print.min.css")" />
+    <link type="text/css" rel="stylesheet" id="skin_color" href="@Url.Content("~/assets/css/theme/light.min.css")" />
+    <!-- end: MAIN CSS -->
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
+<!-- start: MAIN JAVASCRIPTS -->
+<!--[if lt IE 9]>
+        <script src="@Url.Content("~/bower_components/respond/dest/respond.min.js")"></script>
+        <script src="@Url.Content("~/bower_components/Flot/excanvas.min.js")"></script>
+        <script src="@Url.Content("~/bower_components/jquery-1.x/dist/jquery.min.js")"></script>
+        <![endif]-->
+<!--[if gte IE 9]><!-->
+<script type="text/javascript" src="@Url.Content("~/bower_components/jquery/dist/jquery.min.js")"></script>
+<!--<![endif]-->
+<script type="text/javascript" src="@Url.Content("~/bower_components/jquery-ui/jquery-ui.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/bootstrap/dist/js/bootstrap.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/blockUI/jquery.blockUI.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/iCheck/icheck.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/perfect-scrollbar/js/min/perfect-scrollbar.jquery.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/jquery.cookie/jquery.cookie.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/bower_components/sweetalert/dist/sweetalert.min.js")"></script>
+<script type="text/javascript" src="@Url.Content("~/assets/js/min/main.min.js")"></script>
+<!-- end: MAIN JAVASCRIPTS -->
+<!-- start: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+<script src="@Url.Content("~/bower_components/jquery-validation/dist/jquery.validate.min.js")"></script>
+<script src="@Url.Content("~/assets/js/min/login.min.js")"></script>
+<!-- end: JAVASCRIPTS REQUIRED FOR THIS PAGE ONLY -->
+
+<script>
+        jQuery(document).ready(function() {
+            Main.init();
+            Login.init();
+        });
+</script>

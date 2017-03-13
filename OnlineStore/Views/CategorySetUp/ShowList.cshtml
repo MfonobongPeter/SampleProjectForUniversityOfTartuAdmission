@@ -1,0 +1,85 @@
+﻿@model IEnumerable<OnlineStore.CategorySetUpViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    try
+    {
+        var role = Convert.ToInt16(Session["userrole"].ToString());
+        if (role == 1)
+        {
+            Layout = "~/Views/Shared/AdminLayoutPage.cshtml";
+        }
+        
+        else if (role == 3)
+        {
+            Layout = "~/Views/Shared/DeveloperLayoutPage.cshtml";
+        }
+    }
+    catch (Exception)
+    {
+
+    }
+}
+
+<div class="row">
+    <div class="col-sm-2">
+        <a href="@Url.Action("Add", "CategorySetUp")" class="demo btn btn-blue">
+            <i class="fa fa-plus">
+            </i> | Add New
+        </a>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <i class="fa fa-external-link-square"></i> Category List
+        <div class="panel-tools">
+            <a class="btn btn-xs btn-link panel-collapse collapses" href="#">
+            </a>
+            
+        </div>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover" id="sample-table-1">
+            <thead>
+                <tr>
+                    @*<th>@Html.DisplayNameFor(model => model.CategoryID)</th>*@
+                    <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+                    <th>@Html.DisplayNameFor(model => model.CreatedBy)</th>
+                    <th>@Html.DisplayNameFor(model => model.CreatedOn)</th>
+                    <th>User Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        @*<td class="hidden-xs">
+                            @Html.DisplayFor(modelItem => item.CategoryID)
+                        </td>*@
+                        <td class="hidden-xs">
+                            @Html.DisplayFor(modelItem => item.CategoryName)
+                        </td>
+                        <td class="hidden-xs">
+                            @Html.DisplayFor(modelItem => item.CreatedBy)
+                        </td>
+                        <td class="hidden-xs">
+                            @Html.DisplayFor(modelItem => item.CreatedOn)
+                        </td>
+
+                        <td>
+                            @*<a href="@Url.Action("edit", "category", new { id = item.CategoryID })" class="btn btn-xs btn-teal tooltips" data-placement="top" data-original-title="Edit"><i class="fa fa-edit"></i></a>*@
+                            <a href="@Url.Action("details", "categorySetUp", new { id = item.CategoryID })" class="btn btn-xs btn-green tooltips" data-placement="top" data-original-title="View List"><i class="fa fa-eye"></i></a>
+                            @*<a href="@Url.Action("Delete", "category", new { id = item.CategoryID })" class="btn btn-xs btn-bricky tooltips" data-placement="top" data-original-title="Delete"><i class="fa fa-trash-o"></i></a>*@
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <script>
+            jQuery(document).ready(function() {
+                Main.init();
+            });
+    </script>
